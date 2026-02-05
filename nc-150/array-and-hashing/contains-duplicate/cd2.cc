@@ -23,6 +23,11 @@ public:
       s.insert(el);
     }
     return 0;
+
+    /* Can do this in one line-since unordered_set stores unique elements, if there are
+     * duplicate elements in the array then size of the unordered_set will be less than size
+     * of the array.*/
+    // return unordered_set<int>(arr.begin(), arr.end()).size() < arr.size();
   }
 };
 
