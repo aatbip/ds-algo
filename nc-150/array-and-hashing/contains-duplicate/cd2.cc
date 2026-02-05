@@ -17,11 +17,8 @@ public:
   int contains_duplicate(vector<int> &arr) {
     unordered_set<int> s;
     for (auto el : arr) {
-      auto ch = s.find(el);
-      if (ch != s.end()) {
-        if (*ch == el) {
-          return 1;
-        }
+      if (s.count(el)) {
+        return 1;
       }
       s.insert(el);
     }
@@ -30,7 +27,7 @@ public:
 };
 
 int main(void) {
-  vector<int> arr = {99, 1, 3, 4, 99};
+  vector<int> arr = {0, 1, 3, 4, 99};
   Solution s;
   cout << s.contains_duplicate(arr) << "\n";
   return 0;
