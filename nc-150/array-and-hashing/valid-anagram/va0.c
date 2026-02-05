@@ -11,6 +11,7 @@
  */
 
 #include <stdbool.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -21,6 +22,9 @@ int compFn(const void *a, const void *b) {
 }
 
 bool isAnagram(const char *s, const char *t) {
+  if (strlen(s) != strlen(t)) {
+    return false;
+  }
   char *s1 = malloc(strlen(s) + 1);
   char *s2 = malloc(strlen(t) + 1);
   strcpy(s1, s);
@@ -28,10 +32,13 @@ bool isAnagram(const char *s, const char *t) {
   qsort(s1, strlen(s), sizeof(char), compFn);
   qsort(s2, strlen(s), sizeof(char), compFn);
 
-  return false;
+  bool result = (strcmp(s1, s2) == 0);
+  free(s1);
+  free(s2);
+  return result;
 }
 
 int main(void) {
-  isAnagram("zab", "hello");
+  printf("%d\n", isAnagram("zabb", "babz"));
   return 0;
 }
