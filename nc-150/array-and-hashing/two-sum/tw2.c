@@ -1,3 +1,12 @@
+/* Given an array of integers `nums` and an integer `target`, return the indices i and j such that `nums[i] + nums[j] ==
+ * target` and `i != j`. You may assume that every input has exactly one Pair of indices i and j that satisfy the
+ * condition. Return the answer with the smaller index first.
+ *
+ * In this program we will be using sorting and two pointer to solve the two sum problem in C.
+ * Time complexity - O(nlogn) or O(n^2) according to the qsort implementation
+ * Space complexity - O(n), because the size of `c_arr_t` grows with the size of input `arr`
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 
