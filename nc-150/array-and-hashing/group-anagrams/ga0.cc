@@ -12,7 +12,7 @@
  *  `strs`.
  * Space complexity -
  *  O(m * n)
- *  Because 'n' consists the keys of the hash map and 'm' is the total of the hash map values.
+ *  Because of the final `ans` which is of vector<vector<string>>.
  * */
 
 #include <algorithm>
