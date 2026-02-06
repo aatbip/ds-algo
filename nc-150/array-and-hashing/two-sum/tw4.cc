@@ -3,7 +3,7 @@
  * condition. Return the answer with the smaller index first.
  *
  * This program cleaverly utilizes hash map again to solve the two sum problem. This hash map based solution
- * is called "two pass" solution because we have to iterate through the array twice.
+ * is called "one pass" solution because we have to iterate through the array only once unlike with two pass.
  * Time complexity - O(n)
  * Space complexity - O(n), because unordered_map `s` grows with input `arr`
  */
@@ -11,7 +11,6 @@
 #include <iostream>
 #include <unordered_map>
 #include <vector>
-
 using namespace std;
 
 class Solution {
@@ -19,18 +18,11 @@ public:
   vector<int> two_sum(vector<int> &arr, int target) {
     unordered_map<int, int> s;
     for (int i = 0; i < arr.size(); i++) {
-      // s.insert({arr[i], i});
-      // use operator[] over insert method because operator[] will overwrite duplicates keys while insert ignores
-      s[arr[i]] = i;
-    }
-    for (auto i : s) {
-      cout << i.second << "\n";
-    }
-    for (int i = 0; i < arr.size(); i++) {
       int diff = target - arr[i];
-      if (s.count(diff) && s[diff] != i) {
-        return {i, s[diff]};
+      if (s.find(diff) != s.end()) {
+        return {s[diff], i};
       }
+      s.insert({arr[i], i});
     }
     return {};
   }
@@ -38,8 +30,8 @@ public:
 
 int main(void) {
   Solution s;
-  vector<int> arr = {1, 5, 8, 5};
-  vector<int> res = s.two_sum(arr, 10);
+  vector<int> arr = {1, 2, 3, 3, 5};
+  vector<int> res = s.two_sum(arr, 8);
   if (!res.empty()) {
     cout << res[0] << " " << res[1] << "\n";
   }
