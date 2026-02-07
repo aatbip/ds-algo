@@ -31,7 +31,7 @@
  * Now in the above loop, the loop runs for 'u' times because there are 'u' unique elements and
  * so the size of the hash map 'm' will be of 'u' length. Also, `push` and `pop` methods of the
  * priority queue has time complexity of O(log k) because heap is not more than 'k'. So the
- * time complexity of the above loop is: O(u logk) = O(n logk) in the worst case.
+ * time complexity of the above loop is: O(u logk) = O(n logk) because in worst case u = n.
  *
     for (int i = 0; i < k; i++) {
       res.push_back(pq.top().second);
@@ -45,6 +45,16 @@
  * O(n) + O(nlogn) + O(klogk)
  * Worst case is dominated by O(nlogn).
  * Therefore, time complexity is O(nlogn).
+ *
+ * Space complexity -
+ * O(u) for the unordered_map 'm'.
+ * O(k) for the priority_queue 'pq'.
+ * O(k) for the vector<int> 'res'.
+ * = O(u) + O(k) + O(k)
+ * In worst case, u = k,
+ * Therefore, O(n)
+ *
+ *
  *
  * */
 
