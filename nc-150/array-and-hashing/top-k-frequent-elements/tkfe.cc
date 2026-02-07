@@ -38,7 +38,7 @@ public:
 
 int main(void) {
   Solution s;
-  vector<int> nums = {1, 3, 2, 3, 2, 3, 1, 1};
+  vector<int> nums = {1, 3, 2, 3, 2, 3, 1, 1, 1};
   vector<int> res = s.top_freq(nums, 2);
   for (auto el : res) {
     cout << el << " ";
