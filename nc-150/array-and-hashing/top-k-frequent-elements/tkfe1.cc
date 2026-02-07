@@ -2,6 +2,14 @@
  * Input: nums = [1,2,2,3,3,3], k = 2
  * Output: [2,3]
  *
+ * In this program we solve this problem using  min-heap (priority queue based data structure) and hash map.
+ * Min-heap is a good choice to track object based on their priority which in our case is the frequency
+ * of how many times a number is present in the array `nums`.
+ * Note: min-heap: children >= parent i.e. higher priority objects are children
+ *       max-heap: parent >= children i.e. higher priority objects are parents
+ * We use min-heap instead of max-heap so that we can easily pop() the objects beyond 'k' because min-heap
+ * arranges the objects with higher priority (in this case, objects having higher frequency count) as
+ * children so that pop() will remove the objects with lower frequency count first.
  * */
 
 #include <functional>
