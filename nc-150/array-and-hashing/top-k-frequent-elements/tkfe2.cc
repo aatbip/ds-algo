@@ -15,6 +15,12 @@
  * elements, u=n in worst case, so O(n+n) = O(n).
  * Therefore, O(n) + O(n) + O(n) = O(n+n+n) = O(max(n)) = O(n).
  *
+ * Space complexity -
+ * Let 'u' be the total number of unique elements in the array `nums` and 'n' be the size of `nums`.
+ * The unordered_map 'm' will take O(u), in worst case u=n, so O(n).
+ * vector<vector<int>> freq_buckets will take O(n)
+ * vector<int>res will also take O(k), because it stores max 'k' elements.
+ * Therefore, O(n) in worst case.
  */
 
 #include <iostream>
