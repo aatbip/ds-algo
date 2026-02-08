@@ -2,6 +2,12 @@
  * Input: nums = [1,2,2,3,3,3], k = 2
  * Output: [2,3]
  *
+ * In this program, we solve the problem using bucket sort and hash map. We first distribute the numbers
+ * according to the frequency in the buckets. Distributing elements in the buckets according to their
+ * frequency is also called as distribution sort. Bucket in this case is the 2d array where each
+ * sub array stores elements of frequency equivalent to the index of the sub array.
+ *
+ *
  */
 
 #include <iostream>
