@@ -90,10 +90,10 @@ public:
 
 int main(void) {
   Solution s;
-  vector<int> nums = {1, 3, 2, 3, 2, 3, 1, 1, 1};
-  vector<int> res = s.top_freq(nums, 2);
+  vector<int> nums = {1, 2, 2, 2, 2, 2, 4, 4, 5, 5, 5, 5, 5, 3, 3, 3, 3};
+  vector<int> res = s.top_freq(nums, 3);
   for (auto el : res) {
-    cout << el << " ";
+    cout << el << "\n";
   }
 
   return 0;
