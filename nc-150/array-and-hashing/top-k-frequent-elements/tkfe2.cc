@@ -11,8 +11,10 @@
  * Let 'u' be the total number of unique elements in the array `nums` and 'n' be the size of `nums`.
  * The first loop is O(n).
  * The second loop is O(u) in worst case u=n so O(n).
- * Third loop is also O(n).
+ * Third loop is: outer loop is O(n) and inner loop is O(u) because it runs for times equals to unique
+ * elements, u=n in worst case, so O(n+n) = O(n).
  * Therefore, O(n) + O(n) + O(n) = O(n+n+n) = O(max(n)) = O(n).
+ *
  */
 
 #include <iostream>
