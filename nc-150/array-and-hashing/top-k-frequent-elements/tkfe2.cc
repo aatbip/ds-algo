@@ -7,7 +7,12 @@
  * frequency is also called as distribution sort. Bucket in this case is the 2d array where each
  * sub array stores elements of frequency equivalent to the index of the sub array.
  *
- *
+ * Time complexity -
+ * Let 'u' be the total number of unique elements in the array `nums` and 'n' be the size of `nums`.
+ * The first loop is O(n).
+ * The second loop is O(u) in worst case u=n so O(n).
+ * Third loop is also O(n).
+ * Therefore, O(n) + O(n) + O(n) = O(n+n+n) = O(max(n)) = O(n).
  */
 
 #include <iostream>
