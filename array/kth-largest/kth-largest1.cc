@@ -7,6 +7,7 @@
  */
 
 #include <cstdlib>
+#include <iostream>
 #include <utility>
 #include <vector>
 using namespace std;
@@ -18,9 +19,9 @@ public:
     while (true) {
       int pivot_index = rand() % (right - left + 1) + left;
       int p = partition(nums, left, right, pivot_index);
-      if (p == k - nums.size()) {
+      if (p == nums.size() - k) {
         return nums[p];
-      } else if (p < k - nums.size()) {
+      } else if (p < nums.size() - k) {
         left = p + 1;
       } else {
         right = p - 1;
@@ -34,14 +35,19 @@ private:
     swap(nums[pivot_index], nums[right]);
     int p = left;
     for (int i = left; i < right; i++) {
-      if (nums[p] < pivot) {
+      if (nums[i] < pivot) {
         swap(nums[i], nums[p]);
         p++;
       }
     }
-    swap(nums[pivot_index], nums[right]);
+    swap(nums[right], nums[p]);
     return p;
   }
 };
 
-int main(void) { return 0; }
+int main(void) {
+  Solution s;
+  vector<int> nums = {3, 2, 1, 5, 6, 4};
+  cout << s.kth_largest(nums, 2) << "\n";
+  return 0;
+}
