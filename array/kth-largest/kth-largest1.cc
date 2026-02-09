@@ -3,7 +3,16 @@
  * Ex: Input: nums = [3,2,1,5,6,4], k = 2
  *     Output: 5
  *
- * In this program, we will solve the problem using quickselect algorithm.
+ * In this program, we will solve the problem using quickselect algorithm. Quickselect algorithm
+ * is similar to the quicksort algorithm but quickselect doesn't sort the array completely
+ * and we only focus on once side (depending on p>k or p<k). Quickselect is mostly useful to
+ * find kth-largest, kth-smallest, median in an array.
+ *
+ * Time complexity-
+ * O(n) in average and best case while O(n^2) in worst case
+ * Space complexity-
+ * O(1)
+ *
  */
 
 #include <cstdlib>
