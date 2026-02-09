@@ -15,6 +15,7 @@
  *
  */
 
+#include <chrono>
 #include <cstdlib>
 #include <iostream>
 #include <utility>
@@ -56,7 +57,21 @@ private:
 
 int main(void) {
   Solution s;
-  vector<int> nums = {3, 2, 1, 5, 6, 4};
-  cout << s.kth_largest(nums, 2) << "\n";
+  // vector<int> nums = {3, 2, 1, 5, 6, 4};
+  // cout << s.kth_largest(nums, 2) << "\n";
+
+  vector<int> nums;
+  for (int i = 0; i <= 10000000; i++) {
+    nums.push_back(i);
+  }
+
+  auto start = chrono::high_resolution_clock::now();
+  for (int i = 1; i <= 100; i++) {
+    printf("%d\n", s.kth_largest(nums, i));
+  }
+  auto end = chrono::high_resolution_clock::now();
+  auto duration_ms = chrono::duration_cast<chrono::milliseconds>(end - start);
+  cout << "Time: " << duration_ms.count() << " ms\n";
+
   return 0;
 }

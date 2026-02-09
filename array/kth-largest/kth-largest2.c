@@ -8,6 +8,13 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
+double get_time_ms() {
+  struct timespec ts;
+  clock_gettime(CLOCK_MONOTONIC, &ts);
+  return (double)ts.tv_sec * 1000.0 + (double)ts.tv_nsec / 1000000.0;
+}
 
 static inline void swap(int *a, int *b) {
   int tempA = *a;
@@ -46,8 +53,22 @@ int kth_largest(int *nums, int numsSize, int k) {
 
 int main(void) {
 
-  int nums[] = {3, 2, 1, 5, 6, 4};
-  printf("%d\n", kth_largest(nums, 6, 2));
+  // int nums[] = {3, 2, 1, 5, 6, 4};
+  // printf("%d\n", kth_largest(nums, 6, 2));
+
+  int *nums = malloc(sizeof(int) * 10000000);
+  for (int i = 0; i < 10000000; i++) {
+    nums[i] = i;
+  }
+
+  double start = get_time_ms();
+  for (int i = 1; i <= 100; i++) {
+    printf("%d\n", kth_largest(nums, 10000000, i));
+  }
+  double end = get_time_ms();
+
+  printf("Operation took %.3f ms\n", end - start);
+  free(nums);
 
   return 0;
 }
