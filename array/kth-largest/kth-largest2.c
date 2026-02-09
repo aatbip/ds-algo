@@ -6,9 +6,10 @@
  * In this program, we solve this problem by implementing the quickselect algorithm in C.
  */
 
+#include <stdio.h>
 #include <stdlib.h>
 
-inline void swap(int *a, int *b) {
+static inline void swap(int *a, int *b) {
   int tempA = *a;
   *a = *b;
   *b = tempA;
@@ -24,21 +25,29 @@ int partition(int *nums, int left, int right, int pivot_index) {
       p++;
     }
   }
-  swap(&nums[right], &nums[pivot_index]);
+  swap(&nums[right], &nums[p]);
   return p;
 }
 
 int kth_largest(int *nums, int numsSize, int k) {
-  int left = 0, right = numsSize;
-  int pivot_index = rand() % (right - left + 1) + left;
-
+  int left = 0, right = numsSize - 1;
   for (;;) {
+    int pivot_index = rand() % (right - left + 1) + left;
+    int p = partition(nums, left, right, pivot_index);
+    if (p == numsSize - k) {
+      return nums[p];
+    } else if (p < numsSize - k) {
+      left = p + 1;
+    } else {
+      right = p - 1;
+    }
   }
 }
 
 int main(void) {
 
   int nums[] = {3, 2, 1, 5, 6, 4};
+  printf("%d\n", kth_largest(nums, 6, 2));
 
   return 0;
 }
