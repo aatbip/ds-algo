@@ -3,10 +3,19 @@
  * Ex: Input: nums = [3,2,1,5,6,4], k = 2
  *     Output: 5
  *
- * Here, we solve this problem using priority queue.
+ * Here, we solve this problem using priority queue (min-heap).
+ * Time complexity-
+ * Let 'n' be the size of array and 'k' be the required largest position then,
+ * the first loop is O(n)
+ * the operations of priority_queue `push` and `pop` is O(logk) because heap size never exceeds 'k'.
+ * Therefore, O(nlogk) is the worst case time complexity.
+ *
+ * Space complexity-
+ * Priority queue has O(k) space complexity, therefore, O(k) is the total space complexity.
  * */
 
 #include <functional>
+#include <iostream>
 #include <queue>
 #include <vector>
 using namespace std;
@@ -25,4 +34,9 @@ public:
   }
 };
 
-int main(void) { return 0; }
+int main(void) {
+  Solution s;
+  vector<int> nums = {3, 2, 1, 5, 6, 4};
+  cout << s.kth_largest(nums, 2) << "\n";
+  return 0;
+}
