@@ -1,3 +1,13 @@
+/* This program implements quicksort algorithm in C.
+ * Time complexity -
+ * Average case: O(nlogn)
+ * Worst case: O(n^2)
+ *
+ * Space complexity -
+ * Due to the stack overhead from recursion: O(logn)
+ * in worst case: O(n^2)
+ * */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
