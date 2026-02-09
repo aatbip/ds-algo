@@ -8,7 +8,25 @@
 
 #include <stdlib.h>
 
-int partition(int *nums, int left, int right, int pivot_index) { int pivot = *(nums + pivot_index); }
+inline void swap(int *a, int *b) {
+  int tempA = *a;
+  *a = *b;
+  *b = tempA;
+}
+
+int partition(int *nums, int left, int right, int pivot_index) {
+  int pivot = *(nums + pivot_index);
+  swap(&nums[right], &nums[pivot_index]);
+  int p = left;
+  for (int i = left; i < right; i++) {
+    if (nums[i] < pivot) {
+      swap(&nums[p], &nums[i]);
+      p++;
+    }
+  }
+  swap(&nums[right], &nums[pivot_index]);
+  return p;
+}
 
 int kth_largest(int *nums, int numsSize, int k) {
   int left = 0, right = numsSize;
