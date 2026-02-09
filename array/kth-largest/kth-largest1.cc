@@ -17,6 +17,14 @@ public:
     int left = 0, right = nums.size() - 1;
     while (true) {
       int pivot_index = rand() % (right - left + 1) + left;
+      int p = partition(nums, left, right, pivot_index);
+      if (p == k - nums.size()) {
+        return nums[p];
+      } else if (p < k - nums.size()) {
+        left = p + 1;
+      } else {
+        right = p - 1;
+      }
     }
   }
 
