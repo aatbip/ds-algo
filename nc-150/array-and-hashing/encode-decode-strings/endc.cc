@@ -26,6 +26,23 @@ public:
   vector<string> decode(string &encoded) {
     if (encoded.empty())
       return {};
+    vector<int> sizes;
+    int i = 0;
+    while (encoded[i] != '#') {
+      string cur = "";
+      while (encoded[i] != ',') {
+        cur += encoded[i];
+        i++;
+      }
+      i++;
+    }
+    i++; // increment once again to move i past '#' separator
+    vector<string> decoded;
+    for (int sz : sizes) {
+      decoded.push_back(encoded.substr(i, sz));
+      i += sz;
+    }
+    return decoded;
   }
 };
 
