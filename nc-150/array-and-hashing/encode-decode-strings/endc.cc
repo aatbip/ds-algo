@@ -1,3 +1,18 @@
+/*Design an algorithm to encode a list of strings to a string. The encoded string is then sent over
+ * the network and is decoded back to the original list of strings.
+ *
+ * This program implements the `encode` and `decode` functions. `encode` function serializes the
+ * vector<string> into string while `decode` function just does the opposite.
+ *
+ * Time complexity-
+ * Let 'm' be the sum of characters in the every strings and 'n' be the total number of strings.
+ * For encode function: O(m)
+ * For decode function: O(m)
+ *
+ * Space complexity-
+ * O(n+m)
+ * */
+
 #include <iostream>
 #include <string>
 #include <vector>
