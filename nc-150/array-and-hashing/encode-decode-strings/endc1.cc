@@ -18,12 +18,35 @@ public:
     }
     return encoded;
   }
+
+  vector<string> decode(string &encoded) {
+    if (encoded.empty())
+      return {};
+    vector<string> decoded;
+    int i = 0;
+    while (i < encoded.size()) {
+      string cur = "";
+      while (encoded[i] != '#') {
+        cur += encoded[i];
+        i++;
+      }
+      i++;
+      decoded.push_back(encoded.substr(i, stoi(cur)));
+      i += stoi(cur);
+    }
+    return decoded;
+  }
 };
 
 int main(void) {
   Solution s;
   vector<string> strs = {"hello", "world there"};
-  cout << s.encode(strs) << "\n";
+  string encoded = s.encode(strs);
+  cout << encoded << "\n";
+  vector<string> decoded = s.decode(encoded);
+  for (auto s : decoded) {
+    cout << s << "\n";
+  }
 
   return 0;
 }
