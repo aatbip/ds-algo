@@ -22,6 +22,11 @@ public:
     }
     return encoded;
   }
+
+  vector<string> decode(string &encoded) {
+    if (encoded.empty())
+      return {};
+  }
 };
 
 int main(void) {
