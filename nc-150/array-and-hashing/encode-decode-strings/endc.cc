@@ -1,3 +1,4 @@
+#include <iostream>
 #include <string>
 #include <vector>
 using namespace std;
@@ -13,8 +14,20 @@ public:
     }
     string encoded = "";
     for (int s : sizes) {
-      encoded += to_string(s);
+      encoded += to_string(s) + ',';
     }
-    encoded += '#';
+    encoded += '#'; // separator between sizes and strings
+    for (auto &s : strs) {
+      encoded += s;
+    }
+    return encoded;
   }
 };
+
+int main(void) {
+  Solution s;
+  vector<string> strs = {"hello", "world there"};
+  cout << s.encode(strs) << "\n";
+
+  return 0;
+}
