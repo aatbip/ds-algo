@@ -34,6 +34,7 @@ public:
         cur += encoded[i];
         i++;
       }
+      sizes.push_back(stoi(cur));
       i++;
     }
     i++; // increment once again to move i past '#' separator
@@ -49,7 +50,9 @@ public:
 int main(void) {
   Solution s;
   vector<string> strs = {"hello", "world there"};
-  cout << s.encode(strs) << "\n";
+  string encoded = s.encode(strs);
+  vector<string> decoded = s.decode(encoded);
+  cout << "correct? " << (strs == decoded) << "\n";
 
   return 0;
 }
