@@ -15,5 +15,6 @@ public:
     for (int s : sizes) {
       encoded += to_string(s);
     }
+    encoded += '#';
   }
 };
