@@ -3,6 +3,9 @@
  * Example: Input: nums = [1,2,4,6]
  *          Output: [48,24,12,8]
  *
+ * In this program we will use prefix-suffix technique but a optimized version in terms of space complexity. Unlike in
+ * the one in `pref_suffix.c`, we only need to declare the `prod_arr` here which reduces the space used.
+ *
  * Time complexity- O(n)
  * Space complexity- O(n) for `prod_arr` and O(1) extra space for `postfix` unlike in pref_suff.c
  * we had to declare 3 arrays
