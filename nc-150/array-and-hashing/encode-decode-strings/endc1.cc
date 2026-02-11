@@ -10,31 +10,29 @@ using namespace std;
 class Solution {
 public:
   string encode(vector<string> &strs) {
-    if (strs.empty())
-      return "";
-    string encoded = "";
-    for (auto &s : strs) {
-      encoded += to_string(s.size()) + '#' + s;
+    string res;
+    for (const string &s : strs) {
+      res += to_string(s.size()) + "#" + s;
     }
-    return encoded;
+    return res;
   }
 
-  vector<string> decode(string &encoded) {
-    if (encoded.empty())
-      return {};
-    vector<string> decoded;
+  vector<string> decode(string s) {
+    vector<string> res;
     int i = 0;
-    while (i < encoded.size()) {
-      string cur = "";
-      while (encoded[i] != '#') {
-        cur += encoded[i];
-        i++;
+    while (i < s.size()) {
+      int j = i;
+      while (s[j] != '#') {
+        j++;
       }
-      i++;
-      decoded.push_back(encoded.substr(i, stoi(cur)));
-      i += stoi(cur);
+      int length = stoi(s.substr(i, j - i));
+      i = j + 1;
+      j = i + length;
+      res.push_back(s.substr(i, length));
+      i = j;
+      cout << i << "\n";
     }
-    return decoded;
+    return res;
   }
 };
 
@@ -44,7 +42,7 @@ int main(void) {
   string encoded = s.encode(strs);
   cout << encoded << "\n";
   vector<string> decoded = s.decode(encoded);
-  for (auto s : decoded) {
+  for (auto &s : decoded) {
     cout << s << "\n";
   }
 
