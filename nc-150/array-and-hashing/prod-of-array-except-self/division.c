@@ -2,6 +2,8 @@
  * nums[i]. Each product is guaranteed to fit in a 32-bit integer.
  * Example: Input: nums = [1,2,4,6]
  *          Output: [48,24,12,8]
+ *
+ * This program solves the problem using the fact that if
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -37,7 +39,7 @@ int *prod(int *arr, int n) {
 }
 
 int main(void) {
-  int arr[] = {1, 2, 3, 2};
+  int arr[] = {1, 2, 4, 6};
   int *p = prod(arr, 4);
   for (int i = 0; i < 4; i++) {
     printf("%d ", p[i]);
