@@ -5,11 +5,15 @@
  *
  * This problem can be solved using brute force approach which gives time complexity of O(n^2). In this program, we will
  * be using prefex-suffix (prefix sum) technique to solve this problem.
+ *
+ * Time complexity- O(n)
+ * Space complexity- O(n)
  * */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 int *prod(int *arr, int n) {
   int prefix_arr[n];
   memset(prefix_arr, 0, sizeof(prefix_arr));
@@ -33,5 +37,8 @@ int *prod(int *arr, int n) {
 int main(void) {
   int arr[] = {1, 2, 4, 6};
   int *p = prod(arr, 4);
+  for (int i = 0; i < 4; i++) {
+    printf("%d ", p[i]);
+  }
   return 0;
 }
