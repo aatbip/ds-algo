@@ -7,17 +7,22 @@
  * be using prefex-suffix (prefix sum) technique to solve this problem.
  * */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 int *prod(int *arr, int n) {
   int prefix_arr[n];
+  memset(prefix_arr, 0, sizeof(prefix_arr));
   int suffix_arr[n];
-  int prod[n];
-  int i = 0;
-  prefix_arr[i] = 1;
+  memset(suffix_arr, 0, sizeof(suffix_arr));
+  int *prod = malloc(sizeof(int) * n);
+  prefix_arr[0] = 1;
   suffix_arr[n - 1] = 1;
+  return prod;
 }
 
 int main(void) {
-  int arr[] = {1, 2, 3, 2};
-
+  int arr[] = {1, 2, 4, 6};
+  int *p = prod(arr, 4);
   return 0;
 }
