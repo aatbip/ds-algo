@@ -1,5 +1,15 @@
 /*Design an algorithm to encode a list of strings to a string. The encoded string is then sent over
  * the network and is decoded back to the original list of strings.
+ *
+ * This program implements optimal encode and decode functions.
+ *
+ * Time complexity-
+ * Let 'm' be the sum of characters in the every strings and 'n' be the total number of strings.
+ * Encode: O(m), because encode copies every single characters from `strs` to `res`.
+ * Decode: O(m), because decode also copies every single characters from `s` to `res`.
+ *
+ * Space complexity-
+ * O(m+n)
  */
 
 #include <iostream>
