@@ -18,6 +18,15 @@ int *prod(int *arr, int n) {
   int *prod = malloc(sizeof(int) * n);
   prefix_arr[0] = 1;
   suffix_arr[n - 1] = 1;
+  for (int i = 1; i < n; i++) {
+    prefix_arr[i] = arr[i - 1] * prefix_arr[i - 1];
+  }
+  for (int i = n - 2; i >= 0; i--) {
+    suffix_arr[i] = arr[i + 1] * suffix_arr[i + 1];
+  }
+  for (int i = 0; i < n; i++) {
+    prod[i] = prefix_arr[i] * suffix_arr[i];
+  }
   return prod;
 }
 
