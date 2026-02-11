@@ -3,6 +3,9 @@
  * Example: Input: nums = [1,2,4,6]
  *          Output: [48,24,12,8]
  *
+ * Time complexity- O(n)
+ * Space complexity- O(n) for `prod_arr` and O(1) extra space for `postfix` unlike in pref_suff.c
+ * we had to declare 3 arrays
  */
 
 #include <stdio.h>
