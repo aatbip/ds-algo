@@ -3,7 +3,12 @@
  * Example: Input: nums = [1,2,4,6]
  *          Output: [48,24,12,8]
  *
- * This program solves the problem using the fact that if
+ * This program solves the problem using the fact that if product of all integers in an array is divided by the current
+ * integer then we get the product of integers except the current integers. In this solution we also check if there are
+ * 0 elements in the array.
+ *
+ * Time complexity- O(n)
+ * Space complexity- O(n) and O(1) extra space
  */
 #include <stdio.h>
 #include <stdlib.h>
