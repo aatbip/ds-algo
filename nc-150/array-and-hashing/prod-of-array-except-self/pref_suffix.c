@@ -19,7 +19,7 @@ int *prod(int *arr, int n) {
   memset(prefix_arr, 0, sizeof(prefix_arr));
   int suffix_arr[n];
   memset(suffix_arr, 0, sizeof(suffix_arr));
-  int *prod = malloc(sizeof(int) * n);
+  int *prod_arr = malloc(sizeof(int) * n);
   prefix_arr[0] = 1;
   suffix_arr[n - 1] = 1;
   for (int i = 1; i < n; i++) {
@@ -29,16 +29,17 @@ int *prod(int *arr, int n) {
     suffix_arr[i] = arr[i + 1] * suffix_arr[i + 1];
   }
   for (int i = 0; i < n; i++) {
-    prod[i] = prefix_arr[i] * suffix_arr[i];
+    prod_arr[i] = prefix_arr[i] * suffix_arr[i];
   }
-  return prod;
+  return prod_arr;
 }
 
 int main(void) {
-  int arr[] = {1, 2, 4, 6};
+  int arr[] = {33, 2, 1, 88};
   int *p = prod(arr, 4);
   for (int i = 0; i < 4; i++) {
     printf("%d ", p[i]);
   }
+  free(p);
   return 0;
 }
