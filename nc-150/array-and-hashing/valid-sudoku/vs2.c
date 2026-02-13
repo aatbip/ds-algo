@@ -19,6 +19,12 @@
  * 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
  * 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ->  8th element
  *
+ * We use bitmasking to manipulate individual bits of the above bitmap in memory.
+ *
+ * Time complexity- O(n^2)
+ * Space complexity-
+ * Since the size of Sudoku is 9x9, space complexity can actually be O(1) but assuming that size of sudoku is nxn,
+ * O(n) is the space complexity.
  *
  * */
 
