@@ -7,6 +7,7 @@
  *
  * */
 
+#include <stdio.h>
 int isValidSudoku(char (*board)[9], int n) {
   int rows[9] = {0};
   int cols[9] = {0};
@@ -18,12 +19,12 @@ int isValidSudoku(char (*board)[9], int n) {
       int box_idx = (r / 3) * 3 + c / 3;
       if (board[r][c] == '.')
         continue;
-      if (rows[r] & val || cols[c] & val || box[box_idx] & val) {
+      if (rows[r] & (1 << val) || cols[c] & (1 << val) || box[box_idx] & (1 << val)) {
         return 0; // invalid sudoku
       }
-      rows[r] |= val;
-      cols[c] |= val;
-      box[box_idx] |= val;
+      rows[r] |= (1 << val);
+      cols[c] |= (1 << val);
+      box[box_idx] |= (1 << val);
     }
   }
   return 1; // valid sudoku
@@ -36,7 +37,7 @@ int main(void) {
                      {'.', '.', '.', '.', '.', '.', '2', '.', '.'}, {'.', '.', '.', '4', '1', '9', '.', '.', '8'},
                      {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
 
-  isValidSudoku(board, 9);
+  printf("%d\n", isValidSudoku(board, 9));
 
   return 0;
 }
