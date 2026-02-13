@@ -7,7 +7,27 @@
  *
  * */
 
-int isValidSudoku(char (*board)[], int n) { return 1; }
+int isValidSudoku(char (*board)[9], int n) {
+  int rows[9] = {0};
+  int cols[9] = {0};
+  int box[9] = {0};
+
+  for (int r = 0; r < n; r++) {
+    for (int c = 0; c < n; c++) {
+      int val = board[r][c] - '1';
+      int box_idx = (r / 3) * 3 + c / 3;
+      if (board[r][c] == '.')
+        continue;
+      if (rows[r] & val || cols[c] & val || box[box_idx] & val) {
+        return 0; // invalid sudoku
+      }
+      rows[r] |= val;
+      cols[c] |= val;
+      box[box_idx] |= val;
+    }
+  }
+  return 1; // valid sudoku
+}
 
 int main(void) {
   char board[][9] = {{'1', '2', '.', '.', '3', '.', '.', '.', '.'}, {'4', '.', '.', '5', '.', '.', '.', '.', '.'},
