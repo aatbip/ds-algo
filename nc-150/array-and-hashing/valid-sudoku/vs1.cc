@@ -5,6 +5,9 @@
  * Return true if the Sudoku board is valid, otherwise return false
  * Note: A board does not need to be full or be solvable to be valid.
  *
+ * In this program we solve the problem using hash map (unordered_map) in one pass.
+ * Time complexity- O(n^2)
+ * Space complexity- O(n^2)
  *
  * */
 
