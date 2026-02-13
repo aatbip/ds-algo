@@ -30,14 +30,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 int isValidSudoku(char (*board)[9], int n) {
-  int *rows = malloc(sizeof(int) * n);
-  memset(rows, 0, sizeof(*rows) * n);
-  int *cols = malloc(sizeof(int) * n);
-  memset(cols, 0, sizeof(*cols) * n);
-  int *box = malloc(sizeof(int) * n);
-  memset(box, 0, sizeof(*box) * n);
+  int *rows = calloc(sizeof(int), n);
+  int *cols = calloc(sizeof(int), n);
+  int *box = calloc(sizeof(int), n);
 
   for (int r = 0; r < n; r++) {
     for (int c = 0; c < n; c++) {
