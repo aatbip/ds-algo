@@ -5,6 +5,21 @@
  * Return true if the Sudoku board is valid, otherwise return false
  * Note: A board does not need to be full or be solvable to be valid.
  *
+ * This program solves the problem using bitmap and bitmask technique. We create 3 arrays that acts as
+ * bitmaps where individual bits represent the number in the rows, cols or box in the sudoku. For ex,
+ * rows[9] can be visualized in memory bits as follows:
+ * { 0 0 0 0 0 0 0 0 0 }
+ * Each element in the above array is a integer of size 4 bytes i.e. 16 bits so in the memory it looks like this:
+ * 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -> 0th element
+ * 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -> 1st element
+ * 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -> 2nd element
+ * ...
+ * ...
+ * ...
+ * 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ * 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ->  8th element
+ *
+ *
  * */
 
 #include <stdio.h>
