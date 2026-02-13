@@ -17,6 +17,17 @@ public:
       }
     }
 
+    for (int column = 0; column < 9; column++) {
+      unordered_set<char> seen;
+      for (int j = 0; j < 9; j++) {
+        if (board[j][column] == '.')
+          continue;
+        if (seen.count(board[j][column]))
+          return false;
+        seen.insert(board[j][column]);
+      }
+    }
+
     return true;
   }
 };
