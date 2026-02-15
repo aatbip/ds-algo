@@ -6,6 +6,18 @@
  * Example- Input: numbers = [1,2,3,4], target = 3
  *         Output: [1,2]
  *
+ * This program solves the problem using binary search algorithm for searching the required number that adds up
+ * to produce the sum.
+ *
+ * Time complexity-
+ * The `binary_search` algorithm has time complexity of O(log n) since it is a divide and conquer algorithm that
+ * reduces the size of array by half in each iteration. And the time complexity of the for loop in `two_sum` is
+ * O(n).
+ * Therefore, O(nlogn).
+ *
+ * Space complexity-
+ * We are allocating memory for the `res` object but the size of this object doesn't depend upon the size of input
+ * array `arr`. Therefore, O(1) space complexity.
  * */
 
 #include <stdio.h>
@@ -42,8 +54,9 @@ int *two_sum(int *arr, int n, int target) {
 }
 
 int main(void) {
-  int arr[] = {2, 4, 5, 6, 8, 9, 11, 13};
-  int *res = two_sum(arr, 8, 13);
+  int arr[] = {1, 2, 3, 4};
+  int *res = two_sum(arr, 8, 6);
   printf("%d %d\n", res[0], res[1]);
+  free(res);
   return 0;
 }
