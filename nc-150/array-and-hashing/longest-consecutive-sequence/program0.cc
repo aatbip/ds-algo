@@ -21,7 +21,7 @@ public:
   int longest_conse_seq_len(vector<int> &nums) {
     unordered_set<int> num_set = {nums.begin(), nums.end()};
     int n = 0;
-    for (int i = 0; i < nums.size(); i++) {
+    for (int i = 0; i < num_set.size(); i++) {
       if (num_set.count(nums[i] - 1))
         continue; // continue if lower number is present
       int temp_n = 1;
