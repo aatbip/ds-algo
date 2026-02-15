@@ -9,14 +9,35 @@
  * In this program we solve the problem using brute force method. Even though the brute force methods are generally
  * not the optimal ones but it is a good starting point to get the intuition behind complex problems and a necessary
  * way towards creating more optimal algorithms to solve the problem.
+ *
  */
 
+#include <algorithm>
+#include <iostream>
+#include <unordered_set>
 #include <vector>
 using namespace std;
 
 class Solution {
 public:
-  int longest_consecutive(vector<int> &nums) {}
+  int longest_consecutive(vector<int> &nums) {
+    unordered_set<int> nums_set = {nums.begin(), nums.end()};
+    int n = 0;
+    for (int i = 0; i < nums_set.size(); i++) {
+      int temp_n = 1;
+      while (nums_set.find(nums[i] + temp_n) != nums_set.end()) {
+        temp_n++;
+      }
+      n = max(n, temp_n);
+    }
+    return n;
+  }
 };
 
-int main(void) { return 0; }
+int main(void) {
+  Solution s;
+  // vector<int> nums = {2, 20, 4, 10, 3, 4, 5};
+  vector<int> nums = {0, 3, 2, 5, 4, 6, 1, 1};
+  cout << s.longest_consecutive(nums) << "\n";
+  return 0;
+}
