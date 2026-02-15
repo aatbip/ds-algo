@@ -11,6 +11,7 @@
  *
  * */
 
+#include <algorithm>
 #include <iostream>
 #include <unordered_set>
 #include <vector>
@@ -27,8 +28,7 @@ public:
       int temp_n = 1;
       while (num_set.count(nums[i] + temp_n))
         temp_n++;
-      if (temp_n > n)
-        n = temp_n;
+      n = max(n, temp_n);
     }
     return n;
   }
