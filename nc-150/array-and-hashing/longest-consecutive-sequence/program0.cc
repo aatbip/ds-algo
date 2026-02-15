@@ -25,7 +25,7 @@ public:
       if (num_set.count(nums[i] - 1))
         continue; // continue if lower number is present
       int temp_n = 1;
-      while (num_set.count(++nums[i]))
+      while (num_set.count(nums[i] + temp_n))
         temp_n++;
       if (temp_n > n)
         n = temp_n;
