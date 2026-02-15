@@ -19,6 +19,10 @@ bool isPalindrome(char *str) {
       i++;
     while (i < j && isalnum(str[j]) == 0)
       j--;
+    if (tolower(str[i]) != tolower(str[j]))
+      return false;
+    i++;
+    j--;
   }
   return true;
 }
