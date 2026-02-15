@@ -5,6 +5,10 @@
  * Example - Input: s = "Was it a car or a cat I saw?"
  *           Output: true
  *
+ * This program solves the problem using two pointer method.
+ * Time complexity- O(n)
+ * Space complexity- O(1)
+ *
  * */
 
 #include <ctype.h>
