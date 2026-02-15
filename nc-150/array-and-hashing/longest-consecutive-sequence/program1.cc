@@ -26,9 +26,9 @@ public:
   int longest_consecutive(vector<int> &nums) {
     unordered_set<int> nums_set = {nums.begin(), nums.end()};
     int n = 0;
-    for (int i = 0; i < nums_set.size(); i++) {
+    for (int num : nums_set) {
       int temp_n = 1;
-      while (nums_set.find(nums[i] + temp_n) != nums_set.end()) {
+      while (nums_set.find(num + temp_n) != nums_set.end()) {
         temp_n++;
       }
       n = max(n, temp_n);
