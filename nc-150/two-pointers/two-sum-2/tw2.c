@@ -6,6 +6,11 @@
  * Example- Input: numbers = [1,2,3,4], target = 3
  *         Output: [1,2]
  *
+ * In this program we solve the problem using two pointers approach. Since the array is already sorted, two pointers
+ * method is the most optimal method to solving this problem compared to solutions using hash map and binary search.
+ *
+ * Time complexity- O(n)
+ * Space complexity- O(1)
  */
 
 #include <stdio.h>
