@@ -7,7 +7,8 @@
  *         Output: [1,2]
  *
  * This program uses hash map (one pass) to solve the above problem.
- *
+ * Time complexity- O(n)
+ * Space complexity- O(n)
  */
 
 #include <iostream>
