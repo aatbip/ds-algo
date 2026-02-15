@@ -7,6 +7,11 @@
  *          Explanation: The longest consecutive sequence is {2, 3, 4, 5}.
  *
  *
+ * This program solves the problem using hash set. The idea is to count for the presence of next consecutive number
+ * only if the number lower than the current number is not present in the array.
+ *
+ * Time complexity- O(n), because only single for loop is present and look up to hash set is O(1) in the while loop
+ * Space complexity- O(n), because `num_set` can grow with the size of `nums`
  *
  *
  * */
