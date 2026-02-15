@@ -10,6 +10,9 @@
  * not the optimal ones but it is a good starting point to get the intuition behind complex problems and a necessary
  * way towards creating more optimal algorithms to solve the problem.
  *
+ * Time complexity- O(n^2), because in this solution we are not checking if there exist number that is less than
+ * `nums[i]` so we end up checking the consecutive sequence for all the numbers in the array.
+ * Space complexity- O(n)
  */
 
 #include <algorithm>
