@@ -8,6 +8,9 @@
  *
  * In this program we solve the problem using two pointers approach. Since the array is already sorted, two pointers
  * method is the most optimal method to solving this problem compared to solutions using hash map and binary search.
+ * However, if the array wasn't sorted then the hash map method would have given optimal time complexity since it
+ * would take O(nlogn) to sort using a sorting algorithm like `qsort` (see problem two sum 1 where input array are
+ * not initially sorted). We should take the leverage of the fact that input arrays are sorted.
  *
  * Time complexity- O(n)
  * Space complexity- O(1)
