@@ -15,11 +15,11 @@
 bool isPalindrome(char *str) {
   int i = 0, j = strlen(str) - 1;
   while (i < j) {
-    while (i < j && isalnum(str[i]) == 0)
+    while (i < j && isalnum((unsigned char)str[i]) == 0)
       i++;
-    while (i < j && isalnum(str[j]) == 0)
+    while (i < j && isalnum((unsigned char)str[j]) == 0)
       j--;
-    if (tolower(str[i]) != tolower(str[j]))
+    if (tolower((unsigned char)str[i]) != tolower((unsigned char)str[j]))
       return false;
     i++;
     j--;
