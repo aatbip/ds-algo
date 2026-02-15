@@ -40,7 +40,8 @@ public:
 int main(void) {
   Solution s;
   // vector<int> nums = {2, 20, 4, 10, 3, 4, 5};
-  vector<int> nums = {0, 3, 2, 5, 4, 6, 1, 1};
+  // vector<int> nums = {0, 3, 2, 5, 4, 6, 1, 1};
+  vector<int> nums = {0, 0, -1};
   cout << s.longest_consecutive(nums) << "\n";
   return 0;
 }

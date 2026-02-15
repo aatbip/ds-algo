@@ -27,11 +27,11 @@ public:
   int longest_consecutive(vector<int> &nums) {
     unordered_set<int> num_set = {nums.begin(), nums.end()};
     int n = 0;
-    for (int i = 0; i < num_set.size(); i++) {
-      if (num_set.count(nums[i] - 1))
+    for (int num : num_set) {
+      if (num_set.count(num - 1))
         continue; // continue if lower number is present
       int temp_n = 1;
-      while (num_set.count(nums[i] + temp_n))
+      while (num_set.count(num + temp_n))
         temp_n++;
       n = max(n, temp_n);
     }
@@ -42,7 +42,8 @@ public:
 int main(void) {
   Solution s;
   // vector<int> nums = {2, 20, 4, 10, 3, 4, 5};
-  vector<int> nums = {0, 3, 2, 5, 4, 6, 1, 1};
+  // vector<int> nums = {0, 3, 2, 5, 4, 6, 1, 1};
+  vector<int> nums = {0, 0, -1};
   cout << s.longest_consecutive(nums) << "\n";
   return 0;
 }
