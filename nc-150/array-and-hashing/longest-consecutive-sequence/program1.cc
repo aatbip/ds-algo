@@ -10,3 +10,13 @@
  * not the optimal ones but it is a good starting point to get the intuition behind complex problems and a necessary
  * way towards creating more optimal algorithms to solve the problem.
  */
+
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+  int longest_consecutive(vector<int> &nums) {}
+};
+
+int main(void) { return 0; }
