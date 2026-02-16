@@ -19,9 +19,42 @@ int **three_sum(int *nums, int n, int *returnSize) {
   qsort(nums, n, sizeof(int), compar);
   int s = 1;
   int **res = malloc(sizeof(*res) * s); // assuming for now maximun triplets will be no more than n
+  int counter = 0;
+  for (int i = 0; i < n; i++) {
+    if (nums[i] > 0)
+      break;
+    if (i > 0 && nums[i] == nums[i - 1])
+      continue;
+    int l = i + 1, h = n - 1;
+    while (l < h) {
+      int t = nums[i] + nums[l] + nums[h];
+      if (t < 0) {
+        l++;
+      }
+      if (t > 0) {
+        h--;
+      }
+      if (t == 0) {
+        int *triplet = malloc(sizeof(int) * 3);
+        triplet[0] = nums[i];
+        triplet[1] = nums[l];
+        triplet[2] = nums[h];
+        res[counter++] = triplet;
+        l++;
+        h--;
+        while (l < h && nums[l] == nums[l - 1]) {
+          l++;
+        }
+      }
+    }
+  }
+  *returnSize = counter;
+  return res;
 }
 
 int main(void) {
   int nums[] = {-1, 0, 1, 2, -1, -4, 4, 0};
+  int returnSize;
+  int **res = three_sum(nums, 8, &returnSize);
   return 0;
 }
