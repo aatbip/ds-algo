@@ -39,6 +39,10 @@ int **three_sum(int *nums, int n, int *returnSize) {
         triplet[0] = nums[i];
         triplet[1] = nums[l];
         triplet[2] = nums[h];
+        if (counter >= s) {
+          res = realloc(res, sizeof(*res) * s * 2);
+          s *= 2;
+        }
         res[counter++] = triplet;
         l++;
         h--;
