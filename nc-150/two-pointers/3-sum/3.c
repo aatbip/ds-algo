@@ -4,6 +4,12 @@
  *
  * Example- Input: vector<int> nums = {-1,0,1,2,-1,-4}
  *          Output: {{-1,-1,2},{-1,0,1}}
+ *
+ * In this program we use the two pointer approach to solving the problem in C.
+ * Time complexity- O(n^2)
+ * Space complexity-
+ * O(1) or O(n) extra space depending on the sorting algorithm
+ * O(m) for the output array  where 'm' is the total number of triplets
  */
 
 #include <stdio.h>
