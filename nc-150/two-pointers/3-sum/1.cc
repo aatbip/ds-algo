@@ -4,6 +4,14 @@
  *
  * Example- Input: vector<int> nums = {-1,0,1,2,-1,-4}
  *          Output: {{-1,-1,2},{-1,0,1}}
+ *
+ * This program uses brute force to solve the problem. It uses `set` data structure so that only unique elements
+ * will be stored i.e. we don't want to store duplicate triplets. Arrays should be sorted so that duplicate
+ * triplets in different order (such as [-1,-1,2] and [2,-1,-1]) won't get stored.
+ *
+ * Time complexity- O(n^3)
+ * Space complexity- O(m)
+ * Where, 'm' is the number of unique triplets and 'n' is the length of the array
  * */
 
 #include <algorithm>
