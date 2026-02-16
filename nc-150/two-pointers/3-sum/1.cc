@@ -35,5 +35,11 @@ int main(void) {
   Solution s;
   vector<int> nums = {-1, 0, 1, 2, -1, -4};
   vector<vector<int>> res = s.three_sum(nums);
+  for (auto p : res) {
+    for (int i : p) {
+      cout << i << " ";
+    }
+    cout << "\n";
+  }
   return 0;
 }
