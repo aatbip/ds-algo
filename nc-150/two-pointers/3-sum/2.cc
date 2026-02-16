@@ -21,10 +21,15 @@ public:
       count[i]++;
     }
     for (int i = 0; i < nums.size(); i++) {
+      /*We are decrementing the frequency of nums[i] to indicate that this particular
+       * element is currently in used and shouldn't be the `target` number later on.*/
       count[nums[i]]--;
       if (i > 0 && nums[i] == nums[i - 1])
         continue;
       for (int j = 0; j < nums.size(); j++) {
+        /*We are decrementing the frequency of nums[j] to indicate that this particular
+         * element is currently in used and shouldn't be the `target` number later on.*/
+        count[nums[j]]--;
       }
     }
   }
