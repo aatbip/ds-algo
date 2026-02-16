@@ -18,7 +18,7 @@ int compar(const void *a, const void *b) {
 int **three_sum(int *nums, int n, int *returnSize) {
   qsort(nums, n, sizeof(int), compar);
   int s = 1;
-  int **res = malloc(sizeof(*res) * s); // assuming for now maximun triplets will be no more than n
+  int **res = malloc(sizeof(*res) * s);
   int counter = 0;
   for (int i = 0; i < n; i++) {
     if (nums[i] > 0)
@@ -60,5 +60,12 @@ int main(void) {
   int nums[] = {-1, 0, 1, 2, -1, -4, 4, 0};
   int returnSize;
   int **res = three_sum(nums, 8, &returnSize);
+  for (int i = 0; i < returnSize; i++) {
+    printf("%d %d %d\n", res[i][0], res[i][1], res[i][2]);
+  }
+  for (int i = 0; i < returnSize; i++) {
+    free(res[i]);
+  }
+  free(res);
   return 0;
 }
