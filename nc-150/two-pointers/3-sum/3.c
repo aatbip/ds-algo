@@ -15,7 +15,11 @@ int compar(const void *a, const void *b) {
   return n1 - n2;
 }
 
-int **three_sum(int *nums, int n, int *returnSize) { qsort(nums, n, sizeof(int), compar); }
+int **three_sum(int *nums, int n, int *returnSize) {
+  qsort(nums, n, sizeof(int), compar);
+  int s = 1;
+  int **res = malloc(sizeof(*res) * s); // assuming for now maximun triplets will be no more than n
+}
 
 int main(void) {
   int nums[] = {-1, 0, 1, 2, -1, -4, 4, 0};
