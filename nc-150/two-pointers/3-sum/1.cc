@@ -27,6 +27,7 @@ public:
         }
       }
     }
+    return vector<vector<int>>{set.begin(), set.end()};
   }
 };
 
