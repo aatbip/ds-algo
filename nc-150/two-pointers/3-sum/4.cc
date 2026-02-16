@@ -22,5 +22,24 @@ using namespace std;
 
 class Solution {
 public:
-  vector<vector<int>> three_sum(vector<int> nums) { sort(nums.begin(), nums.end()); }
+  vector<vector<int>> three_sum(vector<int> nums) {
+    sort(nums.begin(), nums.end());
+    vector<vector<int>> res;
+    for (int i = 0; i < nums.size(); i++) {
+      int l = i + 1, h = nums.size() - 1;
+      while (l < h) {
+        int t = nums[i] + nums[l] + nums[h];
+        if (t < 0) {
+          l++;
+        }
+        if (t > 0) {
+          h--;
+        }
+        if (t == 0) {
+          res.push_back({nums[i], nums[l], nums[h]});
+        }
+      }
+    }
+    return res;
+  }
 };
