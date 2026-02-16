@@ -5,6 +5,10 @@
  * Example- Input: vector<int> nums = {-1,0,1,2,-1,-4}
  *          Output: {{-1,-1,2},{-1,0,1}}
  *
+ * This program uses hash map to track the frequency of the elements in order to produce correct triplets.
+ *
+ * Time complexity- O(n^2)
+ * Space complexity- O(n), because of the `count` hash map where each element can have singluar frequency at minimum
  */
 
 #include <algorithm>
