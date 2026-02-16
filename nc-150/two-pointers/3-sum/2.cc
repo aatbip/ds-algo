@@ -8,6 +8,7 @@
  */
 
 #include <algorithm>
+#include <iostream>
 #include <unordered_map>
 #include <vector>
 using namespace std;
@@ -37,15 +38,27 @@ public:
         if (count[target] > 0) {
           res.push_back({nums[i], nums[j], target});
         }
+      }
 
-        /*Increment the frequency of elements from `j=i+1` and onwards to ensure that the
-         * frequency map is correct and elements are available for the next pass.*/
-        for (int j = i + 1; j < nums.size(); j++) {
-          count[nums[j]]++;
-        }
+      /*Increment the frequency of elements from `j=i+1` and onwards to ensure that the
+       * frequency map is correct and elements are available for the next pass.*/
+      for (int j = i + 1; j < nums.size(); j++) {
+        count[nums[j]]++;
       }
     }
+    return res;
   }
 };
 
-int main(void) { return 0; }
+int main(void) {
+  Solution s;
+  vector<int> nums = {-1, 0, 1, 2, -1, -4};
+  vector<vector<int>> res = s.three_sum(nums);
+  for (auto p : res) {
+    for (int i : p) {
+      cout << i << " ";
+    }
+    cout << "\n";
+  }
+  return 0;
+}
