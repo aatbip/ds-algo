@@ -7,26 +7,30 @@
  *
  * */
 
+#include <stdio.h>
+
+int min(int a, int b) { return a < b ? a : b; }
+
 int max_area(int *height, int n) {
   int area = 0;
-  int maxRight = 0;
-  int maxLeft = 0;
   for (int i = 0; i < n; i++) {
-
+    int maxRight = height[i];
+    int maxLeft = height[i];
+    for (int j = 0; j < i; j++) {
+      if (height[j] > maxLeft)
+        maxLeft = height[j];
+    }
     for (int j = i + 1; j < n; j++) {
       if (height[j] > maxRight)
         maxRight = height[j];
     }
-    for (int j = 0; j < i - 1; j++) {
-      if (height[j] > maxLeft)
-        maxLeft = height[j];
-    }
+    area += min(maxRight, maxLeft) - height[i];
   }
   return area;
 }
 
 int main(void) {
   int height[] = {0, 2, 0, 3, 1, 0, 1, 3, 2, 1};
-
+  printf("%d\n", max_area(height, 10));
   return 0;
 }
