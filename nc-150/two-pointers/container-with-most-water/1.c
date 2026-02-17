@@ -1,31 +1,26 @@
 #include <math.h>
+#include <stdio.h>
 
 int min(int a, int b) { return a < b ? a : b; }
 
-int water_content(int *heights, int n) {
+int max_area(int *height, int n) {
   int l = 0, r = n - 1;
-  int am = 0;
-  while (l <= r) {
-    if (l == r) {
-      am = heights[r] * 1;
-    }
-    if (heights[l] == 0) {
+  int area = 0;
+  while (l < r) {
+    int temp_area = min(height[l], height[r]) * (r - l);
+    if (temp_area >= area)
+      area = temp_area;
+    if (height[l] <= height[r]) {
       l++;
-    }
-    if (heights[r] == 0) {
+    } else {
       r--;
     }
-    int temp = min(heights[l], heights[r]) * (r - l);
-    if (temp > am)
-      am = temp;
-    l++;
-    r--;
   }
-  return am;
+  return area;
 }
 
 int main(void) {
-  int heights[] = {1, 7, 2, 5, 4, 7, 3, 6};
-
+  int height[] = {0, 2};
+  printf("%d\n", max_area(height, 2));
   return 0;
 }
