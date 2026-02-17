@@ -5,6 +5,11 @@
  * Example- Input: height = [0,2,0,3,1,0,1,3,2,1]
  *                 Output: 9
  *
+ * In this program we solve the problem using two pointer approach. We are calculating the area of water
+ * each ith bar can hold and summing it all up.
+ *
+ * Time complexity- O(n)
+ * Space complexity- O(1)
  */
 
 #include <stdio.h>
