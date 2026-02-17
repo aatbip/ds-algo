@@ -6,8 +6,14 @@
  *                 Because, area = min(height[l],height[r]) * distance where distance = r-l
  *                 so, area = min(height[1], height[7]) * 7-1 = min(7, 6) * 6 = 36
  *
+ * This program solves the problem using the two pointer approach. We use the height * distance formula to calculate
+ * the total area of water that two bars can store. Using two pointer, we will increment or decrement the rightmost
+ * or the leftmost pointers as per the condition to reach the optimal solution faster.
+ * We can solve this using brute force in O(n^2) time where we will compare the area for each integer with all others.
+ *
  * Time complexity- O(n)
  * Space complexity- O(1)
+ *
  * */
 
 #include <math.h>
