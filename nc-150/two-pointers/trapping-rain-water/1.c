@@ -5,6 +5,13 @@
  * Example- Input: height = [0,2,0,3,1,0,1,3,2,1]
  *                 Output: 9
  *
+ * In this program we solve the problem using brute force approach. We will calculate how much water
+ * can a ith bar hold using the formula `min(maxRight, maxLeft) - height[i]` then sum the result to
+ * get the final total area of water.
+ *
+ * Time complexity- O(n^2)
+ * Space complexity- O(1)
+ *
  * */
 
 #include <stdio.h>
