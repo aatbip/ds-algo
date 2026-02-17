@@ -1,3 +1,15 @@
+/*You are given an integer array heights where heights[i] represents the height of the ith bar.
+ * You may choose any two bars to form a container. Return the maximum amount of water a container can store.
+ *
+ * Example: Input: height = [1,7,2,5,4,7,3,6]
+ *                 Output: 36
+ *                 Because, area = min(height[l],height[r]) * distance where distance = r-l
+ *                 so, area = min(height[1], height[7]) * 7-1 = min(7, 6) * 6 = 36
+ *
+ * Time complexity- O(n)
+ * Space complexity- O(1)
+ * */
+
 #include <math.h>
 #include <stdio.h>
 
