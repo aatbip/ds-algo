@@ -34,6 +34,8 @@
  * on that day, and update the maximum profit accordingly. This greedy choice works because buying at the lowest
  * price seen so far is always optimal for maximizing profit when selling in the future.
  *
+ * Time complexity- O(n)
+ * Space complexity- O(1)
  */
 
 #include <stdio.h>
