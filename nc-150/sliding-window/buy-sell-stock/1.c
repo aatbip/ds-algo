@@ -9,20 +9,28 @@
  *
  * */
 
+#include <stdio.h>
+
 int max_profit(int *prices, int n) {
   int pr = 0;
-  int l = prices[0], r = n - 1;
+  int l = 0, r = n - 1;
   while (l < r) {
     if (prices[l] > prices[r]) {
       l++;
       continue;
     }
+    int temp = prices[r] - prices[l];
+    if (temp > pr) {
+      pr = temp;
+    }
+    r--;
   }
-
   return pr;
 }
 
 int main(void) {
   int prices[] = {10, 1, 5, 6, 7, 1};
+  // int prices[] = {10, 8, 7, 5, 2};
+  printf("%d\n", max_profit(prices, 6));
   return 0;
 }
