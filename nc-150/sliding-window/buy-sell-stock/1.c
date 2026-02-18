@@ -7,6 +7,10 @@
  *          Output: 6
  *          Explanation: Buy prices[1] and sell prices[4], profit = 7 - 1 = 6.
  *
+ * In this program we solve the problem using two pointer approach.
+ *
+ * Time complexity- O(n)
+ * Space complexity- O(1)
  * */
 
 #include <stdio.h>
