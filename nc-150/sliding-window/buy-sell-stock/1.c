@@ -18,17 +18,18 @@
 
 int max_profit(int *prices, int n) {
   int pr = 0;
-  int l = 0, r = n - 1;
-  while (l < r) {
+  int l = 0, r = 1;
+  while (r < n) {
     if (prices[l] > prices[r]) {
-      l++;
+      l = r;
+      r++;
       continue;
     }
     int temp = prices[r] - prices[l];
     if (temp > pr) {
       pr = temp;
     }
-    r--;
+    r++;
   }
   return pr;
 }
