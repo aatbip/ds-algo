@@ -7,6 +7,9 @@
  * In this program, we make use of the sliding window technique to find the length of longest substring. Sliding
  * window is a technique that can solve sub array or sub string related problems. In this particular problem, the
  * intuition is to keep a window (l to r) of numbers that are unique.
+ *
+ * Time complexity - O(n)
+ * Space complexity - O(m), where 'm' is the number of unique characters in the string
  */
 
 #include <algorithm>
