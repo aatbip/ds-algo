@@ -6,6 +6,7 @@
  *
  */
 
+#include <algorithm>
 #include <iostream>
 #include <string>
 #include <unordered_map>
@@ -16,8 +17,12 @@ public:
   int longest_substring_len(string &s) {
     int res;
     int l = 0;
-    unordered_map<char, int> map;
-
+    unordered_map<char, int> map; // map to store frequency of each character
+    for (int r = 0; r < s.size(); r++) {
+      if (map.find(s[r]) != map.end()) {
+        l = max(l, s[r] + 1); // move l to next position
+      }
+    }
     return res;
   }
 };
