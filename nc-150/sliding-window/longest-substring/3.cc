@@ -7,6 +7,9 @@
  * In this program we solve the problem using sliding window but in a more optimal way then in 2.cc program.
  * We make use of a hash map to store last index of the character so that we can move the 'l' pointer to
  * the index beyond in one go without having to use a while loop internally.
+ *
+ * Time complexity- O(n)
+ * Space complexity- O(m), where 'm' is the total number of unique characters
  */
 
 #include <algorithm>
