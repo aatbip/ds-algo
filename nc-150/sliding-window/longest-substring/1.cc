@@ -6,6 +6,10 @@
  *
  * In this program we solve the problem using brute force solution. A hash set is used to track the
  * occurence of the unique substring.
+ *
+ * Time complexity- O(n^2)
+ * Space complexity- O(m), where 'm' is the total number of unique characters in the string
+ *
  * */
 
 #include <algorithm>
