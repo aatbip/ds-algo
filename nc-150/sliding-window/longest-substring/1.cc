@@ -3,6 +3,9 @@
  * Example- Input: s = "zxyzxyz"
  *          Output: 3
  *          Explanation: The string "xyz" is the longest without duplicate characters.
+ *
+ * In this program we solve the problem using brute force solution. A hash set is used to track the
+ * occurence of the unique substring.
  * */
 
 #include <algorithm>
