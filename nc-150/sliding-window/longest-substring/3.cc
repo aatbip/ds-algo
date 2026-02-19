@@ -15,13 +15,15 @@ using namespace std;
 class Solution {
 public:
   int longest_substring_len(string &s) {
-    int res;
+    int res = 0;
     int l = 0;
     unordered_map<char, int> map; // map to store frequency of each character
     for (int r = 0; r < s.size(); r++) {
       if (map.find(s[r]) != map.end()) {
-        l = max(l, s[r] + 1); // move l to next position
+        l = max(l, map[s[r]] + 1); // move l to next position
       }
+      map[s[r]] = r;
+      res = max(res, r - l + 1);
     }
     return res;
   }
