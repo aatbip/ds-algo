@@ -9,6 +9,7 @@
  * */
 
 #include <algorithm>
+#include <iostream>
 #include <string>
 #include <unordered_map>
 
@@ -36,5 +37,6 @@ public:
 int main(void) {
   Solution s;
   string str = "XYYX";
+  cout << s.get_longest(str, 0) << "\n";
   return 0;
 }
