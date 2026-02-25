@@ -6,6 +6,11 @@
  *           Output: 4
  *           Explanation: Either replace the 'X's with 'Y's, or replace the 'Y's with 'X's.
  *
+ * In this program the problem is solved using the sliding window method. We maintain a valid
+ * window `window size(ie j-i+1) - max_frequency <= k` and if the window becomes invalid, we
+ * decrement the frequency of the character pointer by left pointer, then shift the left pointer.
+ *
+ *
  *
  * */
 

@@ -8,7 +8,7 @@
  *
  * In this program, we solve the problem using brute force approach. We make use of an unordered_map
  * to track the frequency of characters and then iterate through every character sequences to see
- * if valid window exist. Window becomes invalid `window size(ie j-i+1) - max_frequency > k`, in simple
+ * if valid window exist. Window becomes invalid when `window size(ie j-i+1) - max_frequency > k`, in simple
  * terms, if there are more characters in the window that should be replaced than the number max characters
  * that can be replaced (k).
  *
