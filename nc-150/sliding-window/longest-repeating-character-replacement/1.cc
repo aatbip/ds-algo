@@ -9,6 +9,7 @@
  * */
 
 #include <string>
+#include <unordered_map>
 
 using namespace std;
 
@@ -16,6 +17,10 @@ class Solution {
 public:
   int get_longest(string &s) {
     int res;
+    unordered_map<char, int> freq;
+    for (char c : s) {
+      freq[c]++;
+    }
 
     return res;
   }
