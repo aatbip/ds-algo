@@ -6,6 +6,7 @@
  *           Output: 4
  *           Explanation: Either replace the 'X's with 'Y's, or replace the 'Y's with 'X's.
  *
+ *
  * */
 
 #include <algorithm>
