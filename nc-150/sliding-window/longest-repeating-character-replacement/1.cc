@@ -11,6 +11,9 @@
  * if valid window exist. Window becomes invalid `window size(ie j-i+1) - max_frequency > k`, in simple
  * terms, if there are more characters in the window that should be replaced than the number max characters
  * that can be replaced (k).
+ *
+ * Time complexity - O(n^2)
+ * Space complexity - O(m), where 'm' is the number of unique characters
  * */
 
 #include <algorithm>
