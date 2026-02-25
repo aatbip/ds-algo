@@ -10,7 +10,8 @@
  * window `window size(ie j-i+1) - max_frequency <= k` and if the window becomes invalid, we
  * decrement the frequency of the character pointer by left pointer, then shift the left pointer.
  *
- *
+ * Time complexity - O(n)
+ * Space complexity - O(m), where 'm' is the number of unique elements
  *
  * */
 
