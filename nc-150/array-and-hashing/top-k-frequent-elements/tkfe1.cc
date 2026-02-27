@@ -42,8 +42,8 @@
  * time complexity of this loop is O(k logk).
  *
  * Now the total time complexity is =
- * O(n) + O(nlogn) + O(klogk)
- * Worst case is dominated by O(nlogn).
+ * O(n) + O(nlogk) + O(klogk)
+ * Worst case is dominated by O(nlogk).
  * Therefore, time complexity is O(nlogn).
  *
  * Space complexity -
