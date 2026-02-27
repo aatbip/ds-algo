@@ -51,8 +51,8 @@
  * O(k) for the priority_queue 'pq'.
  * O(k) for the vector<int> 'res'.
  * = O(u) + O(k) + O(k)
- * In worst case, u = k,
- * Therefore, O(n)
+ * In worst case, u = n,
+ * Therefore, O(n + k) = O(n)
  *
  *
  *
