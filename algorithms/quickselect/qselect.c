@@ -2,6 +2,8 @@
  * same as quick sort but instead of sorting completely we stop further sorting as soon as we find the index of kth
  * largest or kth smallest.
  *
+ * In the program below we write quick select to find the kth largest.
+ *
  * Algorithm -
  * Step 1: Find the pivot index. There are multiple ways to choose pivot index for optimal complexity. Here we use
  * this formula - pivot index = rand() % (right - left + 1) + left
@@ -17,7 +19,6 @@
  *
  * Step 5: Return 'p' then compare 'p' against 'n - k' then increment or decrement left and right position accordingly
  * (see code). If `p == n-k` then the element at 'p' is the correct kth element.
- *
  *
  * */
 
