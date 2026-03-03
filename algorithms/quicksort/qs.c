@@ -18,6 +18,20 @@ static inline void swap(int *a, int *b) {
   *b = tempA;
 }
 
+int median_of_three(int *arr, int left, int right) {
+  int mid = left + (right - left) / 2;
+  if (arr[left] > arr[mid]) {
+    swap(&arr[left], &arr[mid]);
+  }
+  if (arr[left] > arr[right]) {
+    swap(&arr[left], &arr[right]);
+  }
+  if (arr[mid] > arr[right]) {
+    swap(&arr[mid], &arr[right]);
+  }
+  return mid;
+}
+
 int partition(int *nums, int left, int right, int pivot_index) {
   int pivot = nums[pivot_index];
   swap(&nums[pivot_index], &nums[right]);
@@ -35,7 +49,8 @@ int partition(int *nums, int left, int right, int pivot_index) {
 void sort(int *nums, int n, int left, int right) {
   if (left >= right)
     return;
-  int pivot_index = rand() % (right - left + 1) + left;
+  // int pivot_index = rand() % (right - left + 1) + left;
+  int pivot_index = median_of_three(nums, left, right);
   int p = partition(nums, left, right, pivot_index);
   sort(nums, n, p + 1, right);
   sort(nums, n, left, p - 1);
