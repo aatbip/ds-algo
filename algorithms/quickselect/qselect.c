@@ -6,6 +6,18 @@
  * Step 1: Find the pivot index. There are multiple ways to choose pivot index for optimal complexity. Here we use
  * this formula - pivot index = rand() % (right - left + 1) + left
  *
+ * Step 2: Swap the element in the pivot index with the element in the right so that pivot element remains untouched.
+ *
+ * Step 3: Initialize `p = left`. Then loop from `i = left` until `i < right`. If ith element is smaller than the pivot
+ * element then swap the ith element with `p` and increment `p`.
+ *
+ * Step 4: Swap the pivot element in the rightmost position to the index of 'p'. This makes sure that all the elements
+ * to the left of pivot element in 'p' position is smaller and all the elements towards the right is larger but not
+ * necessarily sorted.
+ *
+ * Step 5: Return 'p' then compare 'p' against 'n - k' then increment or decrement left and right position accordingly
+ * (see code). If `p == n-k` then the element at 'p' is the correct kth element.
+ *
  *
  * */
 
