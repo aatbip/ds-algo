@@ -1,3 +1,9 @@
+/* Binary search is a searching algorithm that works on sorted arrays.
+ *
+ * Time complexity - O(log n)
+ * Space complexity - O(1)
+ * */
+
 #include <stdio.h>
 
 int binary_search(int *arr, int n, int key) {
