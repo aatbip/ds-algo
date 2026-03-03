@@ -20,6 +20,9 @@
  * Step 5: Return 'p' then compare 'p' against 'n - k' then increment or decrement left and right position accordingly
  * (see code). If `p == n-k` then the element at 'p' is the correct kth element.
  *
+ * Time complexity - O(n) in best/average case with optimal pivot index. However, O(n^2) in worst case.
+ * Space complexity - O(1)
+ *
  * */
 
 #include <stdio.h>
