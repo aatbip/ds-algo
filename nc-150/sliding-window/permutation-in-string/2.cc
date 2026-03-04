@@ -3,6 +3,13 @@
  * substring of s2, then return true. Both strings only contain lowercase letters.
  * Example 1: Input: s1 = "abc", s2 = "lecabee"
  *            Output: true
+ *
+ * This program solves the problem using sliding window technique but eliminates the overhead of array iteration for
+ * array comparision. Instead of array comparision it maintains a `matches` state.
+ *
+ * Time complexity - O(n)
+ * Space complexity - O(1)
+ *
  * */
 
 #include <iostream>
