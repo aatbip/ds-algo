@@ -3,6 +3,12 @@
  * substring of s2, then return true. Both strings only contain lowercase letters.
  * Example 1: Input: s1 = "abc", s2 = "lecabee"
  *            Output: true
+ *
+ * In this program we solve the problem using sliding window technique. However, we compare s1_count and s2_count using
+ * array iteration which gives additional overhead of O(k) where k = 26.
+ *
+ * Time complexity - O(n * k) where k = 26 (constant) so asymptomatically we can say O(n)
+ * Space complexity - O(1)
  * */
 
 #include <iostream>
