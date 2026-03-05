@@ -6,6 +6,9 @@
  *          Output: "YXAZ"
  */
 
+#include <algorithm>
+#include <climits>
+#include <iostream>
 #include <string>
 #include <unordered_map>
 using namespace std;
@@ -18,9 +21,41 @@ public:
       countT[c]++;
     }
     int l = 0;
-    unordered_map<char, int> countS;
+    unordered_map<char, int> window;
+    int window_size = INT_MAX;
+    int window_start_index;
     for (int r = 0; r < s.size(); r++) {
-      countS[s[r]]++;
+      window[s[r]]++;
+      bool valid_window = true;
+      for (auto &[c, cnt] : countT) {
+        if (window[c] < cnt) {
+          valid_window = false;
+          break;
+        }
+      }
+      while (valid_window) {
+        window_size = min(r - l + 1, window_size);
+        window_start_index = l;
+        window[s[l]]--;
+        l++;
+        for (auto &[c, cnt] : countT) {
+          if (window[c] < cnt) {
+            valid_window = false;
+            break;
+          }
+        }
+      }
     }
+    if (window_size == INT_MAX)
+      return "";
+    return s.substr(window_start_index, window_size);
   }
 };
+
+int main(void) {
+  Solution sol;
+  string s = "OUZODYXAZV";
+  string t = "XYZ";
+  cout << sol.minWindow(s, t) << "\n";
+  return 0;
+}
