@@ -5,6 +5,12 @@
  * Example: Input: s = "OUZODYXAZV", t = "XYZ"
  *          Output: "YXAZ"
  *
+ * This program solves the problem using brute force method. We make use of hash map to track frequency of characters in
+ * 't' and frequencies of characters in every possible substring of 's'. The window is valid if frequency of characters
+ * in substring of 's' are not lesser than the frequencies of characters in 't'. We track the minimum `window_len` for
+ * each valid window.
+ *
+ *
  *
  * */
 
@@ -53,7 +59,7 @@ public:
 
 int main(void) {
   Solution sol;
-  string s = "OUXTAYBZXC";
+  string s = "OUZODYXAZV";
   string t = "XYZ";
   cout << sol.minWindow(s, t) << "\n";
   return 0;
