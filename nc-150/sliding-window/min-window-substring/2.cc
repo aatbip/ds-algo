@@ -4,9 +4,13 @@
  *
  * Example: Input: s = "OUZODYXAZV", t = "XYZ"
  *          Output: "YXAZ"
+ *
+ * This program solves the problem using sliding window and hash map.
+ *
+ * Time complexity - O(n + m)
+ * Space complexity - O(m), where 'm' is the number of unique characters in the strings
  */
 
-#include <algorithm>
 #include <climits>
 #include <iostream>
 #include <string>
@@ -51,9 +55,11 @@ public:
 
 int main(void) {
   Solution sol;
-  string s = "cabwefgewcwaefgcf";
-  string t = "cae";
+  // string s = "cabwefgewcwaefgcf";
+  // string t = "cae";
 
+  string s = "OUZODYXAZV";
+  string t = "XYZO";
   cout << sol.minWindow(s, t) << "\n";
   return 0;
 }
