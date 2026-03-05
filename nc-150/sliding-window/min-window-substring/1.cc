@@ -19,6 +19,18 @@ public:
     for (char c : t) {
       countT[c]++;
     }
+    for (int i = 0; i < s.size(); i++) {
+      unordered_map<char, int> countS;
+      for (int j = i; j < s.size(); j++) {
+        countS[s[j]]++;
+        bool valid_window = true;
+        for (auto &[c, cnt] : countT) {
+          if (countS[c] < cnt) {
+            valid_window = false;
+          }
+        }
+      }
+    }
   };
 };
 
