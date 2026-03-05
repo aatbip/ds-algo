@@ -6,6 +6,7 @@
  *          Output: "YXAZ"
  * */
 
+#include <climits>
 #include <iostream>
 #include <string>
 #include <unordered_map>
@@ -19,18 +20,32 @@ public:
     for (char c : t) {
       countT[c]++;
     }
+    int window_len = INT_MAX;
+    int window_start_index;
+
     for (int i = 0; i < s.size(); i++) {
       unordered_map<char, int> countS;
       for (int j = i; j < s.size(); j++) {
         countS[s[j]]++;
+
         bool valid_window = true;
+
         for (auto &[c, cnt] : countT) {
           if (countS[c] < cnt) {
             valid_window = false;
+            break;
           }
+        }
+
+        if (valid_window && j - i + 1 < window_len) {
+          window_len = j - i + 1;
+          window_start_index = i;
         }
       }
     }
+    if (window_len == INT_MAX)
+      return "";
+    return s.substr(window_start_index, window_len);
   };
 };
 
