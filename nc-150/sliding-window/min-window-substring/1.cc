@@ -4,6 +4,8 @@
  *
  * Example: Input: s = "OUZODYXAZV", t = "XYZ"
  *          Output: "YXAZ"
+ *
+ *
  * */
 
 #include <climits>
@@ -49,4 +51,10 @@ public:
   };
 };
 
-int main(void) { Solution s; }
+int main(void) {
+  Solution sol;
+  string s = "OUXTAYBZXC";
+  string t = "XYZ";
+  cout << sol.minWindow(s, t) << "\n";
+  return 0;
+}
