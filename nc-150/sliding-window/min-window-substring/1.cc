@@ -10,7 +10,8 @@
  * in substring of 's' are not lesser than the frequencies of characters in 't'. We track the minimum `window_len` for
  * each valid window.
  *
- *
+ * Time complexity - o(n^2)
+ * Space complexity - O(m), where 'm' is the number of unique characters in the strings
  *
  * */
 
