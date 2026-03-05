@@ -8,6 +8,13 @@
  * This program solves the problem using sliding window and hash map.
  *
  * Time complexity - O(n + m)
+ * n = |s| -> length of string `s`
+ * m = |t| -> length of string `t`
+ * Now, the first for loop which increments the frequencies in `countT` has O(m) time complexity.
+ * The next for loop which increments `r` has O(n) time complexity.
+ * The while loop that increments `l` also increments upto length of `s` for max so it also has O(n) time complexity.
+ * Now, O(n) + O(n) + O(m) = O(n + m)
+ *
  * Space complexity - O(m), where 'm' is the number of unique characters in the strings
  */
 
