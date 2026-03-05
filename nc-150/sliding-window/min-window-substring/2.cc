@@ -24,26 +24,23 @@ public:
     unordered_map<char, int> window;
     int window_size = INT_MAX;
     int window_start_index;
+    int have = 0;
+    int need = countT.size();
     for (int r = 0; r < s.size(); r++) {
       window[s[r]]++;
-      bool valid_window = true;
-      for (auto &[c, cnt] : countT) {
-        if (window[c] < cnt) {
-          valid_window = false;
-          break;
-        }
+      if (countT.count(s[r]) && window[s[r]] == countT[s[r]]) {
+        have++;
       }
-      while (valid_window) {
-        window_size = min(r - l + 1, window_size);
-        window_start_index = l;
-        window[s[l]]--;
-        l++;
-        for (auto &[c, cnt] : countT) {
-          if (window[c] < cnt) {
-            valid_window = false;
-            break;
-          }
+      while (have == need) {
+        if (r - l + 1 < window_size) {
+          window_size = r - l + 1;
+          window_start_index = l;
         }
+        window[s[l]]--;
+        if (countT.count(s[l]) && window[s[l]] < countT[s[l]]) {
+          have--;
+        }
+        l++;
       }
     }
     if (window_size == INT_MAX)
@@ -54,8 +51,9 @@ public:
 
 int main(void) {
   Solution sol;
-  string s = "OUZODYXAZV";
-  string t = "XYZ";
+  string s = "cabwefgewcwaefgcf";
+  string t = "cae";
+
   cout << sol.minWindow(s, t) << "\n";
   return 0;
 }
