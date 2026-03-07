@@ -33,11 +33,14 @@ public:
       while (!dq.empty() && nums[dq.back()] < nums[r]) {
         dq.pop_back();
       }
+      dq.push_back(r);
+      if (l > dq.front()) {
+        dq.pop_front();
+      }
       if (r + 1 >= k) {
         res[l] = nums[dq.front()];
         l++;
       }
-      dq.push_back(r);
       r++;
     }
     return res;
