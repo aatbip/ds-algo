@@ -26,7 +26,7 @@ using namespace std;
 class Solution {
 public:
   vector<int> max_window(vector<int> &nums, int k) {
-    vector<int> res;
+    vector<int> res(nums.size() - k + 1);
     int l = 0, r = 0;
     deque<int> dq;
     while (r < nums.size()) {
