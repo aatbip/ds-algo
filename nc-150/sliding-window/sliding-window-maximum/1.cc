@@ -23,6 +23,8 @@
  * O(n) for the loop (i=0; i<nums.size()) and O(logn) for the `push()` method and another O(logn) for `pop()` method.
  * So, O(n) * O(logn + logn) = O(n) * O(2logn) = O(nlogn)
  *
+ * Space complexity -
+ * O(n) for the `maxHeap` and O(n - k + 1) for the `res`. So, O(n + n - k + 1) = O(2n - k + 1) = O(n)
  * */
 
 #include <iostream>
