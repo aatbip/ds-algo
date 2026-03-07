@@ -14,6 +14,10 @@
  *                      1  2 [1  0  4] 2  6        4
  *                      1  2  1 [0  4  2] 6        4
  *                      1  2  1  0 [4  2  6]       6
+ *
+ * This program solves the problem using priority queue (max heap). Max heap is choosen instead of the min heap
+ * because max heap stores elements with high priority as parents. We can simply use top() to check for the element
+ * with highest priority.
  * */
 
 #include <iostream>
