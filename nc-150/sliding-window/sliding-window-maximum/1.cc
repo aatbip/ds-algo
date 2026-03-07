@@ -18,6 +18,11 @@
  * This program solves the problem using priority queue (max heap). Max heap is choosen instead of the min heap
  * because max heap stores elements with high priority as parents. We can simply use top() to check for the element
  * with highest priority.
+ *
+ * Time complexity -
+ * O(n) for the loop (i=0; i<nums.size()) and O(logn) for the `push()` method and another O(logn) for `pop()` method.
+ * So, O(n) * O(logn + logn) = O(n) * O(2logn) = O(nlogn)
+ *
  * */
 
 #include <iostream>
