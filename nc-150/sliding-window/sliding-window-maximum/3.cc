@@ -18,6 +18,10 @@
  *
  * This program solves the problem using sliding window technique with the help of double ended queue (deque) data
  * structure.
+ *
+ * Time complexity - O(n)
+ * Space complexity - O(k) for deque and O(n-k+1) for res array. So, O(k + n - k + 1) = O(n + 1) = O(n) in
+ * asymptotic analysis
  */
 
 #include <deque>
