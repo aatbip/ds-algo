@@ -45,7 +45,7 @@ public:
       if (l > dq.front()) {
         dq.pop_front();
       }
-      if (r + 1 >= k) {
+      if (r >= k - 1) {
         res[l] = nums[dq.front()];
         l++;
       }
