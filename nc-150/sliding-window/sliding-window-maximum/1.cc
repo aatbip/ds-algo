@@ -16,6 +16,7 @@
  *                      1  2  1  0 [4  2  6]       6
  * */
 
+#include <iostream>
 #include <queue>
 #include <utility>
 #include <vector>
@@ -25,14 +26,26 @@ class Solution {
 public:
   vector<int> max_window(vector<int> &nums, int k) {
     priority_queue<pair<int, int>> maxHeap;
+    vector<int> res;
     for (int i = 0; i < nums.size(); i++) {
       maxHeap.push({nums[i], i});
-      vector<int> res;
+      if (i >= k - 1) {
+        while (maxHeap.top().second <= i - k) {
+          maxHeap.pop();
+        }
+        res.push_back(maxHeap.top().first);
+      }
     }
+    return res;
   }
 };
 
 int main(void) {
+  Solution s;
   vector<int> nums = {1, 2, 1, 0, 4, 2, 6};
+  vector<int> res = s.max_window(nums, 3);
+  for (int el : res) {
+    cout << el << " ";
+  }
   return 0;
 }
