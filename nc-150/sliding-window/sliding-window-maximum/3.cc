@@ -29,6 +29,10 @@ public:
     vector<int> res;
     int l = 0, r = 0;
     deque<int> dq;
+    while (r < nums.size()) {
+      dq.push_back(r);
+      r++;
+    }
     return res;
   }
 };
