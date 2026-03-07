@@ -14,6 +14,11 @@
  *                      1  2 [1  0  4] 2  6        4
  *                      1  2  1 [0  4  2] 6        4
  *                      1  2  1  0 [4  2  6]       6
+ *
+ * This program solves the problem using brute force.
+ *
+ * Time complexity -  O(n*k)
+ * Space complexity - O(n-k+1) i.e. the size of output array `res`
  */
 #include <algorithm>
 #include <iostream>
