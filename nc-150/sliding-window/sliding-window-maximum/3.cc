@@ -22,6 +22,7 @@
  * Time complexity - O(n)
  * Space complexity - O(k) for deque and O(n-k+1) for res array. So, O(k + n - k + 1) = O(n + 1) = O(n) in
  * asymptotic analysis
+ * Deque is O(k) because it stores 'k' elements max at a time.
  */
 
 #include <deque>
