@@ -30,6 +30,9 @@ public:
     int l = 0, r = 0;
     deque<int> dq;
     while (r < nums.size()) {
+      while (!dq.empty() && nums[dq.back()] < nums[r]) {
+        dq.pop_back();
+      }
       dq.push_back(r);
       r++;
     }
