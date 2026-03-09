@@ -1,3 +1,4 @@
+#include <iostream>
 #include <stack>
 #include <string>
 
@@ -8,13 +9,16 @@ public:
   bool is_valid_parenthesis(string &s) {
     stack<char> st;
     int half = s.size() / 2;
+    cout << (int)'[' << (int)']' << "\n";
     for (int i = 0; i < s.size(); i++) {
-      while (i <= half - 1) {
+      if (i <= half - 1) {
         st.push(s[i]);
       }
-      if (st.top() != s[i])
-        return false;
-      st.pop();
+      if (i >= half) {
+        if (st.top() - s[i] > 0)
+          return false;
+        st.pop();
+      }
     }
     return true;
   }
@@ -22,6 +26,7 @@ public:
 
 int main(void) {
   Solution s;
-
+  string input = "(]";
+  cout << s.is_valid_parenthesis(input) << "\n";
   return 0;
 }
