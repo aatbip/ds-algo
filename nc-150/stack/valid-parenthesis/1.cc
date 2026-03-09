@@ -8,6 +8,11 @@ public:
   bool is_valid_parenthesis(string &s) {
     stack<char> st;
     int half = s.size() / 2;
+    for (int i = 0; i < s.size(); i++) {
+      while (i <= half - 1) {
+        st.push(s[i]);
+      }
+    }
   }
 };
 
