@@ -12,7 +12,11 @@ public:
       while (i <= half - 1) {
         st.push(s[i]);
       }
+      if (st.top() != s[i])
+        return false;
+      st.pop();
     }
+    return true;
   }
 };
 
