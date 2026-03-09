@@ -13,9 +13,12 @@ public:
     for (int i = 0; i < s.size(); i++) {
       if (map.count(s[i])) {
         st.push(map[s[i]]);
+      } else {
+        if (st.top() != s[i])
+          return false;
+        st.pop();
       }
     }
-
     return true;
   }
 };
