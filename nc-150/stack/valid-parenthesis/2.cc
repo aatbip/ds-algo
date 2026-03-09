@@ -7,6 +7,9 @@
  *
  * This program solves the problem using only stack.
  *
+ * Time complexity - O(n)
+ * Space complexity - O(n)
+ *
  * */
 
 #include <iostream>
