@@ -1,25 +1,21 @@
 #include <iostream>
 #include <stack>
 #include <string>
+#include <unordered_map>
 
 using namespace std;
 
 class Solution {
 public:
   bool is_valid_parenthesis(string &s) {
+    unordered_map<char, char> map = {{'{', '}'}, {'(', ')'}, {'[', ']'}};
     stack<char> st;
-    int half = s.size() / 2;
-    cout << (int)'[' << (int)']' << "\n";
     for (int i = 0; i < s.size(); i++) {
-      if (i <= half - 1) {
-        st.push(s[i]);
-      }
-      if (i >= half) {
-        if (st.top() - s[i] > 0)
-          return false;
-        st.pop();
+      if (map.count(s[i])) {
+        st.push(map[s[i]]);
       }
     }
+
     return true;
   }
 };
