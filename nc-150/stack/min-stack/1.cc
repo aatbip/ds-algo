@@ -7,6 +7,7 @@
  * Each function should run in O(1) time.
  * */
 
+#include <iostream>
 #include <stack>
 
 class MinStack {
@@ -27,6 +28,20 @@ public:
         min = val;
     }
   }
+
+  int top(void) {
+    if (stack.top() < 0) {
+      return min - stack.top();
+    } else {
+      return min;
+    }
+  }
 };
 
-int main(void) { return 0; }
+int main(void) {
+  MinStack ms;
+  ms.push(5);
+  ms.push(2);
+  std::cout << ms.top() << "\n";
+  return 0;
+}
