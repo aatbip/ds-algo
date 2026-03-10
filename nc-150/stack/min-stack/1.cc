@@ -5,6 +5,11 @@
  * - int top() gets the top element of the stack.
  * - int getMin() retrieves the minimum element in the stack.
  * Each function should run in O(1) time.
+ *
+ * The MinStack class is created using the std library's stack and `min` variable to track the minimum values.
+ *
+ * Time complexity - O(1) for all the operations
+ * Space complexity - O(n)
  * */
 
 #include <iostream>
