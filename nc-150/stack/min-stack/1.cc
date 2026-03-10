@@ -8,6 +8,7 @@
  * */
 
 #include <stack>
+
 class MinStack {
 private:
   std::stack<int> stack;
@@ -15,6 +16,17 @@ private:
 
 public:
   MinStack() {}
+
+  void push(int val) {
+    if (stack.empty()) {
+      stack.push(0);
+      min = val;
+    } else {
+      stack.push(min - val);
+      if (val < min)
+        min = val;
+    }
+  }
 };
 
 int main(void) { return 0; }
