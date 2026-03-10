@@ -36,12 +36,23 @@ public:
       return min;
     }
   }
+
+  void pop(void) {
+    if (stack.top() < 0) {
+      stack.pop();
+    } else {
+      min = stack.top() + min;
+      stack.pop();
+    }
+  }
 };
 
 int main(void) {
   MinStack ms;
   ms.push(5);
   ms.push(2);
+  ms.pop();
+  ms.pop();
   std::cout << ms.top() << "\n";
   return 0;
 }
