@@ -12,49 +12,48 @@
 
 class MinStack {
 private:
-  std::stack<int> stack;
+  std::stack<long> stack;
   long min;
 
 public:
   MinStack() {}
+  ~MinStack() {}
 
   void push(int val) {
     if (stack.empty()) {
       stack.push(0);
       min = val;
     } else {
-      stack.push(min - val);
+      stack.push(val - min);
       if (val < min)
         min = val;
     }
   }
 
   int top(void) {
-    if (stack.top() < 0) {
-      return min - stack.top();
-    } else {
-      return min;
-    }
+    long top = stack.top();
+    return (top > 0) ? (top + min) : (int)min;
   }
 
   void pop(void) {
-    if (stack.top() < 0) {
-      stack.pop();
-    } else {
-      min = stack.top() + min;
-      stack.pop();
-    }
+    if (stack.empty())
+      return;
+
+    long pop = stack.top();
+    stack.pop();
+
+    if (pop < 0)
+      min = min - pop;
   }
 
-  int get_min(void) { return min; }
+  int get_min(void) { return (int)min; }
 };
 
 int main(void) {
-  MinStack ms;
-  ms.push(5);
-  ms.push(2);
-  ms.pop();
-  ms.pop();
-  std::cout << ms.top() << "\n";
+  MinStack *ms = new MinStack();
+  ms->push(5);
+  ms->push(2);
+  ms->pop();
+  std::cout << ms->top() << "\n";
   return 0;
 }
