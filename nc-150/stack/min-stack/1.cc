@@ -45,6 +45,8 @@ public:
       stack.pop();
     }
   }
+
+  int get_min(void) { return min; }
 };
 
 int main(void) {
