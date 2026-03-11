@@ -24,6 +24,7 @@ public:
         sum -= nums[l++];
       }
     }
+    return res == INT_MAX ? 0 : res;
   }
 };
 
