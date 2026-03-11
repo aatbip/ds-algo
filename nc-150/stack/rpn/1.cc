@@ -9,6 +9,8 @@
  *           Explanation: ((1 + 2) * 3) - 4 = 5
  * */
 
+#include <iostream>
+#include <set>
 #include <stack>
 #include <string>
 #include <vector>
@@ -18,15 +20,23 @@ public:
   int eval(std::vector<std::string> &exp) {
     std::stack<std::string> stack;
     for (auto e : exp) {
-      std::vector<std::string> op{"+", "-", "/", "*"};
+      std::set<std::string> op{"+", "-", "*", "/"};
+      if (op.count(e)) {
+        long second = std::stoll(stack.top());
+        stack.pop();
+        long first = std::stoll(stack.top());
+        stack.pop();
+      }
       stack.push(e);
     }
+    return std::stoll(stack.top());
   }
 };
 
 int main(void) {
   RPN s;
   std::vector<std::string> exp = {"1", "2", "+", "3", "*", "4", "-"};
+  std::cout << s.eval(exp) << "\n";
 
   return 0;
 }
