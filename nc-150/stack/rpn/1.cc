@@ -26,6 +26,15 @@ public:
         stack.pop();
         long first = std::stoll(stack.top());
         stack.pop();
+        if (e == "+")
+          stack.push(std::to_string(first + second));
+        if (e == "-")
+          stack.push(std::to_string(first - second));
+        if (e == "*")
+          stack.push(std::to_string(first * second));
+        if (e == "/")
+          stack.push(std::to_string(first / second));
+        continue;
       }
       stack.push(e);
     }
