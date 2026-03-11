@@ -22,9 +22,9 @@ public:
     for (auto e : exp) {
       std::set<std::string> op{"+", "-", "*", "/"};
       if (op.count(e)) {
-        long second = std::stoi(stack.top());
+        int second = std::stoi(stack.top());
         stack.pop();
-        long first = std::stoi(stack.top());
+        int first = std::stoi(stack.top());
         stack.pop();
         if (e == "+")
           stack.push(std::to_string(first + second));
