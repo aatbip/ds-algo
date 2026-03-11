@@ -22,9 +22,9 @@ public:
     for (auto e : exp) {
       std::set<std::string> op{"+", "-", "*", "/"};
       if (op.count(e)) {
-        long second = std::stoll(stack.top());
+        long second = std::stoi(stack.top());
         stack.pop();
-        long first = std::stoll(stack.top());
+        long first = std::stoi(stack.top());
         stack.pop();
         if (e == "+")
           stack.push(std::to_string(first + second));
@@ -38,7 +38,7 @@ public:
       }
       stack.push(e);
     }
-    return std::stoll(stack.top());
+    return std::stoi(stack.top());
   }
 };
 
