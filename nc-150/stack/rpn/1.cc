@@ -14,7 +14,6 @@
  * */
 
 #include <iostream>
-#include <set>
 #include <stack>
 #include <string>
 #include <vector>
@@ -60,6 +59,5 @@ int main(void) {
   RPN s;
   std::vector<std::string> exp = {"1", "2", "+", "3", "*", "4", "-"};
   std::cout << s.eval(exp) << "\n";
-
   return 0;
 }
