@@ -24,23 +24,33 @@ public:
   int eval(std::vector<std::string> &exp) {
     std::stack<int> stack;
     for (auto e : exp) {
-      std::set<std::string> op{"+", "-", "*", "/"};
-      if (op.count(e)) {
+      if (e == "+") {
         int second = stack.top();
         stack.pop();
         int first = stack.top();
         stack.pop();
-        if (e == "+")
-          stack.push(first + second);
-        if (e == "-")
-          stack.push(first - second);
-        if (e == "*")
-          stack.push(first * second);
-        if (e == "/")
-          stack.push(first / second);
-        continue;
+        stack.push(first + second);
+      } else if (e == "-") {
+        int second = stack.top();
+        stack.pop();
+        int first = stack.top();
+        stack.pop();
+        stack.push(first - second);
+      } else if (e == "*") {
+        int second = stack.top();
+        stack.pop();
+        int first = stack.top();
+        stack.pop();
+        stack.push(first * second);
+      } else if (e == "/") {
+        int second = stack.top();
+        stack.pop();
+        int first = stack.top();
+        stack.pop();
+        stack.push(first / second);
+      } else {
+        stack.push(std::stoi(e));
       }
-      stack.push(std::stoi(e));
     }
     return stack.top();
   }
