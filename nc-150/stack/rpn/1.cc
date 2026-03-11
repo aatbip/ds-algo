@@ -9,12 +9,24 @@
  *           Explanation: ((1 + 2) * 3) - 4 = 5
  * */
 
+#include <stack>
+#include <string>
+#include <vector>
+
 class RPN {
 public:
+  int eval(std::vector<std::string> &exp) {
+    std::stack<std::string> stack;
+    for (auto e : exp) {
+      std::vector<std::string> op{"+", "-", "/", "*"};
+      stack.push(e);
+    }
+  }
 };
 
 int main(void) {
   RPN s;
+  std::vector<std::string> exp = {"1", "2", "+", "3", "*", "4", "-"};
 
   return 0;
 }
