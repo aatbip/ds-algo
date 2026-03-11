@@ -7,6 +7,10 @@
  * Example - Input: tokens = ["1","2","+","3","*","4","-"]
  *           Output: 5
  *           Explanation: ((1 + 2) * 3) - 4 = 5
+ *
+ * In this solution, we solve the problem using stack.
+ * Time complexity - O(n)
+ * Space complexity - O(n)
  * */
 
 #include <iostream>
@@ -18,27 +22,27 @@
 class RPN {
 public:
   int eval(std::vector<std::string> &exp) {
-    std::stack<std::string> stack;
+    std::stack<int> stack;
     for (auto e : exp) {
       std::set<std::string> op{"+", "-", "*", "/"};
       if (op.count(e)) {
-        int second = std::stoi(stack.top());
+        int second = stack.top();
         stack.pop();
-        int first = std::stoi(stack.top());
+        int first = stack.top();
         stack.pop();
         if (e == "+")
-          stack.push(std::to_string(first + second));
+          stack.push(first + second);
         if (e == "-")
-          stack.push(std::to_string(first - second));
+          stack.push(first - second);
         if (e == "*")
-          stack.push(std::to_string(first * second));
+          stack.push(first * second);
         if (e == "/")
-          stack.push(std::to_string(first / second));
+          stack.push(first / second);
         continue;
       }
-      stack.push(e);
+      stack.push(std::stoi(e));
     }
-    return std::stoi(stack.top());
+    return stack.top();
   }
 };
 
