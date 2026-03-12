@@ -18,6 +18,12 @@ public:
     std::vector<int> res;
     std::stack<std::pair<int, int>> stack;
     for (int i = 0; i < temp.size(); i++) {
+      while (!stack.empty() && temp[i] > stack.top().first) {
+        auto t = stack.top();
+        res[t.second] = i - t.second;
+        stack.pop();
+      }
+      stack.push({temp[i], i});
     }
     return res;
   }
