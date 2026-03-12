@@ -8,6 +8,7 @@
  *           Output: [1,4,1,2,1,0,0]
  **/
 
+#include <iostream>
 #include <stack>
 #include <utility>
 #include <vector>
@@ -15,7 +16,7 @@
 class DailyTemp {
 public:
   std::vector<int> get_daily(std::vector<int> &temp) {
-    std::vector<int> res;
+    std::vector<int> res(temp.size());
     std::stack<std::pair<int, int>> stack;
     for (int i = 0; i < temp.size(); i++) {
       while (!stack.empty() && temp[i] > stack.top().first) {
@@ -29,4 +30,12 @@ public:
   }
 };
 
-int main(void) { return 0; }
+int main(void) {
+  DailyTemp d;
+  std::vector<int> temp = {30, 38, 30, 36, 35, 40, 28};
+  std::vector i = d.get_daily(temp);
+  for (auto t : i) {
+    std::cout << t << " ";
+  }
+  return 0;
+}
