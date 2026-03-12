@@ -8,13 +8,17 @@
  *           Output: [1,4,1,2,1,0,0]
  **/
 
+#include <stack>
+#include <utility>
 #include <vector>
 
 class DailyTemp {
 public:
   std::vector<int> get_daily(std::vector<int> &temp) {
     std::vector<int> res;
-
+    std::stack<std::pair<int, int>> stack;
+    for (int i = 0; i < temp.size(); i++) {
+    }
     return res;
   }
 };
