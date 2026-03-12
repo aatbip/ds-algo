@@ -6,6 +6,10 @@
  *
  * Example - Input: temperatures = [30,38,30,36,35,40,28]
  *           Output: [1,4,1,2,1,0,0]
+ *
+ * This program uses stack to solve the problem.
+ * Time complexity - O(n)
+ * Space complexity - O(n)
  **/
 
 #include <iostream>
