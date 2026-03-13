@@ -14,7 +14,7 @@ public:
       pair.push_back({position[i], speed[i]});
     }
     std::sort(pair.rbegin(), pair.rend()); // sort in descending order wrt position
-    std::stack<int> stack;
+    std::stack<double> stack;
     for (auto &p : pair) {
       double speed = (target - p.first) / (double)p.second;
       if (!stack.empty() && speed <= stack.top())
@@ -27,8 +27,9 @@ public:
 
 int main(void) {
   CarFleet c;
-  std::vector<int> position{4, 1, 0, 7};
-  std::vector<int> speed{2, 2, 1, 1};
-  std::cout << c.total_fleet(position, speed, 10) << "\n";
+  std::vector<int> position{8, 12, 16, 11, 7};
+  std::vector<int> speed{6, 9, 10, 9, 7};
+  int fleet = c.total_fleet(position, speed, 17);
+  std::cout << fleet << "\n";
   return 0;
 }
