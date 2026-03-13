@@ -16,7 +16,12 @@ public:
     std::sort(pair.rbegin(), pair.rend()); // sort in descending order wrt position
     std::stack<int> stack;
     for (auto &p : pair) {
+      double speed = (target - p.first) / (double)p.second;
+      if (!stack.empty() && speed <= stack.top())
+        continue;
+      stack.push(speed);
     }
+    return stack.size();
   }
 };
 
@@ -24,6 +29,6 @@ int main(void) {
   CarFleet c;
   std::vector<int> position{4, 1, 0, 7};
   std::vector<int> speed{2, 2, 1, 1};
-  c.total_fleet(position, speed, 10);
+  std::cout << c.total_fleet(position, speed, 10) << "\n";
   return 0;
 }
