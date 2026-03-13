@@ -17,6 +17,8 @@
  *
  * This program solves the problem using stack. Stack is used to track the number of fleets.
  *
+ * Time complexity - O(nlogn), because of the sorting algorithm
+ * Space complexity - O(n)
  * */
 
 #include <algorithm>
