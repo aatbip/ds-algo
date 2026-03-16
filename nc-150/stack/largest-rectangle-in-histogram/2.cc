@@ -6,6 +6,7 @@
  *
  * */
 
+#include <algorithm>
 #include <stack>
 #include <vector>
 
@@ -14,14 +15,16 @@ public:
   int histogram_area(std::vector<int> &heights) {
     int n = heights.size();
     std::stack<int> stack;
+    int maxArea = 0;
     for (int i = 0; i <= n; i++) {
       while (!stack.empty() & (i == n || heights[stack.top()] > heights[i])) {
         int height = heights[stack.top()];
         stack.pop();
-        int width = (i - 1) - (stack.top() + 1) + 1;
+        int width = (i - 1) - (stack.top() + 1) + 1; // i - stack.top() + 1
+        maxArea = std::max(maxArea, height * width);
       }
-
       stack.push(heights[i]);
     }
+    return maxArea;
   }
 };
