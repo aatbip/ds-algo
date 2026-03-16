@@ -7,6 +7,7 @@
  * */
 
 #include <algorithm>
+#include <iostream>
 #include <stack>
 #include <vector>
 
@@ -23,8 +24,15 @@ public:
         int width = (i - 1) - (stack.top() + 1) + 1; // i - stack.top() + 1
         maxArea = std::max(maxArea, height * width);
       }
-      stack.push(heights[i]);
+      stack.push(i);
     }
     return maxArea;
   }
 };
+
+int main(void) {
+  HistogramOptimal h;
+  std::vector<int> heights = {7, 1, 7, 2, 2, 4};
+  std::cout << h.histogram_area(heights) << "\n";
+  return 0;
+}
