@@ -27,6 +27,9 @@ public:
       stack.push(i);
     }
 
+    while (!stack.empty())
+      stack.pop();
+
     for (int i = n - 1; i >= 0; i--) {
       while (!stack.empty() && heights[stack.top()] >= heights[i]) {
         stack.pop();
