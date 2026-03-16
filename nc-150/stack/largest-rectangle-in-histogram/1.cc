@@ -19,9 +19,15 @@ public:
       while (!stack.empty() && heights[stack.top()] > heights[i]) {
         stack.pop();
       }
-
       if (!stack.empty()) {
         leftMost[i] = stack.top();
+      }
+      stack.push(i);
+    }
+
+    for (int i = n - 1; i >= 0; i--) {
+      while (!stack.empty() && heights[stack.top()] > heights[i]) {
+        stack.pop();
       }
 
       stack.push(i);
