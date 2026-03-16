@@ -3,6 +3,12 @@
  * among the bars.
  * Example- Input: heights = [7,1,7,2,2,4]
  *          Output: 8
+ *
+ * This program solves the problem using monotonic increasing stack which stores the indices for
+ * heights in the increasing order of heights.
+ *
+ * Time complexity - O(n)
+ * Space complexity - O(n)
  * */
 
 #include <algorithm>
