@@ -5,6 +5,8 @@
  *          Output: 8
  * */
 
+#include <algorithm>
+#include <iostream>
 #include <stack>
 #include <vector>
 class Histogram {
@@ -29,10 +31,25 @@ public:
       while (!stack.empty() && heights[stack.top()] > heights[i]) {
         stack.pop();
       }
-
+      if (!stack.empty()) {
+        rightMost[i] = stack.top();
+      }
       stack.push(i);
     }
+
+    int maxArea = 0;
+    for (int i = 0; i < n; i++) {
+      leftMost[i] += 1;
+      rightMost[i] -= 1;
+      maxArea = std::max(maxArea, heights[i] * (rightMost[i] - leftMost[i] + 1));
+    }
+    return maxArea;
   }
 };
 
-int main(void) { return 0; }
+int main(void) {
+  Histogram h;
+  std::vector<int> heights = {7, 1, 7, 2, 2, 4};
+  std::cout << h.histogram_area(heights) << "\n";
+  return 0;
+}
