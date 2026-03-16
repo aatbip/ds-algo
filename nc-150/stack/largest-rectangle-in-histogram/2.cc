@@ -21,7 +21,7 @@ public:
       while (!stack.empty() & (i == n || heights[stack.top()] > heights[i])) {
         int height = heights[stack.top()];
         stack.pop();
-        int width = (i - 1) - (stack.top() + 1) + 1; // i - stack.top() + 1
+        int width = stack.empty() ? i : ((i - 1) - (stack.top() + 1) + 1); // i - stack.top() + 1
         maxArea = std::max(maxArea, height * width);
       }
       stack.push(i);
