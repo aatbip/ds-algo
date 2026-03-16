@@ -14,7 +14,7 @@ public:
   int histogram_area(std::vector<int> &heights) {
     int n = heights.size();
     std::stack<int> stack;
-    std::vector<int> leftMost(-1, n);
+    std::vector<int> leftMost(n, -1);
     std::vector<int> rightMost(n, n);
 
     for (int i = 0; i < n - 1; i++) {
