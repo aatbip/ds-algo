@@ -17,7 +17,7 @@ public:
     std::vector<int> leftMost(n, -1);
     std::vector<int> rightMost(n, n);
 
-    for (int i = 0; i < n - 1; i++) {
+    for (int i = 0; i < n; i++) {
       while (!stack.empty() && heights[stack.top()] >= heights[i]) {
         stack.pop();
       }
