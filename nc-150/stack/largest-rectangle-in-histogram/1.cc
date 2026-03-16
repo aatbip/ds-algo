@@ -18,7 +18,7 @@ public:
     std::vector<int> rightMost(n, n);
 
     for (int i = 0; i < n - 1; i++) {
-      while (!stack.empty() && heights[stack.top()] > heights[i]) {
+      while (!stack.empty() && heights[stack.top()] >= heights[i]) {
         stack.pop();
       }
       if (!stack.empty()) {
@@ -28,7 +28,7 @@ public:
     }
 
     for (int i = n - 1; i >= 0; i--) {
-      while (!stack.empty() && heights[stack.top()] > heights[i]) {
+      while (!stack.empty() && heights[stack.top()] >= heights[i]) {
         stack.pop();
       }
       if (!stack.empty()) {
