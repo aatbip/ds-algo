@@ -4,6 +4,12 @@
  * Example- Input: heights = [7,1,7,2,2,4]
  *          Output: 8
  *
+ * This program also uses monotonic increasing stack to solve the problem but rather in an optimal
+ * way.
+ *
+ * Time complexity - O(n)
+ * Space complexity - O(n)
+ *
  * */
 
 #include <algorithm>
