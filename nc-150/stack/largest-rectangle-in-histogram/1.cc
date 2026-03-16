@@ -4,3 +4,29 @@
  * Example- Input: heights = [7,1,7,2,2,4]
  *          Output: 8
  * */
+
+#include <stack>
+#include <vector>
+class Histogram {
+public:
+  int histogram_area(std::vector<int> &heights) {
+    int n = heights.size();
+    std::stack<int> stack;
+    std::vector<int> leftMost(-1, n);
+    std::vector<int> rightMost(n, n);
+
+    for (int i = 0; i < n - 1; i++) {
+      while (!stack.empty() && heights[stack.top()] > heights[i]) {
+        stack.pop();
+      }
+
+      if (!stack.empty()) {
+        leftMost[i] = stack.top();
+      }
+
+      stack.push(i);
+    }
+  }
+};
+
+int main(void) { return 0; }
