@@ -18,7 +18,7 @@ public:
     std::stack<int> stack;
     int maxArea = 0;
     for (int i = 0; i <= n; i++) {
-      while (!stack.empty() & (i == n || heights[stack.top()] > heights[i])) {
+      while (!stack.empty() && (i == n || heights[stack.top()] >= heights[i])) {
         int height = heights[stack.top()];
         stack.pop();
         int width = stack.empty() ? i : ((i - 1) - (stack.top() + 1) + 1); // i - stack.top() + 1
