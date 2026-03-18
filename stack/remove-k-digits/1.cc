@@ -14,6 +14,9 @@ public:
       }
       stack.push_back(c);
     }
+    while (k-- > 0 && !stack.empty()) {
+      stack.pop_back();
+    }
     return stack;
   }
 };
