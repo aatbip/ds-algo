@@ -5,7 +5,17 @@
 
 class Solution {
 public:
-  std::string smallInt(std::string num, int k) { std::string stack = ""; }
+  std::string smallInt(std::string num, int k) {
+    std::string stack = "";
+    for (char c : num) {
+      while (!stack.empty() && k > 0 && stack.back() > c) {
+        stack.pop_back();
+        k--;
+      }
+      stack.push_back(c);
+    }
+    return stack;
+  }
 };
 
 int main(void) {
