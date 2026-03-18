@@ -1,4 +1,11 @@
-#include <algorithm>
+/*Given string num representing a non-negative integer num, and an integer k, return the
+ * smallest possible integer after removing k digits from num.
+ *
+ * This program solves the problem using a monotonic stack and greedy method. It is a greedy technique because
+ * at each stage we make a locally optimal decision by choosing to pop() the number that is greater than the current
+ * number to reach the overall optimal solution. In this way we maintain a monotonic increasing stack.
+ * */
+
 #include <climits>
 #include <iostream>
 #include <string>
