@@ -4,6 +4,9 @@
  * This program solves the problem using a monotonic stack and greedy method. It is a greedy technique because
  * at each stage we make a locally optimal decision by choosing to pop() the number that is greater than the current
  * number to reach the overall optimal solution. In this way we maintain a monotonic increasing stack.
+ *
+ * Time complexity - O(n)
+ * Space complexity - O(n)
  * */
 
 #include <climits>
