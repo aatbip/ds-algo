@@ -17,6 +17,8 @@ public:
     while (k-- > 0 && !stack.empty()) {
       stack.pop_back();
     }
+    size_t pos = stack.find_first_not_of('0');
+    stack = (pos == std::string::npos) ? "0" : stack.substr(pos);
     return stack;
   }
 };
