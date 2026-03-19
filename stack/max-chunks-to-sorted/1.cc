@@ -25,6 +25,9 @@
  * We have to keep the top element so that we can push it back. Because, the top element is the maximum element of the
  * chunk and pushing it back gives us the accurate no. of chunks later.
  *
+ * Time complexity - O(n)
+ * Space complexity - O(n)
+ *
  * */
 
 #include <iostream>
