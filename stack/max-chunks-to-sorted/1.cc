@@ -17,7 +17,7 @@ public:
         stack.push(nums[i]);
       }
     }
-    return stack.empty() ? 1 : stack.size();
+    return stack.size();
   }
 };
 
