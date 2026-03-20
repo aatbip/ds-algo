@@ -25,7 +25,7 @@ class Solution {
 public:
   bool find_123_pattern(std::vector<int> &nums) {
     std::stack<int> stack;
-    int third = INT_MIN; //'2' element in 132 pattern
+    int third = INT_MIN;
     for (int i = nums.size() - 1; i >= 0; i--) {
       if (nums[i] < third)
         return true;
