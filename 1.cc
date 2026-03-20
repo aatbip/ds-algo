@@ -5,7 +5,19 @@
 
 class Solution {
 public:
-  bool find_123_pattern(std::vector<int> &nums) { std::cout << INT_MIN << "\n"; }
+  bool find_123_pattern(std::vector<int> &nums) {
+    std::stack<int> stack;
+    for (int i = nums.size() - 1; i >= 0; i--) {
+      int third = INT_MIN; //'2' element in 132 pattern
+      if (nums[i] < third)
+        return true;
+      while (!stack.empty() && nums[i] > stack.top()) {
+        third = stack.top();
+        stack.pop();
+      }
+      stack.push(nums[i]);
+    }
+  }
 };
 
 int main(void) {
