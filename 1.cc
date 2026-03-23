@@ -11,8 +11,8 @@ public:
     int l = INT_MAX;
     int r = INT_MIN;
     for (int i = 0; i < nums.size() - 1; i++) {
-      while (!stack.empty() && stack.top() > nums[i]) {
-        l = std::min(stack.top(), i);
+      while (!stack.empty() && nums[stack.top()] > nums[i]) {
+        l = std::min(l, stack.top());
         stack.pop();
       }
       stack.push(i);
@@ -20,6 +20,14 @@ public:
     while (!stack.empty()) {
       stack.pop();
     }
+    for (int i = nums.size() - 1; i >= 0; i--) {
+      while (!stack.empty() && nums[stack.top()] < nums[i]) {
+        r = std::max(r, stack.top());
+        stack.pop();
+      }
+      stack.push(i);
+    }
+    return l > r ? 0 : r - l + 1;
   }
 };
 
