@@ -10,7 +10,7 @@ public:
     std::stack<int> stack;
     int l = INT_MAX;
     int r = INT_MIN;
-    for (int i = 0; i < nums.size() - 1; i++) {
+    for (int i = 0; i < nums.size(); i++) {
       while (!stack.empty() && nums[stack.top()] > nums[i]) {
         l = std::min(l, stack.top());
         stack.pop();
@@ -36,7 +36,8 @@ int main(void) {
   // std::vector<int> nums = {1, 2, 3, 4};
   // std::vector<int> nums = {1, 2, 3, 4};
   // std::vector<int> nums = {2, 6, 4, 8, 10, 9, 15};
-  std::vector<int> nums = {1, 3, 2, 2, 2};
+  // std::vector<int> nums = {1, 3, 2, 2, 2};
+  std::vector<int> nums = {2, 1};
 
   std::cout << s.find_unsorted_subarray(nums) << "\n";
 
