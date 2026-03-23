@@ -10,6 +10,8 @@
  * This program uses monotonic stack to solve the problem.
  *
  *
+ * Time complexity - O(n)
+ * Space complexity - O(n)
  * */
 
 #include <algorithm>
