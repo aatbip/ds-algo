@@ -5,27 +5,26 @@
 class Solution {
 public:
   int find_unsorted_subarray(std::vector<int> &nums) {
-    std::stack<int> stack;
-    for (int i = 0; i < nums.size(); i++) {
-      if (!stack.empty() && stack.top() > nums[i]) {
-        int top = stack.top();
-        while (!stack.empty() && stack.top() > nums[i]) {
-          stack.pop();
-        }
-        stack.push(top);
-      } else {
-        stack.push(nums[i]);
-      }
+    int l = 0, r = nums.size() - 1;
+    while (l <= (int)nums.size() - 1 && nums[l] < nums[l + 1]) {
+      l++;
     }
-    return stack.size() == nums.size() ? 0 : stack.size();
+    while (r > 0 && nums[r] >= nums[r - 1]) {
+      std::cout << "running: " << nums[l] << " " << nums[l - 1] << "\n";
+      r--;
+    }
+    std::cout << "l: " << l << "\n";
+    std::cout << "r: " << l << "\n";
+    return r > l ? r - l + 1 : 0;
   }
 };
 
 int main(void) {
   Solution s;
-  std::vector<int> nums = {2, 1};
+  // std::vector<int> nums = {1, 2, 3, 4};
   // std::vector<int> nums = {1, 2, 3, 4};
   // std::vector<int> nums = {2, 6, 4, 8, 10, 9, 15};
+  std::vector<int> nums = {1, 3, 2, 2, 2};
 
   std::cout << s.find_unsorted_subarray(nums) << "\n";
 
