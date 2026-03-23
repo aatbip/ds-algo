@@ -1,21 +1,25 @@
 
+#include <algorithm>
+#include <climits>
 #include <iostream>
 #include <stack>
 #include <vector>
 class Solution {
 public:
   int find_unsorted_subarray(std::vector<int> &nums) {
-    int l = 0, r = nums.size() - 1;
-    while (l <= (int)nums.size() - 1 && nums[l] < nums[l + 1]) {
-      l++;
+    std::stack<int> stack;
+    int l = INT_MAX;
+    int r = INT_MIN;
+    for (int i = 0; i < nums.size() - 1; i++) {
+      while (!stack.empty() && stack.top() > nums[i]) {
+        l = std::min(stack.top(), i);
+        stack.pop();
+      }
+      stack.push(i);
     }
-    while (r > 0 && nums[r] >= nums[r - 1]) {
-      std::cout << "running: " << nums[l] << " " << nums[l - 1] << "\n";
-      r--;
+    while (!stack.empty()) {
+      stack.pop();
     }
-    std::cout << "l: " << l << "\n";
-    std::cout << "r: " << l << "\n";
-    return r > l ? r - l + 1 : 0;
   }
 };
 
