@@ -1,25 +1,29 @@
-
 #include <algorithm>
+#include <iostream>
 #include <stack>
 #include <string>
-#include <unordered_map>
+
 class Solution {
 public:
   std::string unique_smallest(std::string str) {
-    std::unordered_map<char, int> map;
+    std::vector<int> map(26, 0);
     std::stack<char> stack;
-    for (char c : str) {
-      while (!stack.empty() && stack.top() > c) {
-        map[stack.top()]--;
-        stack.pop();
-      }
-      if (map[c] == 0) {
-        stack.push(c);
-        map[c]++;
+    std::vector<int> last(26);
+    for (int i = 0; i < str.size(); i++) {
+      last[str[i] - 'a'] = i;
+    }
+    for (int i = 0; i < str.size(); i++) {
+      if (map[str[i] - 'a'] == 0) {
+        while (!stack.empty() && stack.top() > str[i] && last[stack.top() - 'a'] > i) {
+          map[stack.top() - 'a']--;
+          stack.pop();
+        }
+        stack.push(str[i]);
+        map[str[i] - 'a']++;
       }
     }
     std::string s = "";
-    for (int i = 0; i < stack.size(); i++) {
+    while (!stack.empty()) {
       s += stack.top();
       stack.pop();
     }
@@ -27,3 +31,10 @@ public:
     return s;
   }
 };
+
+int main(void) {
+  Solution s;
+  std::string str = "cbacdcbc";
+  std::cout << s.unique_smallest(str) << "\n";
+  return 0;
+}
