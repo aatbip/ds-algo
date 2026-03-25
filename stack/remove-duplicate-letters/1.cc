@@ -9,6 +9,9 @@
  *  Output: "acdb"
  *
  * This program uses greedy approach along with hash table and monotonic stack.
+ *
+ * Time complexity - O(n)
+ * Space Complexity - O(n) + O(1) = O(n)
  * */
 
 #include <iostream>
@@ -40,7 +43,7 @@ public:
 
 int main(void) {
   Solution s;
-  std::string str = "cbacdcbc";
+  std::string str = "adbfadb";
   std::cout << s.unique_smallest(str) << "\n";
   return 0;
 }
