@@ -1,7 +1,19 @@
-#include <algorithm>
+/*Given a string s, remove duplicate letters so that every letter appears once and only once.
+ * You must make sure your result is the smallest in lexicographical order among all possible results.
+ *
+ *Example -
+ *  Input: s = "bcabc"
+ *  Output: "abc"
+ *
+ *  Input: s = "cbacdcbc"
+ *  Output: "acdb"
+ *
+ * This program uses greedy approach along with hash table and monotonic stack.
+ * */
+
 #include <iostream>
-#include <stack>
 #include <string>
+#include <vector>
 
 class Solution {
 public:
