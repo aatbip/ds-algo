@@ -16,13 +16,13 @@
 int binary_search(int *nums, int size, int target) {
   int low = 0, high = size - 1;
   while (low <= high) {
-    int mid = low + high / 2;
+    int mid = (low + high) / 2;
     if (*(nums + mid) == target)
-      return 1;
-    if (*(nums + mid) > target) {
+      return mid;
+    if (*(nums + mid) < target) {
       low = mid + 1;
     }
-    if (*(nums + mid) < target) {
+    if (*(nums + mid) > target) {
       high = mid - 1;
     }
   }
@@ -31,6 +31,6 @@ int binary_search(int *nums, int size, int target) {
 
 int main(void) {
   int nums[] = {-1, 0, 2, 4, 6, 8};
-  printf("%d\n", binary_search(nums, 6, 2));
+  printf("%d\n", binary_search(nums, 6, 4));
   return 0;
 }
