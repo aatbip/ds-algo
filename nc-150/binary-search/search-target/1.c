@@ -4,6 +4,11 @@
  *
  * Example- Input: nums = [-1,0,2,4,6,8], target = 4
  *          Output: 3
+ *
+ * This is a binary search implementation to search for a target in a sorted array.
+ *
+ * Time complexity - O(logn)
+ * Space complexity - O(1)
  **/
 
 #include <stdio.h>
