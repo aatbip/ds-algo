@@ -1,5 +1,22 @@
+/*You are given an m x n 2-D integer array matrix and an integer target.
+ * -> Each row in matrix is sorted in non-decreasing order.
+ * -> The first integer of every row is greater than the last integer of the previous row.
+ * Return `true` if target exists within matrix or `false` otherwise.
+ *
+ * Can you write a solution that runs in `O(log(m * n))` time?
+ *
+ * This solution solves the problem but in O(mlogn) time. It loops through the column to find the
+ * required column then does a binary search on that column. So the iteration through the column
+ * os size 'm' takes O(m) time and the binary search within the column takes O(logn) time and
+ * binary search is performed only once for the required column. so,
+ * total O(m) + O(logn) = O(m+logn)
+ *
+ * It has O(1) space complexity.
+ * */
+
 #include <stdbool.h>
 #include <stdio.h>
+
 int binary_search(int *arr, int n, int target) {
   int low = 0, high = n - 1;
   for (;;) {
