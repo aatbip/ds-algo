@@ -29,8 +29,7 @@ int binary_search_2d_matrix(int (*matrix)[4], int row_size, int col_size, int ta
     }
     if (matrix[mid / col_size][mid % col_size] > target) {
       high = mid - 1;
-    }
-    if (matrix[mid / col_size][mid % col_size] < target) {
+    } else {
       low = mid + 1;
     }
   }
