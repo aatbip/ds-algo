@@ -3,6 +3,10 @@
 
 int search_2d_matrix(int (*matrix)[2], int col_size, int row_size, int target) {
   for (int i = 0; i < col_size; i++) {
+    if (matrix[i][row_size - 1] < target) {
+      continue;
+    } else {
+    }
   }
   return false;
 }
