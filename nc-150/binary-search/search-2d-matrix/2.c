@@ -16,6 +16,15 @@ int binary_search_2d_matrix(int (*matrix)[4], int row_size, int col_size, int ta
     if (low > high)
       break;
     int mid = (low + high) / 2;
+    if (matrix[mid / col_size][mid % col_size] == target) {
+      return true;
+    }
+    if (matrix[mid / col_size][mid % col_size] > target) {
+      high = mid - 1;
+    }
+    if (matrix[mid / col_size][mid % col_size] < target) {
+      low = mid + 1;
+    }
   }
   return -1;
 }
