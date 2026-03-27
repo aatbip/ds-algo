@@ -5,6 +5,9 @@
  *
  * Can you write a solution that runs in `O(log(m * n))` time?
  *
+ * In this solution, we use binary search direclty with the 2d matrix knowing the fact that
+ * the 2d matrix itself consists of sorted arrays. This fact makes it possible to implement
+ * binary search directly on the 2d matrix.
  */
 
 #include <stdbool.h>
