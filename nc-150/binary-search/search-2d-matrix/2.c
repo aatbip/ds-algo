@@ -8,6 +8,11 @@
  * In this solution, we use binary search direclty with the 2d matrix knowing the fact that
  * the 2d matrix itself consists of sorted arrays. This fact makes it possible to implement
  * binary search directly on the 2d matrix.
+ *
+ * Time complexity - O(log m) + O(log n) = O(log(m*n)), because we are combining the entire 2d
+ * matrix i.e. high = row_size * col_size - 1
+ *
+ * Space complexity - O(1)
  */
 
 #include <stdbool.h>
