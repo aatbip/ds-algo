@@ -1,6 +1,5 @@
 #include <stdbool.h>
 #include <stdio.h>
-
 int binary_search(int *arr, int n, int target) {
   int low = 0, high = n - 1;
   for (;;) {
@@ -25,6 +24,10 @@ int search_2d_matrix(int (*matrix)[2], int col_size, int row_size, int target) {
     if (matrix[i][row_size - 1] < target) {
       continue;
     } else {
+      int res = binary_search(matrix[i], row_size, target);
+      if (res == -1)
+        return false;
+      return true;
     }
   }
   return false;
