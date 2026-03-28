@@ -20,6 +20,10 @@
  * valid time from between 'l' to 'k-1'. Otherwise, we will update l to k+1 (l=k+1).
  * This will help us find the result in O(logn) time using binary search.
  *
+ * Time complexity - O(nlogm), where 'n' is the length of the array piles and 'm' is the
+ * maximum element in the array piles (i.e. max number of bananas in a pile).
+ *
+ * Space complexity - O(1)
  */
 
 #include <algorithm>
