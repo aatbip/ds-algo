@@ -10,6 +10,10 @@ int min_eating_speed(int *piles, int n, int h) {
     for (int i = 0; i < n; i++) {
       t += ceil((double)piles[i] / k);
     }
+    if (t <= h) {
+      return k;
+    }
+    k += 1;
   }
 }
 
