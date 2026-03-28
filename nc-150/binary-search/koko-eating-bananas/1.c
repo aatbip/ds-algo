@@ -20,7 +20,8 @@
  * in a pile. This is true because 'k' moves from 1 to 'm' and each time the array
  * of piles is iterated.
  *
- *
+ * Space complexity -
+ * O(1)
  *
  * */
 
