@@ -10,12 +10,20 @@ public:
     int r = *std::max_element(piles.begin(), piles.end());
     int res;
     while (l <= r) {
-      int k = (l + r) / 2;
+      int k = (l + r) / 2; // mid element
       long long t = 0;
       for (auto pile : piles) {
         t += std::ceil((double)pile / k);
       }
+      if (t <= h) {
+        r = k - 1;
+      }
+      if (t > h) {
+        l = k + 1;
+      }
+      res = k;
     }
+    return res;
   }
 };
 
