@@ -1,9 +1,14 @@
 
+#include <algorithm>
 #include <iostream>
 #include <vector>
 class Solution {
 public:
-  int min_eating_speed(std::vector<int> &piles, int h) {}
+  int min_eating_speed(std::vector<int> &piles, int h) {
+    int l = 1;
+    int r = *std::max_element(piles.begin(), piles.end());
+    int res;
+  }
 };
 
 int main(void) {
