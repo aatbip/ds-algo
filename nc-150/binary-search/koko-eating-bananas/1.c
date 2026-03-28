@@ -11,6 +11,17 @@
  * Example - Input: piles = [1,4,3,2], h = 9
  *           Output: 2
  *
+ * This program solves the problem using brute force approach. 'k' is the speed of
+ * eating the bananas. We calculate total time taken for each 'k' then increment 'k'
+ * until a valid minimum eating speed is found.
+ *
+ * Time complexity -
+ * O(m*n), where 'n' is the size of array piles and 'm' is the max number of bananas
+ * in a pile. This is true because 'k' moves from 1 to 'm' and each time the array
+ * of piles is iterated.
+ *
+ *
+ *
  * */
 
 #include <limits.h>
