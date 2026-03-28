@@ -3,7 +3,15 @@
 #include <math.h>
 #include <stdio.h>
 
-int min_eating_speed(int *piles, int n, int h) {}
+int min_eating_speed(int *piles, int n, int h) {
+  int k = 1;
+  for (;;) {
+    int t = 0;
+    for (int i = 0; i < n; i++) {
+      t += ceil((double)piles[i] / k);
+    }
+  }
+}
 
 int main(void) {
   int piles[] = {30, 11, 23, 4, 20};
