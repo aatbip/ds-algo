@@ -1,13 +1,21 @@
-
 #include <algorithm>
+#include <cmath>
 #include <iostream>
 #include <vector>
+
 class Solution {
 public:
   int min_eating_speed(std::vector<int> &piles, int h) {
     int l = 1;
     int r = *std::max_element(piles.begin(), piles.end());
     int res;
+    while (l <= r) {
+      int k = (l + r) / 2;
+      long long t = 0;
+      for (auto pile : piles) {
+        t += std::ceil((double)pile / k);
+      }
+    }
   }
 };
 
