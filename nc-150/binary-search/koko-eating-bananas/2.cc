@@ -15,13 +15,13 @@ public:
       for (auto pile : piles) {
         t += std::ceil((double)pile / k);
       }
-      if (t <= h) {
+      if (t <= h) { // valid case
+        res = k;
         r = k - 1;
       }
       if (t > h) {
         l = k + 1;
       }
-      res = k;
     }
     return res;
   }
