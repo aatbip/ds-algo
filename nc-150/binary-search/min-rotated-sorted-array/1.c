@@ -13,6 +13,10 @@ int min_rotated_sorted(int *nums, int n) {
   int res;
   while (l < h) {
     int mid = (l + h) / 2;
+    if (nums[mid - 1] < nums[mid + 1]) {
+      res = nums[mid - 1];
+      h = mid - 1;
+    }
   }
 }
 
