@@ -8,6 +8,7 @@
  *  A solution that runs in O(n) time is trivial, can you write an algorithm that runs in O(log n) time?
  * */
 
+#include <stdio.h>
 int min_rotated_sorted(int *nums, int n) {
   int l = 0, h = n - 1;
   int res;
@@ -17,11 +18,16 @@ int min_rotated_sorted(int *nums, int n) {
       res = nums[mid - 1];
       h = mid - 1;
     }
+    if (nums[mid + 1] < nums[mid - 1]) {
+      res = nums[mid + 1];
+      l = mid + 1;
+    }
   }
+  return res;
 }
 
 int main(void) {
   int nums[] = {4, 5, 6, 7, 1, 2, 3};
-
+  printf("%d\n", min_rotated_sorted(nums, 7));
   return 0;
 }
