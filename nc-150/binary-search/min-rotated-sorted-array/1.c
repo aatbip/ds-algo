@@ -23,7 +23,7 @@ int min_rotated_sorted(int *nums, int n) {
       l = mid + 1;
     }
   }
-  return res;
+  return nums[res];
 }
 
 int main(void) {
