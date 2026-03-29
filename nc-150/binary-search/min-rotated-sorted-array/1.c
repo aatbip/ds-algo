@@ -11,19 +11,16 @@
 #include <stdio.h>
 int min_rotated_sorted(int *nums, int n) {
   int l = 0, h = n - 1;
-  int res;
   while (l < h) {
     int mid = (l + h) / 2;
-    if (nums[mid - 1] < nums[mid + 1]) {
-      res = nums[mid - 1];
-      h = mid - 1;
+    if (nums[mid] < nums[h]) {
+      h = mid;
     }
-    if (nums[mid + 1] < nums[mid - 1]) {
-      res = nums[mid + 1];
+    if (nums[mid] > nums[h]) {
       l = mid + 1;
     }
   }
-  return nums[res];
+  return nums[l];
 }
 
 int main(void) {
