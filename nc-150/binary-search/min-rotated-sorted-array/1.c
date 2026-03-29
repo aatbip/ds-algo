@@ -9,6 +9,7 @@
  * */
 
 #include <stdio.h>
+
 int min_rotated_sorted(int *nums, int n) {
   int l = 0, h = n - 1;
   while (l < h) {
@@ -24,7 +25,7 @@ int min_rotated_sorted(int *nums, int n) {
 }
 
 int main(void) {
-  int nums[] = {4, 5, 6, 7, 1, 2, 3};
-  printf("%d\n", min_rotated_sorted(nums, 7));
+  int nums[] = {3, 1, 2};
+  printf("%d\n", min_rotated_sorted(nums, 3));
   return 0;
 }
