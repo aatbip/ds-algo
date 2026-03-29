@@ -7,7 +7,7 @@
  *  Assuming all elements in the rotated sorted array nums are unique, return the minimum element of this array.
  *  A solution that runs in O(n) time is trivial, can you write an algorithm that runs in O(log n) time?
  *
- *  The program uses binary search (divide and conquer) technique to solving the problem.
+ *  The program uses binary search technique to solving the problem.
  *
  *  Time complexity - O(logn)
  *  Space complexity - O(n)
