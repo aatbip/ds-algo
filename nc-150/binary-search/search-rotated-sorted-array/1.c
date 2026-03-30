@@ -60,7 +60,7 @@ int search_rotated_sorted(int *nums, int numsSize, int target) {
 }
 
 int main(void) {
-  int nums[] = {3, 4, 5, 6, 1, 2};
+  int nums[] = {1, 2, 3, 4, 5, 6};
   printf("%d\n", search_rotated_sorted(nums, 6, 3));
   return 0;
 }
