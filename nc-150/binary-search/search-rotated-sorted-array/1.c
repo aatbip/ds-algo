@@ -15,6 +15,9 @@
  * The program first find the index of the min in the rotated sorted array. Then we can form two sorted arrays
  * which are leftmost to min -1 and min to rightmost. Then we can perform binary search on these two distinct
  * sorted arrays.
+ *
+ * Time complexity - O(logn)
+ * Space complexity - O(1)
  * */
 
 #include <stdio.h>
