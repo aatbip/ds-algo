@@ -28,7 +28,11 @@ int search_rotated_sorted(int *nums, int numsSize, int target) {
       h = mid;
     }
   }
-  return l;
+  // first search through the left side
+  int res = binary_search(nums, numsSize, 0, l - 1, target);
+  if (res != -1) {
+    return res;
+  }
 }
 
 int main(void) {
