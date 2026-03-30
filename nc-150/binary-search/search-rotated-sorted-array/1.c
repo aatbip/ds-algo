@@ -33,10 +33,12 @@ int search_rotated_sorted(int *nums, int numsSize, int target) {
   if (res != -1) {
     return res;
   }
+  res = binary_search(nums, numsSize, l, numsSize - 1, target);
+  return res;
 }
 
 int main(void) {
-  int nums[] = {1, 3};
-  printf("%d\n", search_rotated_sorted(nums, 2, 1));
+  int nums[] = {3, 4, 5, 6, 1, 2};
+  printf("%d\n", search_rotated_sorted(nums, 6, 3));
   return 0;
 }
