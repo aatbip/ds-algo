@@ -17,34 +17,18 @@ int binary_search(int *nums, int n, int l, int h, int target) {
 }
 
 int search_rotated_sorted(int *nums, int numsSize, int target) {
+  // first find index of min in rotated sorted array
   int l = 0, h = numsSize - 1;
-  int mid = (l + h) / 2;
-  if (l == h) {
-    return (target == nums[l]) ? l : -1;
+  while (l < h) {
+    int mid = (l + h) / 2;
+    if (nums[mid] > nums[h]) {
+      l = mid + 1;
+    }
+    if (nums[mid] < nums[h]) {
+      h = mid;
+    }
   }
-  if (nums[l] <= nums[mid]) {
-    if (target == nums[mid + 1]) {
-      return mid + 1;
-    }
-    int res;
-    res = binary_search(nums, numsSize, l, mid, target);
-    if (res == -1) {
-      res = binary_search(nums, numsSize, mid + 2, h, target);
-    }
-    return res;
-  }
-  if (nums[l] > nums[mid]) {
-    if (target == nums[mid - 1]) {
-      return mid - 1;
-    }
-    int res;
-    res = binary_search(nums, numsSize, mid, h, target);
-    if (res == -1) {
-      res = binary_search(nums, numsSize, l, mid - 2, target);
-    }
-    return res;
-  }
-  return -1;
+  return l;
 }
 
 int main(void) {
