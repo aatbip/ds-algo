@@ -12,6 +12,15 @@
  *
  * Note: For all calls to set, the timestamps are in strictly increasing order.
  *
+ * We use hash map and vector of pair data structures to achieve the solution.
+ *
+ * Time complexity -
+ * set method: O(n)
+ * get method: O(logn), where 'n' is the size of the vector
+ *
+ * Space complexity -
+ * O(m * n), where 'm' is the total number of keys and 'n' is the total number of values for a key
+ *
  * */
 
 #include <iostream>
