@@ -12,17 +12,17 @@ public:
   void set(std::string key, std::string value, int timeStamp) { map[key].push_back({value, timeStamp}); }
 
   std::string get(std::string key, int timeStamp) {
-    std::vector<std::pair<std::string, int>> vec = map[key];
+    auto *vec = &map[key];
     std::string res = "";
-    int l = 0, h = vec.size() - 1;
+    int l = 0, h = (*vec).size() - 1;
     while (l <= h) {
       int mid = (l + h) / 2;
-      if (vec[mid].second > timeStamp) {
+      if ((*vec)[mid].second > timeStamp) {
         h = mid - 1;
       }
-      if (vec[mid].second <= timeStamp) {
+      if ((*vec)[mid].second <= timeStamp) {
         l = mid + 1;
-        res = vec[mid].first;
+        res = (*vec)[mid].first;
       }
     }
     return res;
