@@ -14,6 +14,15 @@ public:
       int max_left2 = max(nums2[0], nums2[part2 - 1]);
       int min_right1 = min(nums1[part1], nums1[nums1.size() - 1]);
       int min_right2 = min(nums2[part2], nums2[nums2.size() - 1]);
+
+      if (max_left1 <= min_right2 && max_left2 <= min_right1) {
+      }
+
+      if (max_left1 > min_right2) {
+        r = part1 - 1;
+      } else {
+        l = part1 + 1;
+      }
     }
 
     return 0;
