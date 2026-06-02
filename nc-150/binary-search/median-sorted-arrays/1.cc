@@ -9,6 +9,9 @@
  *
  * Time complexity: O(logm + logn) = O(log(m+n)), where 'm' and 'n' are the length of two arrays respectively
  * Space complexity: O(1)
+ *
+ * Binary search is searching for the correct partition (part1) here that will make the arrays virtually sorted if
+ * combined.
  * */
 
 #include <algorithm>
