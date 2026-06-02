@@ -23,7 +23,8 @@ public:
     if (nums1.size() > nums2.size()) {
       return medianSortedArrays(nums2, nums1);
     }
-    int l = 0, r = nums1.size();
+    int l = 0, r = nums1.size(); // r is not nums1.size() - 1 because 'r' defines the partition size which can range
+                                 // from 0 to the actual size of array
     while (l <= r) {
       int part1 = (l + r) / 2;
       int part2 = (nums1.size() + nums2.size() + 1) / 2 - part1;
