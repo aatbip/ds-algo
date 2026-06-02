@@ -1,3 +1,16 @@
+/*You are given two integer arrays nums1 and nums2 of size m and n respectively, where each is sorted in ascending
+ * order. Return the median value among all elements of the two arrays.
+ *
+ *Your solution must run in O(log(m+n)) time.
+ *
+ * Median: A median of a set of numbers is a value separating the higher half from the lower half. In case of odd sized
+ * array, median is the element in the middle index. In case of even sized array, median is the average of the two
+ * adjacent middle elements.
+ *
+ * Time complexity: O(logm + logn) = O(log(m+n)), where 'm' and 'n' are the length of two arrays respectively
+ * Space complexity: O(1)
+ * */
+
 #include <algorithm>
 #include <climits>
 #include <iostream>
