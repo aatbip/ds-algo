@@ -23,6 +23,7 @@ ll *create_list(int key) {
   return list;
 }
 
+// not at all optimized way just for testing
 void insert_node(ll *list, int key) {
   ll *node = malloc(sizeof(ll));
   node->key = key;
