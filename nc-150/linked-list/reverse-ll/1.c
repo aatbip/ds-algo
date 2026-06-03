@@ -42,13 +42,13 @@ void download_ll(ll *list) {
 }
 
 ll *reverse_ll(ll *head) {
-  ll *next, *prev = NULL;
+  ll *prev = NULL;
   ll *cur = head;
   while (cur) {
-    next = cur->next;
+    ll *temp = cur->next;
     cur->next = prev;
     prev = cur;
-    cur = next;
+    cur = temp;
   }
   return prev;
 }
