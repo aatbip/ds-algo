@@ -42,23 +42,15 @@ void download_ll(ll *list) {
 }
 
 ll *reverse_ll(ll *head) {
-  ll *next, *prev;
+  ll *next, *prev = NULL;
   int i = 0;
   ll *cur = head;
   while (cur) {
-    if (i == 0) {
-      next = cur->next;
-      prev = cur;
-      cur->next = NULL;
-      cur = next;
-      i++;
-    } else {
-      next = cur->next;
-      cur->next = prev;
-      prev = cur;
-      cur = next;
-      i++;
-    }
+    next = cur->next;
+    cur->next = prev;
+    prev = cur;
+    cur = next;
+    i++;
   }
   return prev;
 }
