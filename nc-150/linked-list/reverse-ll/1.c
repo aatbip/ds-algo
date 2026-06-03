@@ -6,6 +6,9 @@
  * Example 1-
  *        Input : head = []
  *        Output: []
+ *
+ *  Time complexity- O(n)
+ *  Space complexity- O(1)
  * */
 
 #include <stdio.h>
