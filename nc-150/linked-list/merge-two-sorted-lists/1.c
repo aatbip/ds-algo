@@ -1,3 +1,14 @@
+/*You are given the heads of two sorted linked lists list1 and list2. Merge the two lists into one sorted linked list
+ * and return the head of the new sorted linked list. The new list should be made up of nodes from list1 and list2.
+ *
+ * Input: list1 = [1,2,4], list2 = [1,3,5]
+ * Output: [1,1,2,3,4,5]
+ *
+ * Solved using a dummy struct to save the pointer to head.
+ * Time complexity- O(m + n), where 'm' is size of list1 and 'n' is size of list2
+ * Space complexity- O(1)
+ * */
+
 #include "../ll.h"
 #include <stdio.h>
 #include <stdlib.h>
