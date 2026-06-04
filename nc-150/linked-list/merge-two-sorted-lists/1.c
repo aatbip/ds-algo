@@ -18,6 +18,7 @@ ll *merge_list(ll *list1, ll *list2) {
     }
     tail = tail->next;
   }
+  tail->next = p1 ? p1 : p2;
   return dummy.next;
 }
 
