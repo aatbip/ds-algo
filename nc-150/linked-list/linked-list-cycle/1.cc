@@ -1,4 +1,5 @@
-#include <unordered_map>
+#include <iostream>
+#include <unordered_set>
 
 class ListNode {
 public:
@@ -13,17 +14,36 @@ public:
 class Solution {
 public:
   bool hasCycle(ListNode *head) {
-    std::unordered_map<void *, int> map;
+    std::unordered_set<ListNode *> set;
     ListNode *cur = head;
     while (cur) {
-      if (map.find(cur) != map.end()) {
+      if (set.find(cur) != set.end()) {
         return true;
       }
-      map[cur] = 1;
+      set.insert(cur);
       cur = cur->next;
     }
     return false;
   }
 };
 
-int main(void) { return 0; }
+int main(void) {
+  ListNode *head = new ListNode(0);
+  head = new ListNode(1, head);
+  ListNode *temp = head = new ListNode(2, head);
+  head = new ListNode(3, head);
+
+  // create a cycle
+  ListNode *cur = head;
+  while (cur) {
+    if (cur->next == nullptr) {
+      cur->next = temp;
+      break;
+    }
+    cur = cur->next;
+  }
+
+  Solution s;
+  std::cout << s.hasCycle(head) << "\n";
+  return 0;
+}
