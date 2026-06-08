@@ -13,7 +13,7 @@ public:
 
   void reorder_list(ListNode *head) {
     ListNode *slow = head;
-    ListNode *fast = head;
+    ListNode *fast = head->next;
     while (fast && fast->next) {
       slow = slow->next;
       fast = fast->next->next;
