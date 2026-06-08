@@ -31,11 +31,11 @@ public:
 
     ListNode *l = head;
     ListNode *r = prev;
-    while (r) {
+    while (l) {
       ListNode *ltemp = l->next;
       ListNode *rtemp = r->next;
       l->next = r;
-      r->next = rtemp ? ltemp : rtemp;
+      r->next = ltemp;
       l = ltemp;
       r = rtemp;
     }
