@@ -16,19 +16,13 @@
  * Space complexity- O(n), because of the vector
  * */
 
+#include "../ll1.h"
 #include <cstring>
 #include <iostream>
 #include <vector>
 
-class ListNode {
-  int val;
-  ListNode *next;
-
+class Solution {
 public:
-  ListNode() : val(0), next(nullptr) {}
-  ListNode(int x) : val(x), next(nullptr) {}
-  ListNode(int x, ListNode *next) : val(x), next(next) {}
-
   void reorder_list(ListNode *head) {
     std::vector<ListNode *> nodes;
     ListNode *cur = head;
@@ -48,26 +42,15 @@ public:
     }
     nodes[l]->next = nullptr;
   }
-
-  void print() {
-    ListNode *cur = this;
-    while (cur) {
-      std::cout << cur->val << "\n";
-      cur = cur->next;
-    }
-  }
 };
 
 int main(void) {
-  ListNode *head = nullptr;
   std::vector<int> arr = {8, 6, 4, 2};
-  for (int i = 0; i < arr.size(); i++) {
-    head = new ListNode(arr[i], head);
-  }
+  ListNode *head = ListNode::make(arr);
   head->print();
-  std::cout << "\n";
 
-  head->reorder_list(head);
+  Solution s;
+  s.reorder_list(head);
   head->print();
 
   return 0;
