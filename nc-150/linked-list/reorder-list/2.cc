@@ -32,8 +32,8 @@ public:
 
 int main(void) {
   ListNode *head = nullptr;
-  std::vector<int> arr = {6, 5, 4, 3, 2, 1};
-  for (int i = 0; i < arr.size(); i++) {
+  std::vector<int> arr = {2, 4, 6, 8};
+  for (int i = arr.size() - 1; i >= 0; --i) {
     head = new ListNode(arr[i], head);
   }
   head->print();
