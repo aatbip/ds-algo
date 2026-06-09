@@ -5,31 +5,23 @@
 class Solution {
 public:
   ListNode *remove_nth_node(ListNode *head, int n) {
+    ListNode *dummy = new ListNode(0, head);
+    ListNode *slow = dummy;
     ListNode *fast = head;
-    ListNode *slow = head;
-    ListNode *cur = head;
-    for (int i = 1; i < n; i++) {
+    for (int i = 0; i < n; i++) {
       fast = fast->next;
     }
-    int c = 0;
-    ListNode *prev = head;
     while (fast) {
       fast = fast->next;
-      if (fast) {
-        prev = slow;
-        slow = slow->next;
-        c++;
-      }
+      slow = slow->next;
     }
-    if (c == 0)
-      return prev->next;
-    prev->next = slow->next;
-    return head;
+    slow->next = slow->next->next;
+    return dummy->next;
   }
 };
 
 int main(void) {
-  std::vector<int> arr = {1, 2};
+  std::vector<int> arr = {1, 2, 3, 4, 5};
   ListNode *head = ListNode::make(arr);
   head->print();
   std::cout << "\n";
