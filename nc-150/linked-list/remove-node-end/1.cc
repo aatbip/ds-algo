@@ -1,3 +1,14 @@
+/* Given the head of a linked list and an integer n, remove the nth node from the end of the list and return its head.
+ * Example-
+ * Input: head = [1,2,3,4], n = 2
+ * Output: [1,2,4]
+ *
+ * Solution:
+ * This program uses a brute force approach which takes two iteration pass.
+ * Time complexity- O(n + n) = O(n)
+ * Space complexity- O(1)
+ * */
+
 #include "../ll1.h"
 #include <iostream>
 #include <vector>
