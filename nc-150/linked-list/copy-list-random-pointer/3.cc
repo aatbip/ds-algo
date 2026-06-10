@@ -22,6 +22,9 @@
 class Solution {
 public:
   ListNode *deep_copy(ListNode *head) {
+    if (head == nullptr) {
+      return nullptr;
+    }
     ListNode *cur = head;
     while (cur) {
       ListNode *copy = new ListNode(cur->val);
