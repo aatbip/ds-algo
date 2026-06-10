@@ -9,9 +9,10 @@ class ListNode {
 public:
   int val;
   ListNode *next;
+  ListNode *random;
 
   ListNode() : val(0), next(nullptr) {}
-  ListNode(int x) : val(x), next(nullptr) {}
+  ListNode(int x) : val(x), next(nullptr), random(nullptr) {}
   ListNode(int x, ListNode *next) : val(x), next(next) {}
 
   static ListNode *make(std::vector<int> &arr) {
