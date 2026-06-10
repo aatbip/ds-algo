@@ -14,7 +14,14 @@
  * it does not point to any node.
  *
  * Solution:
+ * This method optimizes for space by using O(1) extra space. The idea is to create a list in the first iteration that
+ * looks like this: A -> A' -> B -> B' -> C -> C' -> ... and so on Where, A' is the exact copy of A.
  *
+ * Then in the second iteration, we will handle the 'random' pointer of the copied nodes.
+ * Then in the third iteration we will detatch the original nodes and only maintain the list of the copied nodes.
+ *
+ * Time complexity- O(n)
+ * Space complexity- O(1) and O(n) for the copied list
  * */
 
 #include "../ll1.h"
