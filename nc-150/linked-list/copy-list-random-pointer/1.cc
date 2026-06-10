@@ -13,8 +13,8 @@ public:
     }
     cur = head;
     while (cur) {
-      map[cur]->next = cur->next;
-      map[cur]->random = cur->random;
+      map[cur]->next = map[cur->next];
+      map[cur]->random = map[cur->random];
       cur = cur->next;
     }
     return map[head];
