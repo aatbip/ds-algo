@@ -14,7 +14,10 @@
  * it does not point to any node.
  *
  * Solution:
+ * This solution uses hashmap but solves in one pass.
  *
+ * Time complexity- O(n+n) = O(2n) which becomes O(n) asymptotically.
+ * Space complexity- O(n)
  * */
 
 #include "../ll1.h"
