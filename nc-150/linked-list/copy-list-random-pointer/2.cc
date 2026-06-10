@@ -25,6 +25,7 @@ public:
   ListNode *deep_copy(ListNode *head) {
     ListNode *cur = head;
     std::unordered_map<ListNode *, ListNode *> map;
+    map[nullptr] = nullptr;
     while (cur) {
       if (map.find(cur) == map.end()) {
         map[cur] = new ListNode(0);
