@@ -11,9 +11,9 @@ public:
   ListNode *next;
   ListNode *random;
 
-  ListNode() : val(0), next(nullptr) {}
+  ListNode() : val(0), next(nullptr), random(nullptr) {}
   ListNode(int x) : val(x), next(nullptr), random(nullptr) {}
-  ListNode(int x, ListNode *next) : val(x), next(next) {}
+  ListNode(int x, ListNode *next) : val(x), next(next), random(nullptr) {}
 
   static ListNode *make(std::vector<int> &arr) {
     ListNode *head = nullptr;
