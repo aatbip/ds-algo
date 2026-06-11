@@ -25,12 +25,15 @@ public:
     return head;
   }
 
-  ListNode *append(int x) {
-    ListNode *cur = this;
+  static ListNode *append(ListNode *head, int x) {
+    ListNode *n = new ListNode(x);
+    if (!head)
+      return n;
+    ListNode *cur = head;
     while (cur->next)
       cur = cur->next;
-    cur->next = new ListNode(x);
-    return this;
+    cur->next = n;
+    return head;
   }
 
   void print() {
