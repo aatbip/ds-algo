@@ -7,9 +7,14 @@
 // };
 
 int main(void) {
-  ListNode *head = new ListNode(1);
-  head->append(2);
-  head->append(3);
-  head->print();
+  ListNode *l1 = new ListNode(9);
+  l1->append(1);
+
+  ListNode *l2 = new ListNode(9);
+  l2->append(9);
+
+  l1->print();
+  l2->print();
+
   return 0;
 }
