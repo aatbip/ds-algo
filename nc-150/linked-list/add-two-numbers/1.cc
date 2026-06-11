@@ -8,7 +8,8 @@
 
 int main(void) {
   ListNode *head = new ListNode(1);
-  head = head->append(head, 2);
+  head->append(2);
+  head->append(3);
   head->print();
   return 0;
 }

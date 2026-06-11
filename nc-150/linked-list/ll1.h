@@ -5,6 +5,8 @@
 #include <iostream>
 #include <vector>
 
+/*Not at all optimized linked list just for testing my solutions. For ex `append` method is O(n) which can be made to be
+ * O(1) using a state to track the tail node.*/
 class ListNode {
 public:
   int val;
@@ -21,6 +23,14 @@ public:
       head = new ListNode(arr[i], head);
     }
     return head;
+  }
+
+  ListNode *append(int x) {
+    ListNode *cur = this;
+    while (cur->next)
+      cur = cur->next;
+    cur->next = new ListNode(x);
+    return this;
   }
 
   void print() {
