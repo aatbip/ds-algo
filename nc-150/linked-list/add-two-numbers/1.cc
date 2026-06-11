@@ -1,3 +1,20 @@
+/* You are given two non-empty linked lists, l1 and l2, where each represents a non-negative integer.
+ * The digits are stored in reverse order, e.g. the number 321 is represented as 1 -> 2 -> 3 -> in the linked list.
+ * Each of the nodes contains a single digit. You may assume the two numbers do not contain any leading zero, except the
+ * number 0 itself.
+ * Return the sum of the two numbers as a linked list.
+ *
+ * Example-
+ * Input: l1 = [1,2,3], l2 = [4,5,6]
+ * Output: [5,7,9]
+ * Explanation: 321 + 654 = 975.
+ *
+ * Solution:
+ * This program uses math trick to solve the problem.
+ * Time complexity- O(n)
+ * Space complexity- O(1)
+ * */
+
 #include "../ll1.h"
 
 class Solution {
