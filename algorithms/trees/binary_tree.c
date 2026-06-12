@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct _Item {
   int key;
@@ -56,7 +57,8 @@ void post_traverse(link *node) {
 
 // level traversal
 void level_traverse(link *node) {
-  queue q = {.queue = {0}, 0};
+  queue q;
+  memset(&q, 0, sizeof(queue));
   enque(&q, node);
   while (q.dq_idx != q.eq_idx) {
     link *curr = deque(&q);
@@ -78,7 +80,8 @@ link *btree_create_node(int key) {
 
 void btree_insert(link *root, int key) {
   link *node = btree_create_node(key);
-  queue q = {.queue = {0}, 0};
+  queue q;
+  memset(&q, 0, sizeof(queue));
   enque(&q, root);
   while (q.dq_idx != q.eq_idx) {
     link *curr = deque(&q);
