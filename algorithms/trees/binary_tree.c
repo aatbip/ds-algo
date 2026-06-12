@@ -15,6 +15,7 @@ typedef struct {
   link *q[256];
   int dq_idx;
   int eq_idx;
+  int size;
 } queue;
 
 // preorder traversal
@@ -42,19 +43,19 @@ void post_traverse(link *node) {
   printf("%d\n", node->item.key);
 }
 
-// level order traversal
+// level traversal
 void level_traverse(link *node) {
-  queue q = {0};
-  q.q[q.eq_idx++] = node;
-  while (q.dq_idx < q.eq_idx) {
-    link *curr = q.q[q.dq_idx++];
+  queue q = {0, .size = 256};
+
+  q.q[q.eq_idx++ % q.size] = node;
+
+  while (q.dq_idx != q.eq_idx) {
+    link *curr = q.q[q.dq_idx++ % q.size];
     printf("%d\n", curr->item.key);
-    if (curr->l) {
-      q.q[q.eq_idx++] = curr->l;
-    }
-    if (curr->r) {
-      q.q[q.eq_idx++] = curr->r;
-    }
+    if (curr->l)
+      q.q[q.eq_idx++ % q.size] = curr->l;
+    if (curr->r)
+      q.q[q.eq_idx++ % q.size] = curr->r;
   }
 }
 
