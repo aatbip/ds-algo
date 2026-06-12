@@ -10,16 +10,16 @@ typedef struct node {
   struct node *r;
 } link;
 
-link *btree_init() {
+link *btree_init(int key) {
   link *node = malloc(sizeof(link));
-  node->item.key = 0;
+  node->item.key = key;
   node->l = NULL;
   node->r = NULL;
   return node;
 }
 
 int main(void) {
-  link *node = btree_init();
+  link *node = btree_init(1);
 
   return 0;
 }
