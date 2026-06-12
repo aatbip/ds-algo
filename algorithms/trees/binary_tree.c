@@ -11,6 +11,12 @@ typedef struct node {
   struct node *r;
 } link;
 
+typedef struct {
+  link *q[256];
+  int dq_idx;
+  int eq_idx;
+} queue;
+
 // preorder traversal
 void pre_traverse(link *node) {
   if (!node)
@@ -34,6 +40,22 @@ void post_traverse(link *node) {
   post_traverse(node->l);
   post_traverse(node->r);
   printf("%d\n", node->item.key);
+}
+
+// level order traversal
+void level_traverse(link *node) {
+  queue q = {0};
+  q.q[q.eq_idx++] = node;
+  while (q.dq_idx < q.eq_idx) {
+    link *curr = q.q[q.dq_idx++];
+    printf("%d\n", curr->item.key);
+    if (curr->l) {
+      q.q[q.eq_idx++] = curr->l;
+    }
+    if (curr->r) {
+      q.q[q.eq_idx++] = curr->r;
+    }
+  }
 }
 
 link *btree_create_node(int key) {
@@ -61,7 +83,8 @@ int main(void) {
 
   // pre_traverse(node);
   // inorder_traverse(node);
-  post_traverse(node);
+  // post_traverse(node);
+  level_traverse(node);
 
   return 0;
 }
