@@ -11,12 +11,23 @@ typedef struct node {
   struct node *r;
 } link;
 
+#define QUEUE_SIZE 256
 typedef struct {
-  link *q[256];
+  link *queue[QUEUE_SIZE];
   int dq_idx;
   int eq_idx;
-  int size;
 } queue;
+
+void enque(queue *q, link *node) {
+  q->queue[q->eq_idx] = node;
+  q->eq_idx = (q->eq_idx + 1) % QUEUE_SIZE;
+}
+
+link *deque(queue *q) {
+  link *node = q->queue[q->dq_idx];
+  q->dq_idx = (q->dq_idx + 1) % QUEUE_SIZE;
+  return node;
+}
 
 // preorder traversal
 void pre_traverse(link *node) {
@@ -45,17 +56,15 @@ void post_traverse(link *node) {
 
 // level traversal
 void level_traverse(link *node) {
-  queue q = {0, .size = 256};
-
-  q.q[q.eq_idx++ % q.size] = node;
-
+  queue q = {0};
+  enque(&q, node);
   while (q.dq_idx != q.eq_idx) {
-    link *curr = q.q[q.dq_idx++ % q.size];
+    link *curr = deque(&q);
     printf("%d\n", curr->item.key);
     if (curr->l)
-      q.q[q.eq_idx++ % q.size] = curr->l;
+      enque(&q, curr->l);
     if (curr->r)
-      q.q[q.eq_idx++ % q.size] = curr->r;
+      enque(&q, curr->r);
   }
 }
 
@@ -69,21 +78,20 @@ link *btree_create_node(int key) {
 
 void btree_insert(link *root, int key) {
   link *node = btree_create_node(key);
-  queue q = {0, .size = 256};
-  q.q[q.eq_idx++ % q.size] = root;
+  queue q = {0};
+  enque(&q, root);
   while (q.dq_idx != q.eq_idx) {
-    link *curr = q.q[q.dq_idx++ % q.size];
+    link *curr = deque(&q);
     if (curr->l == NULL) {
       curr->l = node;
       break;
     }
-    q.q[q.eq_idx++ % q.size] = curr->l;
-
+    enque(&q, curr->l);
     if (curr->r == NULL) {
       curr->r = node;
       break;
     }
-    q.q[q.eq_idx++ % q.size] = curr->r;
+    enque(&q, curr->r);
   }
 }
 
@@ -105,10 +113,12 @@ int main(void) {
   btree_insert(root, 6);
   btree_insert(root, 7);
 
-  // level_traverse(node);
+  level_traverse(root);
+  btree_insert(root, 8);
+  level_traverse(root);
   // inorder_traverse(node);
   // post_traverse(node);
-  pre_traverse(root);
+  // pre_traverse(root);
   btree_free(root);
 
   return 0;
