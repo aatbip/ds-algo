@@ -67,25 +67,48 @@ link *btree_create_node(int key) {
   return node;
 }
 
-void btree_insert(int key) { link *node = btree_create_node(key); }
+void btree_insert(link *root, int key) {
+  link *node = btree_create_node(key);
+  queue q = {0, .size = 256};
+  q.q[q.eq_idx++ % q.size] = root;
+  while (q.dq_idx != q.eq_idx) {
+    link *curr = q.q[q.dq_idx++ % q.size];
+    if (curr->l == NULL) {
+      curr->l = node;
+      break;
+    }
+    q.q[q.eq_idx++ % q.size] = curr->l;
+
+    if (curr->r == NULL) {
+      curr->r = node;
+      break;
+    }
+    q.q[q.eq_idx++ % q.size] = curr->r;
+  }
+}
 
 int main(void) {
   link *node = btree_create_node(1);
   link *node1 = btree_create_node(2);
-  link *node2 = btree_create_node(3);
-  link *node3 = btree_create_node(4);
-  link *node4 = btree_create_node(5);
-  link *node5 = btree_create_node(6);
+  // link *node2 = btree_create_node(3);
+  // link *node3 = btree_create_node(4);
+  // link *node4 = btree_create_node(5);
+  // link *node5 = btree_create_node(6);
   node->l = node1;
-  node->r = node2;
-  node2->l = node3;
-  node2->r = node4;
-  node3->l = node5;
+  // node->r = node2;
+  // node2->l = node3;
+  // node2->r = node4;
+  // node3->l = node5;
 
-  // pre_traverse(node);
   // inorder_traverse(node);
   // post_traverse(node);
-  level_traverse(node);
+  btree_insert(node, 3);
+  btree_insert(node, 4);
+  btree_insert(node, 5);
+  btree_insert(node, 6);
+  btree_insert(node, 7);
+  // level_traverse(node);
+  pre_traverse(node);
 
   return 0;
 }
