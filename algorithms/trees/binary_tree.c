@@ -56,7 +56,7 @@ void post_traverse(link *node) {
 
 // level traversal
 void level_traverse(link *node) {
-  queue q = {0};
+  queue q = {.queue = {0}, 0};
   enque(&q, node);
   while (q.dq_idx != q.eq_idx) {
     link *curr = deque(&q);
@@ -78,7 +78,7 @@ link *btree_create_node(int key) {
 
 void btree_insert(link *root, int key) {
   link *node = btree_create_node(key);
-  queue q = {0};
+  queue q = {.queue = {0}, 0};
   enque(&q, root);
   while (q.dq_idx != q.eq_idx) {
     link *curr = deque(&q);
