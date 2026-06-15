@@ -10,7 +10,8 @@
  * the position where it was in the step 1. Move both slow and fast pointers in the same speed. The point where they
  * meet again is the starting point of the cycle.
  *
- *
+ * Time complexity- O(n)
+ * Space complexity- O(1)
  * */
 
 #include <iostream>
