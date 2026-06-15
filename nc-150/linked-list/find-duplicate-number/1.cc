@@ -1,3 +1,18 @@
+/* You are given an array of integers nums containing n + 1 integers. Each integer in nums is in the range [1, n]
+ * inclusive. There is exactly one repeated integer in nums, and every other integer appears at most once. Return the
+ * repeated integer.
+ *
+ * Solution: Solved using Floyd's cycle detection algorithm.
+ * Step 1- Find if the cycle exist. To do this, point both slow and fast pointers to the head and move slow 1 step while
+ * fast 2 steps. If they both meet at one node then the cycle exist.
+ *
+ * Step 2- Find the starting point of the cycle. Now point slow pointer to the head again while fast pointer starts from
+ * the position where it was in the step 1. Move both slow and fast pointers in the same speed. The point where they
+ * meet again is the starting point of the cycle.
+ *
+ *
+ * */
+
 #include <iostream>
 #include <vector>
 
