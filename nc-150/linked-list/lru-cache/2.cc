@@ -13,14 +13,17 @@ public:
 
   void put(int key, int value) {
     auto it = map.find(key);
-    if (it == map.end()) {
+    if (it != map.end()) {
+      it->second->second = value;
+      list.splice(list.end(), list, it->second);
+    } else {
       if (capacity == list.size()) {
         map.erase(list.front().first);
         list.pop_front();
       }
+      list.push_back({key, value});
+      map[key] = --list.end();
     }
-    list.push_back({key, value});
-    map[key] = --list.end();
   }
 
   int get(int key) {
