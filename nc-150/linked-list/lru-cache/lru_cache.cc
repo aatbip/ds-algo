@@ -15,8 +15,8 @@ class LRUCache {
   int capacity;
   int size;
   std::unordered_map<int, Node *> map;
-  Node *head;
-  Node *tail;
+  Node *head; // sentinel node, that is fixed and eliminate boundary edge cases check
+  Node *tail; // sentinel node, that is fixed and eliminate boundary edge cases check
 
 public:
   LRUCache(int c) {
@@ -24,45 +24,34 @@ public:
     size = 0;
     head = new Node(0, 0); // dummy head
     tail = new Node(0, 0); // dummy tail
+    head->next = tail;
+    tail->prev = head;
   }
 
   void unlink_node(Node *n) {
-    if (n->prev)
-      n->prev->next = n->next;
-    else
-      this->head = n->next;
-
-    if (n->next)
-      n->next->prev = n->prev;
-    else
-      this->tail = n->prev;
+    n->prev->next = n->next;
+    n->next->prev = n->prev;
   }
 
   void move_to_tail(Node *n) {
-    n->prev = this->tail;
-    this->tail->next = n;
-    n->next = nullptr;
-    this->tail = n;
+    Node *last = tail->prev;
+    last->next = n;
+    n->prev = last;
+    n->next = tail;
+    tail->prev = n;
   }
 
   void put(int k, int v) {
     if (map.find(k) == map.end()) {
       Node *node = new Node(k, v);
-      if (!this->head && !this->tail) { // ie. link is empty
-        this->head = node;
-        node->next = nullptr;
-        this->tail = node;
-        node->prev = nullptr;
-      } else {
-        if (size == capacity) {
-          Node *temp = this->head;
-          unlink_node(temp);
-          map.erase(temp->key);
-          delete (temp);
-          this->size--;
-        }
-        move_to_tail(node);
+      if (size == capacity) {
+        Node *temp = this->head;
+        unlink_node(temp);
+        map.erase(temp->key);
+        delete (temp);
+        this->size--;
       }
+      move_to_tail(node);
       map[k] = node;
       this->size++;
     } else {
@@ -90,6 +79,8 @@ int main(void) {
   head->put(3, 300);
   head->put(4, 400);
   head->put(5, 500);
+  head->put(6, 500);
+  head->put(7, 500);
   std::cout << head->get(1) << "\n";
   return 0;
 }
