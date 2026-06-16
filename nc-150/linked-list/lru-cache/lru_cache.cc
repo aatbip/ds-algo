@@ -42,7 +42,8 @@ public:
   }
 
   void put(int k, int v) {
-    if (map.find(k) == map.end()) {
+    auto it = map.find(k);
+    if (it == map.end()) {
       Node *node = new Node(k, v);
       if (size == capacity) {
         Node *temp = head->next;
@@ -55,7 +56,7 @@ public:
       map[k] = node;
       this->size++;
     } else {
-      Node *p = map.find(k)->second;
+      Node *p = it->second;
       p->val = v;
       unlink_node(p);
       move_to_tail(p);
@@ -63,9 +64,10 @@ public:
   }
 
   int get(int k) {
-    if (map.find(k) == map.end())
+    auto it = map.find(k);
+    if (it == map.end())
       return -1;
-    Node *p = map.find(k)->second;
+    Node *p = it->second;
     unlink_node(p);
     move_to_tail(p);
     return p->val;
