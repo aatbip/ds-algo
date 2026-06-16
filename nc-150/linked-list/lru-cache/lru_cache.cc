@@ -75,9 +75,10 @@ public:
 
   ~LRUCache() {
     Node *cur = head;
-    while (!cur) {
+    while (cur) {
+      Node *next = cur->next;
       delete cur;
-      cur = cur->next;
+      cur = next;
     }
   }
 };
