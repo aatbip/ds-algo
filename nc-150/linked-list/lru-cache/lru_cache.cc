@@ -72,17 +72,27 @@ public:
     move_to_tail(p);
     return p->val;
   }
+
+  ~LRUCache() {
+    Node *cur = head;
+    while (!cur) {
+      delete cur;
+      cur = cur->next;
+    }
+  }
 };
 
 int main(void) {
-  LRUCache *head = new LRUCache(5);
-  head->put(1, 100);
-  head->put(2, 200);
-  head->put(3, 300);
-  head->put(4, 400);
-  head->put(5, 500);
-  head->put(6, 500);
-  head->put(7, 500);
-  std::cout << head->get(1) << "\n";
+  LRUCache *cache = new LRUCache(5);
+  cache->put(1, 100);
+  cache->put(2, 200);
+  cache->put(3, 300);
+  cache->put(4, 400);
+  cache->put(5, 500);
+  cache->put(6, 500);
+  cache->put(7, 500);
+  std::cout << cache->get(1) << "\n";
+  std::cout << cache->get(7) << "\n";
+  delete cache;
   return 0;
 }
