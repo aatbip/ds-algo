@@ -1,3 +1,4 @@
+#include <iostream>
 #include <unordered_map>
 
 class Node {
@@ -37,6 +38,7 @@ public:
         if (size == capacity) {
           Node *temp = this->head;
           this->head = this->head->next;
+          map.erase(temp->key);
           delete (temp);
           this->size--;
         }
@@ -45,6 +47,7 @@ public:
         node->next = nullptr;
         this->tail = node;
       }
+      map[k] = node;
       this->size++;
     } else {
       Node *p = map.find(k)->second;
@@ -68,6 +71,13 @@ public:
 };
 
 int main(void) {
-  LRUCache *head = new LRUCache(20);
+  LRUCache *head = new LRUCache(5);
+  head->put(1, 100);
+  head->put(2, 200);
+  head->put(3, 300);
+  head->put(4, 400);
+  head->put(5, 500);
+  head->put(6, 600);
+  std::cout << head->get(1) << "\n";
   return 0;
 }
