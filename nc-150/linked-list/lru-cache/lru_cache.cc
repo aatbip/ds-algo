@@ -22,8 +22,8 @@ public:
   LRUCache(int c) {
     capacity = c;
     size = 0;
-    head = nullptr;
-    tail = nullptr;
+    head = new Node(0, 0); // dummy head
+    tail = new Node(0, 0); // dummy tail
   }
 
   void unlink_node(Node *n) {
