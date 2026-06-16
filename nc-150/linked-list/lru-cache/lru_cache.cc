@@ -84,16 +84,16 @@ public:
 };
 
 int main(void) {
-  LRUCache *cache = new LRUCache(5);
-  cache->put(1, 100);
-  cache->put(2, 200);
-  cache->put(3, 300);
-  cache->put(4, 400);
-  cache->put(5, 500);
-  cache->put(6, 500);
-  cache->put(7, 500);
+  LRUCache *cache = new LRUCache(2);
+  cache->put(1, 1);
+  cache->put(2, 2);
   std::cout << cache->get(1) << "\n";
-  std::cout << cache->get(7) << "\n";
+  cache->put(3, 3);
+  std::cout << cache->get(2) << "\n";
+  cache->put(4, 4);
+  std::cout << cache->get(1) << "\n";
+  std::cout << cache->get(3) << "\n";
+  std::cout << cache->get(4) << "\n";
   delete cache;
   return 0;
 }
