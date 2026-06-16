@@ -26,6 +26,18 @@ public:
     tail = nullptr;
   }
 
+  void unlink_node(Node *n) {
+    n->prev->next = n->next;
+    n->next->prev = n->prev;
+  }
+
+  void move_to_tail(Node *n) {
+    n->prev = this->tail;
+    this->tail->next = n;
+    n->next = nullptr;
+    this->tail = n;
+  }
+
   void put(int k, int v) {
     if (map.find(k) == map.end()) {
       Node *node = new Node(k, v);
@@ -38,23 +50,20 @@ public:
         if (size == capacity) {
           Node *temp = this->head;
           this->head = this->head->next;
+          this->head->prev = nullptr;
           map.erase(temp->key);
           delete (temp);
           this->size--;
         }
-        node->prev = tail;
-        this->tail->next = node;
-        node->next = nullptr;
-        this->tail = node;
+        this->move_to_tail(node);
       }
       map[k] = node;
       this->size++;
     } else {
       Node *p = map.find(k)->second;
       p->val = v;
-      this->tail->next = p;
-      p->prev = this->tail;
-      this->tail = p;
+      unlink_node(p);
+      move_to_tail(p);
     }
   }
 
@@ -79,5 +88,9 @@ int main(void) {
   head->put(5, 500);
   head->put(6, 600);
   std::cout << head->get(1) << "\n";
+  head->put(7, 600);
+  std::cout << head->get(1) << "\n";
+  std::cout << head->get(2) << "\n";
+  std::cout << head->get(3) << "\n";
   return 0;
 }
