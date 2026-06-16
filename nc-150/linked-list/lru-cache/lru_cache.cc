@@ -45,7 +45,7 @@ public:
     if (map.find(k) == map.end()) {
       Node *node = new Node(k, v);
       if (size == capacity) {
-        Node *temp = this->head;
+        Node *temp = head->next;
         unlink_node(temp);
         map.erase(temp->key);
         delete (temp);
