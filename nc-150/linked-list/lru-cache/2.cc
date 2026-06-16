@@ -20,4 +20,12 @@ class LRUCache {
       map[key] = --list.end();
     }
   }
+
+  int get(int key, int value) {
+    auto it = map.find(key);
+    if (it == map.end())
+      return -1;
+    list.splice(list.end(), list, it->second);
+    return it->second->second;
+  }
 };
