@@ -6,6 +6,8 @@
  * */
 
 #include "../ll1.h"
+#include <chrono>
+#include <iostream>
 
 class Solution {
   ListNode *merge_two_list(ListNode *l1, ListNode *l2) {
@@ -56,7 +58,11 @@ int main() {
   std::vector<ListNode *> list = {l1, l2, l3};
 
   Solution s;
+  auto start = std::chrono::high_resolution_clock::now();
   ListNode *m = s.mergeKLists(list);
+  auto end = std::chrono::high_resolution_clock::now();
+  auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+  std::cout << duration.count() << "ms\n";
   m->print();
 
   return 0;
