@@ -2,6 +2,11 @@
  * Return the sorted linked list that is the result of merging all of the individual linked lists.
  *
  * Solution-
+ * This program uses divide and conquer based technique to solve the problem.
+ *
+ * Time complexity- o(nlogk)
+ * Space complexity- O(k)
+ * where 'n' is the total number of nodes and 'k' is the size of list.
  *
  * */
 
