@@ -1,3 +1,15 @@
+/*You are given an array of k linked lists lists, where each list is sorted in ascending order.
+ * Return the sorted linked list that is the result of merging all of the individual linked lists.
+ *
+ * Solution-
+ * This program solves using the `merge_two_list` method to merge combination of linked list in the lists two at a time.
+ *
+ * Time complexity- O(n * k), where 'n' is the number of nodes in the largest linked list and 'k' is the size of list.
+ * Space complexity- O(k), because 'k' number of dummy nodes were created in `merge_two_lists`.
+ *
+ * Not a scalable solution.
+ * */
+
 #include "../ll1.h"
 #include <vector>
 
