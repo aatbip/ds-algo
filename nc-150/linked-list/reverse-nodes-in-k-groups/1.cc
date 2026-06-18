@@ -1,3 +1,14 @@
+/*You are given the head of a singly linked list head and a positive integer k. You must reverse the first k nodes
+ * in the linked list, and then reverse the next k nodes, and so on. If there are fewer than k nodes left, leave the
+ * nodes as they are. Return the modified list after reversing the nodes in each group of k. You are only allowed to
+ * modify the nodes' next pointers, not the values of the nodes.
+ *
+ * Solution-
+ * Solved iteratively.
+ * Time complexity: O(n)
+ * Space complexity: O(1)
+ * */
+
 #include "../ll1.h"
 
 #include <cstdio>
