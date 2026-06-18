@@ -1,54 +1,53 @@
 #include "../ll1.h"
 
-#include <queue>
+#include <cstdio>
+#include <iostream>
 #include <vector>
 
 class Solution {
+  ListNode *get_kth(ListNode *node, int k) {
+    ListNode *cur = node;
+    while (cur && k > 0) {
+      cur = cur->next;
+      k--;
+    }
+    return cur;
+  }
+
 public:
   ListNode *reverse_nodes(ListNode *head, int k) {
-    ListNode *last_tail = nullptr;
-    int i = 0;
-    int scale = 1;
-    ListNode *prev = nullptr;
-    ListNode *cur = head;
-    ListNode *new_head = nullptr;
-    std::queue<ListNode *> q;
-    while (cur) {
-      if (i - k == 0) {
-        if (scale == 1) {
-          new_head = prev;
-        }
-        k = k * (scale + 1);
-        scale++;
-        q.push(head);
-        head = cur;
-        prev = nullptr;
+    ListNode *dummy = new ListNode(0);
+    dummy->next = head;
+    ListNode *group_prev = dummy;
+    while (true) {
+      ListNode *kth = get_kth(group_prev, k);
+      if (!kth) {
+        break;
       }
-      ListNode *temp = cur->next;
-      cur->next = prev;
-      prev = cur;
-      cur = temp;
-      i++;
+      ListNode *prev = kth->next;
+      ListNode *cur = group_prev->next;
+      ListNode *stop = kth->next;
+      while (cur != stop) {
+        ListNode *temp = cur->next;
+        cur->next = prev;
+        prev = cur;
+        cur = temp;
+      }
+      ListNode *tmp = group_prev->next;
+      std::cout << "gp: " << group_prev->next->val << "\n";
+      group_prev->next = kth;
+      group_prev = tmp;
     }
-    q.push(prev);
-    while (!q.empty()) {
-      ListNode *temp = q.front();
-      q.pop();
-      ListNode *next = q.front();
-      temp->next = next;
-      q.pop();
-    }
-
-    return new_head;
+    return dummy->next;
   }
 };
 
 int main(void) {
-  std::vector<int> arr = {1, 2, 3, 4, 5};
+  std::vector<int> arr = {1, 2, 3, 4, 5, 6};
   ListNode *head = ListNode::make(arr);
 
   Solution s;
-  ListNode *r = s.reverse_nodes(head, 4);
+  ListNode *r = s.reverse_nodes(head, 3);
   r->print();
 
   return 0;
