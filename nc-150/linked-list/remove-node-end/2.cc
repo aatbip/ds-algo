@@ -4,7 +4,7 @@
  * Output: [1,2,4]
  *
  * Solution:
- * This program uses a brute force approach which takes two iteration pass.
+ * This program uses slow and fast pointer approach.
  * Time complexity- O(n)
  * Space complexity- O(1)
  * */
