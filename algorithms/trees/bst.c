@@ -46,6 +46,37 @@ bst_node_t *bst_insert(bst_node_t *root, int key) {
   return int_insert(node, root);
 }
 
+bst_node_t *bst_nonrecurs_insert(bst_node_t *root, int key) {
+  bst_node_t *node = malloc(sizeof(bst_node_t));
+  node->key = key;
+  node->l = node->r = NULL;
+  bst_ctx.count++;
+
+  if (root == NULL)
+    return node;
+
+  bst_node_t *cur = root;
+  bst_node_t *parent = NULL;
+
+  while (1) {
+    if (!cur) {
+      if (key < parent->key) {
+        parent->l = node;
+      } else {
+        parent->r = node;
+      }
+      break;
+    }
+    parent = cur;
+    if (key < cur->key) {
+      cur = cur->l;
+    } else {
+      cur = cur->r;
+    }
+  }
+  return root;
+}
+
 bst_node_t *bst_search(bst_node_t *node, int key) {
   if (!node)
     return NULL;
@@ -67,6 +98,19 @@ void pre_traverse(bst_node_t *node) {
 
 int main(void) {
   bst_node_t *root = bst_init();
+  // root = bst_nonrecurs_insert(root, 20);
+  // root = bst_nonrecurs_insert(root, 19);
+  // root = bst_nonrecurs_insert(root, 25);
+  // root = bst_nonrecurs_insert(root, 30);
+  // root = bst_nonrecurs_insert(root, 5);
+  // root = bst_nonrecurs_insert(root, 9);
+
+  // root = bst_insert(root, 20);
+  // root = bst_insert(root, 19);
+  // root = bst_insert(root, 25);
+  // root = bst_insert(root, 30);
+  // root = bst_insert(root, 5);
+  // root = bst_insert(root, 9);
 
   int arr[100000];
   for (int i = 0; i < 100000; i++)
@@ -77,15 +121,14 @@ int main(void) {
     arr[i] = arr[j];
     arr[j] = temp;
   }
-
   for (int i = 0; i < 100000; i++) {
-    root = bst_insert(root, arr[i]);
+    root = bst_nonrecurs_insert(root, arr[i]);
   }
 
   // pre_traverse(root);
   // printf("%d\n", bst_ctx.count);
 
-  bst_node_t *tar = bst_search(root, 12817);
+  bst_node_t *tar = bst_search(root, 20);
   printf("\ntar: %d\n", tar->key);
 
   return 0;
