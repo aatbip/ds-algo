@@ -5,6 +5,6 @@ typedef struct _bst_node {
 } bst_node_t;
 
 typedef struct _bst_ctx {
-  bst_node_t root;
-  int count; // number of nodes
+  bst_node_t root; // root node
+  int count;       // number of nodes
 } bst_ctx;
