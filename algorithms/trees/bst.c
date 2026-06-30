@@ -67,20 +67,25 @@ void pre_traverse(bst_node_t *node) {
 
 int main(void) {
   bst_node_t *root = bst_init();
-  root = bst_insert(root, 20);
-  root = bst_insert(root, 19);
-  root = bst_insert(root, 25);
-  root = bst_insert(root, 7);
-  root = bst_insert(root, 6);
-  root = bst_insert(root, 9);
-  root = bst_insert(root, 22);
-  root = bst_insert(root, 30);
-  root = bst_insert(root, 11);
 
-  pre_traverse(root);
-  printf("%d\n", bst_ctx.count);
+  int arr[100000];
+  for (int i = 0; i < 100000; i++)
+    arr[i] = i;
+  for (int i = 99999; i > 0; i--) {
+    int j = rand() % (i + 1);
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+  }
 
-  bst_node_t *tar = bst_search(root, 1);
+  for (int i = 0; i < 100000; i++) {
+    root = bst_insert(root, arr[i]);
+  }
+
+  // pre_traverse(root);
+  // printf("%d\n", bst_ctx.count);
+
+  bst_node_t *tar = bst_search(root, 12817);
   printf("\ntar: %d\n", tar->key);
 
   return 0;
