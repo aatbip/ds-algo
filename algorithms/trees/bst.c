@@ -37,6 +37,7 @@ bst_node_t *bst_insert(bst_node_t *root, int key) {
   bst_node_t *node = malloc(sizeof(bst_node_t));
   node->key = key;
   node->l = node->r = NULL;
+  bst_ctx.count++;
 
   if (root == NULL) {
     return node;
@@ -59,7 +60,14 @@ int main(void) {
   root = bst_insert(root, 20);
   root = bst_insert(root, 19);
   root = bst_insert(root, 25);
+  root = bst_insert(root, 7);
+  root = bst_insert(root, 6);
+  root = bst_insert(root, 9);
+  root = bst_insert(root, 22);
+  root = bst_insert(root, 30);
+  root = bst_insert(root, 11);
 
   pre_traverse(root);
+  printf("%d\n", bst_ctx.count);
   return 0;
 }
