@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct _bst_node {
@@ -7,51 +8,58 @@ typedef struct _bst_node {
 } bst_node_t;
 
 typedef struct _bst_ctx {
-  bst_node_t *root; // root node
-  int count;        // number of nodes
+  int count; // number of nodes
 } bst_ctx_t;
 
 static bst_ctx_t bst_ctx;
 
 /*init() create a dummy root*/
 bst_node_t *bst_init() {
-  bst_node_t *root = malloc(sizeof(bst_node_t));
-  root = NULL;
-
   // initialize bst_ctx
   bst_ctx.count = 0;
-  bst_ctx.root = root;
 
-  return root;
+  return NULL;
 }
 
-void int_insert(bst_node_t *node, bst_node_t *parent) {
+bst_node_t *int_insert(bst_node_t *node, bst_node_t *parent) {
   if (parent == NULL) {
-    if (node->key < parent->key) {
-      parent->l = node;
-    } else {
-      parent->r = node;
-    }
-    return;
+    return node;
   }
   if (node->key > parent->key) {
-    int_insert(node, parent->r);
+    parent->r = int_insert(node, parent->r);
   } else {
-    int_insert(node, parent->l);
+    parent->l = int_insert(node, parent->l);
   }
+  return parent;
 }
 
-void bst_insert(int key) {
-  if (bst_ctx.root == NULL) {
-    bst_ctx.root->key = key;
-    bst_ctx.root->l = NULL;
-    bst_ctx.root->r = NULL;
-    return;
-  }
-
+bst_node_t *bst_insert(bst_node_t *root, int key) {
   bst_node_t *node = malloc(sizeof(bst_node_t));
   node->key = key;
-  node->l = NULL;
-  node->r = NULL;
-  int_insert(node, bst_ctx.root);
+  node->l = node->r = NULL;
+
+  if (root == NULL) {
+    return node;
+  }
+
+  return int_insert(node, root);
+}
+
+// preorder traversal (DFS)
+void pre_traverse(bst_node_t *node) {
+  if (!node)
+    return;
+  printf("%d\n", node->key);
+  pre_traverse(node->l);
+  pre_traverse(node->r);
+}
+
+int main(void) {
+  bst_node_t *root = bst_init();
+  root = bst_insert(root, 20);
+  root = bst_insert(root, 19);
+  root = bst_insert(root, 25);
+
+  pre_traverse(root);
+  return 0;
 }
