@@ -106,6 +106,12 @@ void btree_free(link *root) {
   free(root);
 }
 
+int count(link *h) {
+  if (h == NULL)
+    return 0;
+  return count(h->l) + count(h->r) + 1;
+}
+
 int height(link *h) {
   int u, v;
   if (h == NULL)
@@ -134,6 +140,7 @@ int main(void) {
   // post_traverse(node);
   // pre_traverse(root);
   printf("height: %d\n", height(root));
+  printf("count: %d\n", count(root));
   btree_free(root);
 
   return 0;
