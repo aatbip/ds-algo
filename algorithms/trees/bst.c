@@ -24,3 +24,34 @@ bst_node_t *bst_init() {
 
   return root;
 }
+
+void int_insert(bst_node_t *node, bst_node_t *parent) {
+  if (parent == NULL) {
+    if (node->key < parent->key) {
+      parent->l = node;
+    } else {
+      parent->r = node;
+    }
+    return;
+  }
+  if (node->key > parent->key) {
+    int_insert(node, parent->r);
+  } else {
+    int_insert(node, parent->l);
+  }
+}
+
+void bst_insert(int key) {
+  if (bst_ctx.root == NULL) {
+    bst_ctx.root->key = key;
+    bst_ctx.root->l = NULL;
+    bst_ctx.root->r = NULL;
+    return;
+  }
+
+  bst_node_t *node = malloc(sizeof(bst_node_t));
+  node->key = key;
+  node->l = NULL;
+  node->r = NULL;
+  int_insert(node, bst_ctx.root);
+}
