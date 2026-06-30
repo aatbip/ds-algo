@@ -30,7 +30,7 @@ link *deque(queue *q) {
   return node;
 }
 
-// preorder traversal
+// preorder traversal (DFS)
 void pre_traverse(link *node) {
   if (!node)
     return;
@@ -38,7 +38,7 @@ void pre_traverse(link *node) {
   pre_traverse(node->l);
   pre_traverse(node->r);
 }
-// inorder traversal
+// inorder traversal (DFS)
 void inorder_traverse(link *node) {
   if (!node)
     return;
@@ -46,7 +46,7 @@ void inorder_traverse(link *node) {
   printf("%d\n", node->item.key);
   inorder_traverse(node->r);
 }
-// postorder traversal
+// postorder traversal (DFS)
 void post_traverse(link *node) {
   if (!node)
     return;
@@ -55,7 +55,7 @@ void post_traverse(link *node) {
   printf("%d\n", node->item.key);
 }
 
-// level traversal
+// level traversal (BFS)
 void level_traverse(link *node) {
   queue q;
   memset(&q, 0, sizeof(queue));
