@@ -14,7 +14,7 @@ typedef struct _bst_ctx {
 static bst_ctx_t bst_ctx;
 
 /*init() create a dummy root*/
-bst_node_t *init() {
+bst_node_t *bst_init() {
   bst_node_t *root = malloc(sizeof(bst_node_t));
   root = NULL;
 
