@@ -87,6 +87,25 @@ bst_node_t *bst_search(bst_node_t *node, int key) {
   return bst_search(node->r, key);
 }
 
+bst_node_t *bst_nonrecurs_search(bst_node_t *node, int key) {
+  if (!node)
+    return NULL;
+  if (node->key == key)
+    return node;
+
+  bst_node_t *cur = node;
+  while (cur) {
+    if (cur->key == key)
+      return cur;
+    if (key < cur->key) {
+      cur = cur->l;
+    } else {
+      cur = cur->r;
+    }
+  }
+  return NULL;
+}
+
 // preorder traversal (DFS)
 void pre_traverse(bst_node_t *node) {
   if (!node)
@@ -128,7 +147,7 @@ int main(void) {
   // pre_traverse(root);
   // printf("%d\n", bst_ctx.count);
 
-  bst_node_t *tar = bst_search(root, 20);
+  bst_node_t *tar = bst_nonrecurs_search(root, 1248);
   printf("\ntar: %d\n", tar->key);
 
   return 0;
