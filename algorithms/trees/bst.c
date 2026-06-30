@@ -46,6 +46,16 @@ bst_node_t *bst_insert(bst_node_t *root, int key) {
   return int_insert(node, root);
 }
 
+bst_node_t *bst_search(bst_node_t *node, int key) {
+  if (!node)
+    return NULL;
+  if (node->key == key)
+    return node;
+  if (key < node->key)
+    return bst_search(node->l, key);
+  return bst_search(node->r, key);
+}
+
 // preorder traversal (DFS)
 void pre_traverse(bst_node_t *node) {
   if (!node)
@@ -69,5 +79,9 @@ int main(void) {
 
   pre_traverse(root);
   printf("%d\n", bst_ctx.count);
+
+  bst_node_t *tar = bst_search(root, 1);
+  printf("\ntar: %d\n", tar->key);
+
   return 0;
 }
