@@ -106,12 +106,23 @@ void btree_free(link *root) {
   free(root);
 }
 
+int height(link *h) {
+  int u, v;
+  if (h == NULL)
+    return -1;
+  u = height(h->l);
+  v = height(h->r);
+  if (u > v)
+    return u + 1;
+  return v + 1;
+}
+
 int main(void) {
   link *root = btree_create_node(1);
   link *node1 = btree_create_node(2);
   root->l = node1;
   btree_insert(root, 3);
-  btree_insert(root, 4);
+  // btree_insert(root, 4);
   // btree_insert(root, 5);
   // btree_insert(root, 6);
   // btree_insert(root, 7);
@@ -122,6 +133,7 @@ int main(void) {
   // inorder_traverse(node);
   // post_traverse(node);
   // pre_traverse(root);
+  printf("height: %d\n", height(root));
   btree_free(root);
 
   return 0;
