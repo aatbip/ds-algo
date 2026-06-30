@@ -83,7 +83,7 @@ void btree_insert(link *root, int key) {
   queue q;
   memset(&q, 0, sizeof(queue));
   enque(&q, root);
-  while (q.dq_idx != q.eq_idx) {
+  while (1) {
     link *curr = deque(&q);
     if (curr->l == NULL) {
       curr->l = node;
@@ -112,13 +112,13 @@ int main(void) {
   root->l = node1;
   btree_insert(root, 3);
   btree_insert(root, 4);
-  btree_insert(root, 5);
-  btree_insert(root, 6);
-  btree_insert(root, 7);
+  // btree_insert(root, 5);
+  // btree_insert(root, 6);
+  // btree_insert(root, 7);
 
   level_traverse(root);
-  btree_insert(root, 8);
-  level_traverse(root);
+  // btree_insert(root, 8);
+  // level_traverse(root);
   // inorder_traverse(node);
   // post_traverse(node);
   // pre_traverse(root);
