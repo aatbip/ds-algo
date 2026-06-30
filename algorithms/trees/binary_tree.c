@@ -124,23 +124,25 @@ int height(link *h) {
 }
 
 int main(void) {
-  link *root = btree_create_node(1);
-  link *node1 = btree_create_node(2);
+  link *root = btree_create_node(10);
+  link *node1 = btree_create_node(8);
   root->l = node1;
-  btree_insert(root, 3);
-  // btree_insert(root, 4);
-  // btree_insert(root, 5);
-  // btree_insert(root, 6);
-  // btree_insert(root, 7);
+  btree_insert(root, 15);
+  btree_insert(root, 7);
+  btree_insert(root, 9);
+  btree_insert(root, 12);
+  btree_insert(root, 25);
 
-  level_traverse(root);
+  // level_traverse(root);
   // btree_insert(root, 8);
   // level_traverse(root);
-  // inorder_traverse(node);
-  // post_traverse(node);
+  inorder_traverse(root);
+  // post_traverse(root);
   // pre_traverse(root);
-  printf("height: %d\n", height(root));
-  printf("count: %d\n", count(root));
+
+  // printf("height: %d\n", height(root));
+  // printf("count: %d\n", count(root));
+
   btree_free(root);
 
   return 0;
