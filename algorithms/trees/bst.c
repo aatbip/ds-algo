@@ -168,8 +168,8 @@ int main(void) {
   // }
 
   pre_traverse(root);
-  // root = bst_right_rot(root);
   root = bst_left_rot(root);
+  root = bst_right_rot(root);
   printf("\n");
   pre_traverse(root);
 
