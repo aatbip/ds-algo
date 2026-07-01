@@ -5,6 +5,7 @@ typedef struct _bst_node {
   int key;
   struct _bst_node *l;
   struct _bst_node *r;
+  int n; // number of nodes in the sub tree of any node
 } bst_node_t;
 
 typedef struct _bst_ctx {
@@ -30,6 +31,7 @@ bst_node_t *int_insert(bst_node_t *node, bst_node_t *parent) {
   } else {
     parent->l = int_insert(node, parent->l);
   }
+  parent->n++;
   return parent;
 }
 
@@ -37,6 +39,7 @@ bst_node_t *bst_insert(bst_node_t *root, int key) {
   bst_node_t *node = malloc(sizeof(bst_node_t));
   node->key = key;
   node->l = node->r = NULL;
+  node->n = 1;
   bst_ctx.count++;
 
   if (root == NULL) {
@@ -110,7 +113,7 @@ bst_node_t *bst_nonrecurs_search(bst_node_t *node, int key) {
 void pre_traverse(bst_node_t *node) {
   if (!node)
     return;
-  printf("%d\n", node->key);
+  printf("%d %d\n", node->key, node->n);
   pre_traverse(node->l);
   pre_traverse(node->r);
 }
@@ -163,19 +166,19 @@ int main(void) {
   // root = bst_nonrecurs_insert(root, 5);
   // root = bst_nonrecurs_insert(root, 9);
 
-  root = bst_insert_root(root, 25);
-  root = bst_insert_root(root, 30);
-  root = bst_insert_root(root, 13);
+  // root = bst_insert_root(root, 25);
+  // root = bst_insert_root(root, 30);
+  // root = bst_insert_root(root, 13);
 
-  // root = bst_insert(root, 20);
-  // root = bst_insert(root, 18);
-  // root = bst_insert(root, 25);
-  // root = bst_insert(root, 7);
-  // root = bst_insert(root, 22);
-  // root = bst_insert(root, 30);
-  // root = bst_insert(root, 6);
-  // root = bst_insert(root, 9);
-  // root = bst_insert(root, 19);
+  root = bst_insert(root, 20);
+  root = bst_insert(root, 18);
+  root = bst_insert(root, 25);
+  root = bst_insert(root, 7);
+  root = bst_insert(root, 22);
+  root = bst_insert(root, 30);
+  root = bst_insert(root, 6);
+  root = bst_insert(root, 9);
+  root = bst_insert(root, 19);
 
   // int arr[100000];
   // for (int i = 0; i < 100000; i++)
