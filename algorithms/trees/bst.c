@@ -150,6 +150,7 @@ bst_node_t *bst_insert_root(bst_node_t *root, int key) {
     root->r = bst_insert_root(root->r, key);
     root = bst_left_rot(root);
   }
+  bst_ctx.count++;
   return root;
 }
 
