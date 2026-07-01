@@ -169,6 +169,23 @@ bst_node_t *bst_select(bst_node_t *node, int k) {
   return node;
 }
 
+/*Places the selected node on the root.*/
+bst_node_t *bst_part(bst_node_t *node, int k) {
+  int t;
+  if (!node)
+    return NULL;
+  t = (node->l == NULL) ? 0 : node->l->n;
+  if (t > k) {
+    node->l = bst_part(node->l, k);
+    node = bst_right_rot(node);
+  }
+  if (t < k) {
+    node->r = bst_part(node->r, k - t - 1);
+    node = bst_left_rot(node);
+  }
+  return node;
+}
+
 int main(void) {
   bst_node_t *root = bst_init();
   // root = bst_nonrecurs_insert(root, 20);
@@ -216,7 +233,10 @@ int main(void) {
   // bst_node_t *tar = bst_nonrecurs_search(root, 1248);
   // printf("\ntar: %d\n", tar->key);
 
-  printf("select: %d\n", bst_select(root, 2)->key);
+  root = bst_part(root, 2);
+  pre_traverse(root);
+
+  // printf("select: %d\n", bst_select(root, 2)->key);
 
   return 0;
 }
