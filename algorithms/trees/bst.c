@@ -125,6 +125,16 @@ bst_node_t *bst_right_rot(bst_node_t *root) {
   return new_root;
 }
 
+/*In left rotation-
+ * old root goes to the left
+ * new root becomes right node of the old root*/
+bst_node_t *bst_left_rot(bst_node_t *root) {
+  bst_node_t *new_root = root->r;
+  root->r = new_root->l;
+  new_root->l = root;
+  return new_root;
+}
+
 int main(void) {
   bst_node_t *root = bst_init();
   // root = bst_nonrecurs_insert(root, 20);
@@ -158,7 +168,8 @@ int main(void) {
   // }
 
   pre_traverse(root);
-  root = bst_right_rot(root);
+  // root = bst_right_rot(root);
+  root = bst_left_rot(root);
   printf("\n");
   pre_traverse(root);
 
