@@ -118,12 +118,16 @@ void pre_traverse(bst_node_t *node) {
   pre_traverse(node->r);
 }
 
+static inline int node_size(bst_node_t *node) { return node ? node->n : 0; }
+
 /*In right rotation-
  * old root goes to the right
  * new root becomes the left node of old root*/
 bst_node_t *bst_right_rot(bst_node_t *root) {
   bst_node_t *new_root = root->l;
   root->l = new_root->r;
+  new_root->n = root->n;
+  root->n = 1 + node_size(root->l) + node_size(root->r);
   new_root->r = root;
   return new_root;
 }
@@ -134,6 +138,8 @@ bst_node_t *bst_right_rot(bst_node_t *root) {
 bst_node_t *bst_left_rot(bst_node_t *root) {
   bst_node_t *new_root = root->r;
   root->r = new_root->l;
+  new_root->n = root->n;
+  root->n = 1 + node_size(root->l) + node_size(root->r);
   new_root->l = root;
   return new_root;
 }
@@ -202,12 +208,12 @@ int main(void) {
   root = bst_insert(root, 20);
   root = bst_insert(root, 18);
   root = bst_insert(root, 25);
-  // root = bst_insert(root, 7);
-  // root = bst_insert(root, 22);
-  // root = bst_insert(root, 30);
-  // root = bst_insert(root, 6);
-  // root = bst_insert(root, 9);
-  // root = bst_insert(root, 19);
+  root = bst_insert(root, 7);
+  root = bst_insert(root, 22);
+  root = bst_insert(root, 30);
+  root = bst_insert(root, 6);
+  root = bst_insert(root, 9);
+  root = bst_insert(root, 19);
   //
   // int arr[100000];
   // for (int i = 0; i < 100000; i++)
@@ -233,10 +239,10 @@ int main(void) {
   // bst_node_t *tar = bst_nonrecurs_search(root, 1248);
   // printf("\ntar: %d\n", tar->key);
 
-  root = bst_part(root, 2);
+  root = bst_part(root, 3);
   pre_traverse(root);
 
-  // printf("select: %d\n", bst_select(root, 2)->key);
+  // printf("select: %d\n", bst_select(root, 3)->key);
 
   return 0;
 }
