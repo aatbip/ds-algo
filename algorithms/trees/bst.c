@@ -115,6 +115,16 @@ void pre_traverse(bst_node_t *node) {
   pre_traverse(node->r);
 }
 
+/*In right rotation-
+ * old root goes to the right
+ * new root becomes the left node of old root*/
+bst_node_t *bst_right_rot(bst_node_t *root) {
+  bst_node_t *new_root = root->l;
+  root->l = new_root->r;
+  new_root->r = root;
+  return new_root;
+}
+
 int main(void) {
   bst_node_t *root = bst_init();
   // root = bst_nonrecurs_insert(root, 20);
@@ -124,31 +134,38 @@ int main(void) {
   // root = bst_nonrecurs_insert(root, 5);
   // root = bst_nonrecurs_insert(root, 9);
 
-  // root = bst_insert(root, 20);
-  // root = bst_insert(root, 19);
-  // root = bst_insert(root, 25);
-  // root = bst_insert(root, 30);
-  // root = bst_insert(root, 5);
-  // root = bst_insert(root, 9);
+  root = bst_insert(root, 20);
+  root = bst_insert(root, 18);
+  root = bst_insert(root, 25);
+  root = bst_insert(root, 7);
+  root = bst_insert(root, 22);
+  root = bst_insert(root, 30);
+  root = bst_insert(root, 6);
+  root = bst_insert(root, 9);
+  root = bst_insert(root, 19);
 
-  int arr[100000];
-  for (int i = 0; i < 100000; i++)
-    arr[i] = i;
-  for (int i = 99999; i > 0; i--) {
-    int j = rand() % (i + 1);
-    int temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
-  }
-  for (int i = 0; i < 100000; i++) {
-    root = bst_nonrecurs_insert(root, arr[i]);
-  }
+  // int arr[100000];
+  // for (int i = 0; i < 100000; i++)
+  //   arr[i] = i;
+  // for (int i = 99999; i > 0; i--) {
+  //   int j = rand() % (i + 1);
+  //   int temp = arr[i];
+  //   arr[i] = arr[j];
+  //   arr[j] = temp;
+  // }
+  // for (int i = 0; i < 100000; i++) {
+  //   root = bst_nonrecurs_insert(root, arr[i]);
+  // }
 
-  // pre_traverse(root);
+  pre_traverse(root);
+  root = bst_right_rot(root);
+  printf("\n");
+  pre_traverse(root);
+
   // printf("%d\n", bst_ctx.count);
 
-  bst_node_t *tar = bst_nonrecurs_search(root, 1248);
-  printf("\ntar: %d\n", tar->key);
+  // bst_node_t *tar = bst_nonrecurs_search(root, 1248);
+  // printf("\ntar: %d\n", tar->key);
 
   return 0;
 }
