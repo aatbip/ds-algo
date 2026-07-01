@@ -157,6 +157,18 @@ bst_node_t *bst_insert_root(bst_node_t *root, int key) {
   return root;
 }
 
+bst_node_t *bst_select(bst_node_t *node, int k) {
+  int t;
+  if (!node)
+    return NULL;
+  t = (node->l == NULL) ? 0 : node->l->n;
+  if (t > k)
+    return bst_select(node->l, k);
+  if (t < k)
+    return bst_select(node->r, k - t - 1);
+  return node;
+}
+
 int main(void) {
   bst_node_t *root = bst_init();
   // root = bst_nonrecurs_insert(root, 20);
@@ -173,13 +185,13 @@ int main(void) {
   root = bst_insert(root, 20);
   root = bst_insert(root, 18);
   root = bst_insert(root, 25);
-  root = bst_insert(root, 7);
-  root = bst_insert(root, 22);
-  root = bst_insert(root, 30);
-  root = bst_insert(root, 6);
-  root = bst_insert(root, 9);
-  root = bst_insert(root, 19);
-
+  // root = bst_insert(root, 7);
+  // root = bst_insert(root, 22);
+  // root = bst_insert(root, 30);
+  // root = bst_insert(root, 6);
+  // root = bst_insert(root, 9);
+  // root = bst_insert(root, 19);
+  //
   // int arr[100000];
   // for (int i = 0; i < 100000; i++)
   //   arr[i] = i;
@@ -203,6 +215,8 @@ int main(void) {
 
   // bst_node_t *tar = bst_nonrecurs_search(root, 1248);
   // printf("\ntar: %d\n", tar->key);
+
+  printf("select: %d\n", bst_select(root, 2)->key);
 
   return 0;
 }
