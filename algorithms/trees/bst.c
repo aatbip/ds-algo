@@ -135,6 +135,24 @@ bst_node_t *bst_left_rot(bst_node_t *root) {
   return new_root;
 }
 
+/*Insert in the root of the tree. It requires rotation in every recursive iteration.*/
+bst_node_t *bst_insert_root(bst_node_t *root, int key) {
+  if (!root) {
+    bst_node_t *node = malloc(sizeof(bst_node_t));
+    node->key = key;
+    node->l = node->r = NULL;
+    return node;
+  }
+  if (key < root->key) {
+    root->l = bst_insert_root(root->l, key);
+    root = bst_right_rot(root);
+  } else {
+    root->r = bst_insert_root(root->r, key);
+    root = bst_left_rot(root);
+  }
+  return root;
+}
+
 int main(void) {
   bst_node_t *root = bst_init();
   // root = bst_nonrecurs_insert(root, 20);
@@ -144,15 +162,19 @@ int main(void) {
   // root = bst_nonrecurs_insert(root, 5);
   // root = bst_nonrecurs_insert(root, 9);
 
-  root = bst_insert(root, 20);
-  root = bst_insert(root, 18);
-  root = bst_insert(root, 25);
-  root = bst_insert(root, 7);
-  root = bst_insert(root, 22);
-  root = bst_insert(root, 30);
-  root = bst_insert(root, 6);
-  root = bst_insert(root, 9);
-  root = bst_insert(root, 19);
+  root = bst_insert_root(root, 25);
+  root = bst_insert_root(root, 30);
+  root = bst_insert_root(root, 13);
+
+  // root = bst_insert(root, 20);
+  // root = bst_insert(root, 18);
+  // root = bst_insert(root, 25);
+  // root = bst_insert(root, 7);
+  // root = bst_insert(root, 22);
+  // root = bst_insert(root, 30);
+  // root = bst_insert(root, 6);
+  // root = bst_insert(root, 9);
+  // root = bst_insert(root, 19);
 
   // int arr[100000];
   // for (int i = 0; i < 100000; i++)
@@ -168,10 +190,10 @@ int main(void) {
   // }
 
   pre_traverse(root);
-  root = bst_left_rot(root);
-  root = bst_right_rot(root);
+  // root = bst_left_rot(root);
+  // root = bst_right_rot(root);
   printf("\n");
-  pre_traverse(root);
+  // pre_traverse(root);
 
   // printf("%d\n", bst_ctx.count);
 
