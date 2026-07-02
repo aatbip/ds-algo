@@ -163,15 +163,17 @@ bst_node_t *bst_insert_root(bst_node_t *root, int key) {
   return root;
 }
 
-bst_node_t *bst_select(bst_node_t *node, int k) {
+/*Select the kth smallest/largest*/
+typedef enum tt { smallest, largest } bst_select_type;
+bst_node_t *bst_select(bst_node_t *node, int k, bst_select_type type) {
   int t;
   if (!node)
     return NULL;
   t = (node->l == NULL) ? 0 : node->l->n;
   if (t > k)
-    return bst_select(node->l, k);
+    return bst_select((type == smallest ? node->l : node->r), k, type);
   if (t < k)
-    return bst_select(node->r, k - t - 1);
+    return bst_select((type == smallest ? node->r : node->l), k - t - 1, type);
   return node;
 }
 
@@ -239,10 +241,11 @@ int main(void) {
   // bst_node_t *tar = bst_nonrecurs_search(root, 1248);
   // printf("\ntar: %d\n", tar->key);
 
-  root = bst_part(root, 3);
-  pre_traverse(root);
+  // root = bst_part(root, 3);
+  // pre_traverse(root);
 
-  // printf("select: %d\n", bst_select(root, 3)->key);
+  bst_select_type select = largest;
+  printf("select: %d\n", bst_select(root, 0, select)->key);
 
   return 0;
 }
