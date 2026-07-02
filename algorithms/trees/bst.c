@@ -211,6 +211,30 @@ bst_node_t *bst_part(bst_node_t *node, int k) {
   return node;
 }
 
+bst_node_t *bst_delete_node(bst_node_t *root, int key) {
+  if (!root)
+    return NULL;
+  // first, place the node to delete in the root
+  root = bst_top_place_node(root, key);
+  bst_node_t *left_tree = root->l;
+  bst_node_t *right_tree = root->r;
+
+  free(root);
+
+  // return the other node if either is NULL
+  if (!right_tree)
+    return left_tree;
+  if (!left_tree)
+    return right_tree;
+
+  // next, bst_part to bring smallest from right tree to the right tree root
+  right_tree = bst_part(right_tree, 0);
+
+  // finally, join left and right trees
+  right_tree->l = left_tree;
+  return right_tree;
+}
+
 int main(void) {
   bst_node_t *root = bst_init();
   // root = bst_nonrecurs_insert(root, 20);
@@ -263,7 +287,7 @@ int main(void) {
 
   // printf("select: %d\n", bst_select(root, 0, smallest)->key);
 
-  root = bst_top_place_node(root, 30);
+  root = bst_delete_node(root, 30);
   pre_traverse(root);
 
   return 0;
