@@ -164,7 +164,7 @@ bst_node_t *bst_insert_root(bst_node_t *root, int key) {
 }
 
 /*Select the kth smallest/largest*/
-typedef enum tt { smallest, largest } bst_select_type;
+typedef enum { smallest, largest } bst_select_type;
 bst_node_t *bst_select(bst_node_t *node, int k, bst_select_type type) {
   int t;
   if (!node)
@@ -244,8 +244,7 @@ int main(void) {
   // root = bst_part(root, 3);
   // pre_traverse(root);
 
-  bst_select_type select = largest;
-  printf("select: %d\n", bst_select(root, 0, select)->key);
+  printf("select: %d\n", bst_select(root, 0, smallest)->key);
 
   return 0;
 }
