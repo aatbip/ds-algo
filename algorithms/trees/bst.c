@@ -163,6 +163,23 @@ bst_node_t *bst_insert_root(bst_node_t *root, int key) {
   return root;
 }
 
+/*Places the matching key node on the top*/
+bst_node_t *bst_top_place_node(bst_node_t *root, int key) {
+  if (!root)
+    return NULL;
+  if (root->key == key) {
+    return root;
+  }
+  if (key < root->key) {
+    root->l = bst_top_place_node(root->l, key);
+    root = bst_right_rot(root);
+  } else {
+    root->r = bst_top_place_node(root->r, key);
+    root = bst_left_rot(root);
+  }
+  return root;
+}
+
 /*Select the kth smallest/largest*/
 typedef enum { smallest, largest } bst_select_type;
 bst_node_t *bst_select(bst_node_t *node, int k, bst_select_type type) {
@@ -244,7 +261,10 @@ int main(void) {
   // root = bst_part(root, 3);
   // pre_traverse(root);
 
-  printf("select: %d\n", bst_select(root, 0, smallest)->key);
+  // printf("select: %d\n", bst_select(root, 0, smallest)->key);
+
+  root = bst_top_place_node(root, 30);
+  pre_traverse(root);
 
   return 0;
 }
