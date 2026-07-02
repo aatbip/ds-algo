@@ -240,8 +240,22 @@ bst_node_t *bst_delete_node(bst_node_t *node, int key) {
   return node;
 }
 
+/*Join two different trees a and b*/
+bst_node_t *bst_join(bst_node_t *a, bst_node_t *b) {
+  if (!a)
+    return b;
+  if (!b)
+    return a;
+  b = bst_insert_root(b, a->key);
+  b->l = bst_join(a->l, b->l);
+  b->r = bst_join(a->r, b->r);
+  free(a);
+  b->n = 1 + node_size(b->l) + node_size(b->r); // recompute 'n'
+  return b;
+}
+
 int main(void) {
-  bst_node_t *root = bst_init();
+  bst_node_t *a = bst_init();
   // root = bst_nonrecurs_insert(root, 20);
   // root = bst_nonrecurs_insert(root, 19);
   // root = bst_nonrecurs_insert(root, 25);
@@ -253,16 +267,19 @@ int main(void) {
   // root = bst_insert_root(root, 30);
   // root = bst_insert_root(root, 13);
 
-  root = bst_insert(root, 20);
-  root = bst_insert(root, 18);
-  root = bst_insert(root, 25);
-  root = bst_insert(root, 7);
-  root = bst_insert(root, 22);
-  root = bst_insert(root, 30);
-  root = bst_insert(root, 6);
-  root = bst_insert(root, 9);
-  root = bst_insert(root, 19);
-  //
+  a = bst_insert(a, 20);
+  a = bst_insert(a, 18);
+  a = bst_insert(a, 25);
+  // root = bst_insert(root, 20);
+  // root = bst_insert(root, 18);
+  // root = bst_insert(root, 25);
+  // root = bst_insert(root, 7);
+  // root = bst_insert(root, 22);
+  // root = bst_insert(root, 30);
+  // root = bst_insert(root, 6);
+  // root = bst_insert(root, 9);
+  // root = bst_insert(root, 19);
+
   // int arr[100000];
   // for (int i = 0; i < 100000; i++)
   //   arr[i] = i;
@@ -276,7 +293,7 @@ int main(void) {
   //   root = bst_nonrecurs_insert(root, arr[i]);
   // }
 
-  pre_traverse(root);
+  pre_traverse(a);
   // root = bst_left_rot(root);
   // root = bst_right_rot(root);
   printf("\n");
@@ -292,8 +309,16 @@ int main(void) {
 
   // printf("select: %d\n", bst_select(root, 0, smallest)->key);
 
-  root = bst_delete_node(root, 20);
-  pre_traverse(root);
+  // root = bst_delete_node(root, 20);
+  // pre_traverse(root);
+
+  bst_node_t *b = bst_init();
+  b = bst_insert(b, 15);
+  b = bst_insert(b, 5);
+  b = bst_insert(b, 22);
+
+  a = bst_join(a, b);
+  pre_traverse(a);
 
   return 0;
 }
