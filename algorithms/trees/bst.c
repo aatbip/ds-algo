@@ -211,28 +211,33 @@ bst_node_t *bst_part(bst_node_t *node, int k) {
   return node;
 }
 
-bst_node_t *bst_delete_node(bst_node_t *root, int key) {
-  if (!root)
+bst_node_t *join_left_right_trees(bst_node_t *a, bst_node_t *b) {
+  if (!b) {
+    return a;
+  }
+  b = bst_part(b, 0);
+  b->l = a;
+  return b;
+}
+
+/*Delete the node:
+ * - First loops through the tree to find the node to delete.
+ * - Places the smallest node in the right subtree of the node to delete to the root of that subtree using bst_part.
+ * - Then, joins the left node of the right subtree's root to the left subtree of the node to delete.*/
+bst_node_t *bst_delete_node(bst_node_t *node, int key) {
+  if (!node)
     return NULL;
-  // first, place the node to delete in the root
-  root = bst_top_place_node(root, key);
-  bst_node_t *left_tree = root->l;
-  bst_node_t *right_tree = root->r;
 
-  free(root);
-
-  // return the other node if either is NULL
-  if (!right_tree)
-    return left_tree;
-  if (!left_tree)
-    return right_tree;
-
-  // next, bst_part to bring smallest from right tree to the right tree root
-  right_tree = bst_part(right_tree, 0);
-
-  // finally, join left and right trees
-  right_tree->l = left_tree;
-  return right_tree;
+  if (key < node->key)
+    node->l = bst_delete_node(node->l, key);
+  if (key > node->key)
+    node->r = bst_delete_node(node->r, key);
+  if (key == node->key) {
+    bst_node_t *node_to_del = node;
+    node = join_left_right_trees(node->l, node->r);
+    free(node_to_del);
+  }
+  return node;
 }
 
 int main(void) {
@@ -287,7 +292,7 @@ int main(void) {
 
   // printf("select: %d\n", bst_select(root, 0, smallest)->key);
 
-  root = bst_delete_node(root, 30);
+  root = bst_delete_node(root, 20);
   pre_traverse(root);
 
   return 0;
