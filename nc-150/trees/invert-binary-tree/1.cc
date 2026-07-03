@@ -17,6 +17,7 @@ class Solution {
     return node;
   }
 
+public:
   TreeNode *invert_binary_tree(TreeNode *root) {
     if (!root)
       return nullptr;

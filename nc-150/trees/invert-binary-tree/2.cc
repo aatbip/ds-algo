@@ -8,11 +8,11 @@
  * */
 
 #include "./tree.h"
-#include <iostream>
 #include <stack>
 #include <utility>
 
 class Solution {
+public:
   TreeNode *invert_binary_tree(TreeNode *root) {
     if (!root)
       return nullptr;
@@ -35,6 +35,10 @@ int main(void) {
   TreeNode left(3);
   TreeNode right(4);
   TreeNode root(2, &left, &right);
+  root.bfs_levelorder(&root);
+  std::cout << "\n";
+  Solution s;
+  s.invert_binary_tree(&root);
   root.bfs_levelorder(&root);
 
   return 0;
