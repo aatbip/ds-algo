@@ -1,3 +1,12 @@
+/*You are given the root of a binary tree root. Invert the binary tree and return its root.
+ *
+ * Solution-
+ * Recursive solution using DFS (preorder travelsal i.e. visit node, left node, right node).
+ *
+ * Time complexity- O(n)
+ * Space complexity- O(n) due to the stack container
+ * */
+
 #include "./tree.h"
 #include <stack>
 #include <utility>
