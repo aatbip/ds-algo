@@ -7,7 +7,7 @@
  * Space complexity- O(n) due to the stack container
  * */
 
-#include "./tree.h"
+#include "../tree.h"
 #include <stack>
 #include <utility>
 

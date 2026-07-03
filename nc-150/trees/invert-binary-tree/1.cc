@@ -7,7 +7,7 @@
  * Space complexity- O(n) due to recursive funciton stack frame
  * */
 
-#include "./tree.h"
+#include "../tree.h"
 
 class Solution {
   TreeNode *invert(TreeNode *node) {
