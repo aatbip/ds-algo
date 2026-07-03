@@ -19,8 +19,10 @@ public:
       TreeNode *node = queue.front();
       std::cout << node->val << "\n";
       queue.pop();
-      queue.push(root->left);
-      queue.push(root->right);
+      if (node->left)
+        queue.push(root->left);
+      if (node->right)
+        queue.push(root->right);
     }
   }
 };

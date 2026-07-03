@@ -8,6 +8,7 @@
  * */
 
 #include "./tree.h"
+#include <iostream>
 #include <stack>
 #include <utility>
 
@@ -29,3 +30,12 @@ class Solution {
     return root;
   }
 };
+
+int main(void) {
+  TreeNode left(3);
+  TreeNode right(4);
+  TreeNode root(2, &left, &right);
+  root.bfs_levelorder(&root);
+
+  return 0;
+}
