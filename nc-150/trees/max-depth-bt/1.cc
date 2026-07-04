@@ -18,6 +18,7 @@ int main(void) {
   TreeNode left(3, &left1, &left2);
   TreeNode right(4);
   TreeNode root(2, &left, &right);
+  root.bfs_levelorder();
 
   Solution s;
   std::cout << s.max_depth(&root) << "\n";
