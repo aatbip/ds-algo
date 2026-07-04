@@ -12,9 +12,9 @@ public:
   TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
   TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 
-  void bfs_levelorder(TreeNode *root) {
+  void bfs_levelorder() {
     std::queue<TreeNode *> queue;
-    queue.push(root);
+    queue.push(this);
     while (!queue.empty()) {
       TreeNode *node = queue.front();
       std::cout << node->val << "\n";
