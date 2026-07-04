@@ -15,7 +15,8 @@ public:
   int max_depth(TreeNode *root) {
     int n = 0;
     std::queue<TreeNode *> qu;
-    qu.push(root);
+    if (root)
+      qu.push(root);
     while (!qu.empty()) {
       int size = qu.size();
       n++;
