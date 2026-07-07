@@ -1,3 +1,13 @@
+/*Given a binary tree, return true if it is height-balanced and false otherwise. A height-balanced binary tree is
+ * defined as a binary tree in which the left and right subtrees of every node differ in height by no more than 1.
+ *
+ * Solution-
+ * Solved brute forced by measuring height difference for each nodes in recursive manner.
+ *
+ * Time complexity: O(n^2)
+ * Space complexity: O(n)
+ * */
+
 #include "../tree.h"
 #include <cstdlib>
 
