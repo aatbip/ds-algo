@@ -1,3 +1,14 @@
+/*Given a binary tree, return true if it is height-balanced and false otherwise. A height-balanced binary tree is
+ * defined as a binary tree in which the left and right subtrees of every node differ in height by no more than 1.
+ *
+ * Solution-
+ * Solved using recursive DFS(post-order). `check` returns -1 if the subtree is unbalanced, otherwise it returns the
+ * height value.
+ *
+ * Time complexity: O(h), where h = log(n) if balanced and h = n if unbalanced skewed tree.
+ * Space complexity: O(n)
+ * */
+
 #include "../tree.h"
 
 class Solution {
