@@ -25,6 +25,14 @@ public:
         queue.push(node->right);
     }
   }
+
+  void bfs_postorder(TreeNode *root) {
+    if (!root)
+      return;
+    bfs_postorder(root->left);
+    bfs_postorder(root->right);
+    std::cout << root->val << "\n";
+  }
 };
 
 #endif
