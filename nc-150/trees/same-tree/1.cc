@@ -1,3 +1,13 @@
+/*Given the roots of two binary trees p and q, return true if the trees are equivalent, otherwise return false.
+ * Two binary trees are considered equivalent if they share the exact same structure and the nodes have the same values.
+ *
+ * Solution:
+ * Solved using comparing each node based on Iterative DFS (Preorder) travelsal.
+ *
+ * Time complexity- O(n)
+ * Space complexity- O(n)
+ * */
+
 #include "../tree.h"
 #include <stack>
 #include <utility>
