@@ -1,29 +1,22 @@
 #include "../tree.h"
 #include <stack>
+#include <utility>
 
 class Solution {
 public:
   bool is_sametree(TreeNode *p, TreeNode *q) {
-    if (!p || !q)
-      return false;
-    std::stack<TreeNode *> sta;
-    std::stack<TreeNode *> stb;
-    sta.push(p);
-    stb.push(q);
-    while (!sta.empty() || !stb.empty()) {
-      TreeNode *ta = sta.top();
-      TreeNode *tb = stb.top();
-      if (!ta || !tb)
-        return false;
-      if (ta->val != tb->val) {
+    std::stack<std::pair<TreeNode *, TreeNode *>> stk;
+    stk.push({p, q});
+    while (!stk.empty()) {
+      auto [node1, node2] = stk.top();
+      stk.pop();
+      if (!node1 && !node2)
+        continue;
+      if (!node1 || !node2 || node1->val != node2->val) {
         return false;
       }
-      sta.pop();
-      stb.pop();
-      sta.push(ta->right);
-      sta.push(ta->left);
-      stb.push(tb->right);
-      stb.push(tb->left);
+      stk.push({node1->right, node2->right});
+      stk.push({node1->left, node2->left});
     }
     return true;
   }
