@@ -1,4 +1,17 @@
-/*
+/*Given the roots of two binary trees root and subRoot, return true if there is a subtree of root with
+ * the same structure and node values of subRoot and false otherwise. A subtree of a binary tree tree is
+ * a tree that consists of a node in tree and all of this node's descendants. The tree tree could also be
+ * considered as a subtree of itself.
+ *
+ * Solution-
+ * Solved by checking `is_sameTree` for each node in the main tree (root) and another tree (subRoot). Iterative
+ * preorder DFS is used to travel through each node of the main tree.
+ *
+ * Time complexity: O(n*m),
+ * where 'n' is the number of nodes in the main tree and 'm' is number of nodes in subtree. Reason- `subtree_ispresent`
+ * visits each node of the main tree and `is_sameTree` visits each node of subtree again.
+ *
+ * Space complexity: O(n+m)
  * */
 
 #include "../tree.h"
