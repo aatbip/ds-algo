@@ -1,3 +1,6 @@
+/*
+ * */
+
 #include "../tree.h"
 #include <stack>
 #include <utility>
@@ -22,18 +25,14 @@ private:
 
 public:
   bool subtree_ispresent(TreeNode *root, TreeNode *subRoot) {
-    if (!root || !subRoot)
+    if (!subRoot)
+      return true;
+    if (!root)
       return false;
+
     if (is_sameTree(root, subRoot))
       return true;
-    if (subtree_ispresent(root->left, subRoot))
-      return true;
-    if (subtree_ispresent(root->right, subRoot))
-      return true;
-    return false;
-  }
 
-  bool s(TreeNode *root, TreeNode *subRoot) {
-    return (subtree_ispresent(root->left, subRoot) || subtree_ispresent(root->right, subRoot));
+    return subtree_ispresent(root->left, subRoot) || subtree_ispresent(root->right, subRoot);
   }
 };
