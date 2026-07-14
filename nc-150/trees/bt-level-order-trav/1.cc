@@ -1,3 +1,14 @@
+/*Binary Tree Level Order Traversal-
+ * Given a binary tree root, return the level order traversal of it as a nested list, where each sublist contains
+ * the values of nodes at a particular level in the tree, from left to right.
+ *
+ * Solution- Solved using queue ADT for level order travelsal.
+ *
+ * Time complexity: O(n), where 'n' is the number of nodes
+ * Space complexity: O(n)
+ *
+ * */
+
 #include "../tree.h"
 #include <queue>
 #include <vector>
