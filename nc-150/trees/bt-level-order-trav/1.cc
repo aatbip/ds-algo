@@ -9,17 +9,19 @@ public:
   list btl(TreeNode *root) {
     list out;
     std::queue<TreeNode *> qu;
-    qu.push(root);
+    if (root)
+      qu.push(root);
     while (!qu.empty()) {
       std::vector<int> res;
-      for (int i = 0; i < qu.size(); i++) {
+      int size = qu.size();
+      for (int i = 0; i < size; i++) {
         TreeNode *cur = qu.front();
-        if (!cur)
-          break;
-        qu.push(cur->left);
-        qu.push(cur->right);
         res.push_back(cur->val);
         qu.pop();
+        if (cur->left)
+          qu.push(cur->left);
+        if (cur->right)
+          qu.push(cur->right);
       }
       out.push_back(res);
     }
@@ -39,6 +41,16 @@ int main(void) {
   TreeNode root(13, &ll1, &rr1);
 
   root.bfs_levelorder();
+
+  Solution s;
+  list res = s.btl(&root);
+  for (auto &i : res) {
+    std::cout << '[';
+    for (auto &j : i) {
+      std::cout << j << " ";
+    }
+    std::cout << ']';
+  }
 
   return 0;
 }
