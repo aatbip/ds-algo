@@ -5,8 +5,6 @@
 class Solution {
 public:
   std::vector<int> right_size_view(TreeNode *root) {
-    if (!root)
-      return {};
     std::vector<std::vector<int>> vec;
     std::queue<TreeNode *> qu;
     qu.push(root);
