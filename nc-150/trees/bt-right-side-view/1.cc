@@ -1,3 +1,12 @@
+/* Binary Tree Right Side View-
+ *You are given the root of a binary tree. Return only the values of the nodes that are visible from the right side of
+ * the tree, ordered from top to bottom.
+ *
+ * Solution- Similar to Binary Tree Level Order Travelsal problem.
+ * Time complexity- O(n)
+ * Space complexity- O(n), where 'n' is number of nodes
+ * */
+
 #include "../tree.h"
 #include <queue>
 #include <vector>
