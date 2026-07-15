@@ -1,27 +1,18 @@
 #include "../tree.h"
-#include <stack>
-#include <unordered_set>
+#include <algorithm>
 
 class Solution {
-public:
-  int good_nodes(TreeNode *root) {
-    std::unordered_set<int> set;
-    std::stack<TreeNode *> stk;
-    if (root->left)
-      stk.push(root->left);
-    if (root->right)
-      stk.push(root->right);
-    while (!stk.empty()) {
-      TreeNode *cur = stk.top();
-      stk.pop();
-      if (cur->left)
-        stk.push(cur->left);
-      if (cur->right)
-        stk.push(cur->right);
-      if (cur->val >= root->val && set.find(cur->val) == set.end()) {
-        set.insert(cur->val);
-      }
-    }
-    return set.size() + 1;
+private:
+  int calc(TreeNode *node, int max) {
+    if (!node)
+      return 0;
+    int c = node->val >= max ? 1 : 0;
+    max = std::max(max, node->val);
+    c += calc(node->left, max);
+    c += calc(node->right, max);
+    return c;
   }
+
+public:
+  int good_nodes(TreeNode *root) { return calc(root, root->val); }
 };
