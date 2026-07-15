@@ -10,23 +10,22 @@ public:
     std::vector<std::vector<int>> vec;
     std::queue<TreeNode *> qu;
     qu.push(root);
+    std::vector<int> out;
     while (!qu.empty()) {
       int size = qu.size();
-      std::vector<int> temp_vec;
+      TreeNode *res = nullptr;
       for (int i = 0; i < size; i++) {
         TreeNode *cur = qu.front();
         qu.pop();
-        if (cur->left)
+        if (cur) {
           qu.push(cur->left);
-        if (cur->right)
           qu.push(cur->right);
-        temp_vec.push_back(cur->val);
+          res = cur;
+        }
       }
-      vec.push_back(temp_vec);
-    }
-    std::vector<int> out;
-    for (int i = 0; i < vec.size(); i++) {
-      out.push_back(vec[i][vec[i].size() - 1]);
+      if (res) {
+        out.push_back(res->val);
+      }
     }
     return out;
   }
