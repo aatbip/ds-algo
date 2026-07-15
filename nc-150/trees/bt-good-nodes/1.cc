@@ -1,3 +1,15 @@
+/*Count good notes in binary tree-
+ * Within a binary tree, a node x is considered good if the path from the root of the tree to the node x contains
+ * no nodes with a value greater than the value of node x.
+ * Given the root of a binary tree root, return the number of good nodes within the tree.
+ *
+ * Solution-
+ * Solved using recursive DFS (preorder travelsal).
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
+ * */
+
 #include "../tree.h"
 #include <algorithm>
 
