@@ -13,15 +13,12 @@ public:
     while (!qu.empty()) {
       auto [node, leftVal, rightVal] = qu.front();
       qu.pop();
-      int size = qu.size();
-      for (int i = 0; i < size; i++) {
-        if (!(leftVal < node->val && rightVal > node->val))
-          return false;
-        if (node->left)
-          qu.push(std::make_tuple(node->left, leftVal, node->val));
-        if (node->right)
-          qu.push(std::make_tuple(node->right, node->val, rightVal));
-      }
+      if (!(leftVal < node->val && rightVal > node->val))
+        return false;
+      if (node->left)
+        qu.push(std::make_tuple(node->left, leftVal, node->val));
+      if (node->right)
+        qu.push(std::make_tuple(node->right, node->val, rightVal));
     }
     return true;
   }
