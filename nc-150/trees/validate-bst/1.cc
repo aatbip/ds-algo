@@ -1,3 +1,12 @@
+/*Validate BST-
+ * Given the root of a binary tree, return true if it is a valid binary search tree, otherwise return false.
+ *
+ * Solution-
+ * Solved using recursive DFS (preorder travelsal).
+ * Time complexity: O(n)
+ * Space complexity: O(n)
+ **/
+
 #include "../tree.h"
 #include <climits>
 
