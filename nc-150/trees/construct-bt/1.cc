@@ -1,3 +1,13 @@
+/* Construct Binary Tree From Preorder And Inorder Traversal
+ *
+ * Solution: Use preorder array to create the nodes. The root node is the first element in the preorder array. Then use
+ * the inorder array to find the next 'l' and 'r' subarrays from the preorder array for the next left and right
+ * subtrees.
+ *
+ * Time complexity - O(n)
+ * Space complexity - O(n)
+ * */
+
 #include "../tree.h"
 #include <unordered_map>
 #include <vector>
