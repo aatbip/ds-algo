@@ -5,24 +5,18 @@ class Codec {
   std::string str;
 
 public:
-  std::string serialize(TreeNode *node, std::string d) {
+  std::string serialize(TreeNode *node) {
     if (!node) {
-      str.append(d);
       str.append("-");
       return str;
     }
-    if (d == "")
-      str.append(std::to_string(node->val));
-    else {
-      str.append(d);
-      str.append(std::to_string(node->val));
-    }
-    serialize(node->left, "l");
-    serialize(node->right, "r");
+    str.append(std::to_string(node->val));
+    serialize(node->left);
+    serialize(node->right);
     return str;
   }
 
-  TreeNode *deserialize(std::string buf) { return nullptr; }
+  TreeNode *deserialize(std::string buf) {}
 };
 
 int main(void) {
@@ -32,7 +26,13 @@ int main(void) {
   TreeNode left(2);
   TreeNode root(1, &left, &right);
 
-  std::cout << c.serialize(&root, "");
+  std::string buf = c.serialize(&root);
+  std::cout << buf.front();
+  std::cout << buf.back();
+  buf.pop_back();
+  std::cout << buf.back();
+  buf.pop_back();
+  std::cout << buf.back();
 
   return 0;
 }
