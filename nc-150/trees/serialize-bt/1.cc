@@ -1,3 +1,10 @@
+/*Serialize And Deserialize Binary Tree
+ *
+ * Solution- Solved using preorder traversal (DFS).
+ * Time complexity- O(n)
+ * Space complexity - O(n)
+ * */
+
 #include "../tree.h"
 #include <iostream>
 #include <string>
