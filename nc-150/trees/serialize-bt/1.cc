@@ -14,6 +14,7 @@ public:
       return str;
     }
     str.append(std::to_string(node->val));
+    str.append("#");
     serialize(node->left);
     serialize(node->right);
     return str;
@@ -24,6 +25,7 @@ public:
       i++;
       return NULL;
     }
+
     TreeNode *root = new TreeNode(buf[i++] - '0');
     root->left = deserialize(buf);
     root->right = deserialize(buf);
@@ -34,15 +36,15 @@ public:
 int main(void) {
   Codec c;
 
-  TreeNode right(3);
-  TreeNode left(2);
-  TreeNode root(1, &left, &right);
+  TreeNode right(22);
+  TreeNode left(21);
+  TreeNode root(20, &left, &right);
 
   std::string buf = c.serialize(&root);
   std::cout << buf << "\n";
 
-  TreeNode *dr = c.deserialize(buf);
-  dr->bfs_levelorder();
+  //  TreeNode *dr = c.deserialize(buf);
+  // dr->bfs_levelorder();
 
   return 0;
 }
