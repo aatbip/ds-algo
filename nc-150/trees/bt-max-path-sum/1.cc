@@ -8,8 +8,8 @@ class Solution {
   int dfs(TreeNode *node) {
     if (!node)
       return 0;
-    int l = dfs(node->left);
-    int r = dfs(node->right);
+    int l = std::max(dfs(node->left), 0);
+    int r = std::max(dfs(node->right), 0);
     int res = std::max(l, r) + node->val;
     ans = std::max(ans, node->val + l + r);
     return res;
