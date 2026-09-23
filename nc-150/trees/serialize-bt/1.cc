@@ -10,7 +10,7 @@ class Codec {
 public:
   std::string serialize(TreeNode *node) {
     if (!node) {
-      str.append("-");
+      str.append("N");
       return str;
     }
     str.append(std::to_string(node->val));
@@ -21,12 +21,17 @@ public:
   }
 
   TreeNode *deserialize(std::string buf) {
-    if (buf[i] == '-') {
+    if (buf[i] == 'N') {
       i++;
       return NULL;
     }
 
-    TreeNode *root = new TreeNode(buf[i++] - '0');
+    std::string num;
+    while (buf[i] != '#') {
+      num += buf[i++];
+    }
+    i++;
+    TreeNode *root = new TreeNode(std::stoi(num));
     root->left = deserialize(buf);
     root->right = deserialize(buf);
     return root;
@@ -43,8 +48,8 @@ int main(void) {
   std::string buf = c.serialize(&root);
   std::cout << buf << "\n";
 
-  //  TreeNode *dr = c.deserialize(buf);
-  // dr->bfs_levelorder();
+  TreeNode *dr = c.deserialize(buf);
+  dr->bfs_levelorder();
 
   return 0;
 }
