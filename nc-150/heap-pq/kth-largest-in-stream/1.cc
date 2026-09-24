@@ -1,3 +1,10 @@
+/*Kth Largest Element In a Stream-
+ *
+ * Solution: Solved using min heap. Pop element from the min heap if size of the min heap exceeds 'k'. The top most
+ * element is always maintained as the kth largest. Use max heap for kth smallest.
+ *
+ * */
+
 #include <functional>
 #include <iostream>
 #include <queue>
