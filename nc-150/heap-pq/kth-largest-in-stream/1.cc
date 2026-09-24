@@ -3,6 +3,10 @@
  * Solution: Solved using min heap. Pop element from the min heap if size of the min heap exceeds 'k'. The top most
  * element is always maintained as the kth largest. Use max heap for kth smallest.
  *
+ * Time complexity: O(n * logk), 'n' is the number of times add() is called and log(k) is the time complexity of push()
+ * and pop() of the priority queue because it uses binary tree.
+ *
+ * Space complexity: O(k), because the heap never holds more than the 'k' elements
  * */
 
 #include <functional>
