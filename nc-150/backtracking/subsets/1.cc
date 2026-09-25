@@ -1,3 +1,14 @@
+/*Subsets
+ * Given an array nums of unique integers, return all possible subsets of nums.
+ * The solution set must not contain duplicate subsets. You may return the solution in any order.
+ *
+ * Solution-
+ * Solved using backtracking technique with recursion.
+ *
+ * Time complexity- O(n * 2^n), because 2^n subsets are possible
+ * Space complexity- O(2^n) by the 'res' vector and O(n) stack frame due to recursion.
+ * */
+
 #include <iostream>
 #include <vector>
 
