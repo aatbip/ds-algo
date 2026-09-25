@@ -8,7 +8,7 @@ class Solution {
     res.push_back(subset);
     for (int j = start; j < nums.size(); j++) {
       subset.push_back(nums[j]);
-      bt(nums, start + 1, subset);
+      bt(nums, j + 1, subset);
       subset.pop_back();
     }
     return res;
