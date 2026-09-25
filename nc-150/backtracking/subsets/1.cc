@@ -1,6 +1,6 @@
 #include <iostream>
-
 #include <vector>
+
 class Solution {
   std::vector<std::vector<int>> res;
 
@@ -20,3 +20,15 @@ public:
     return bt(nums, 0, subset);
   }
 };
+
+int main(void) {
+  Solution s;
+  std::vector<int> nums = {1, 2, 3};
+  std::vector<std::vector<int>> res = s.subsets(nums);
+  for (int i = 0; i < res.size(); i++) {
+    for (int j = 0; j < res[i].size(); j++) {
+      std::cout << res[i][j] << " ";
+    }
+    std::cout << "\n";
+  }
+}
