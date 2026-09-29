@@ -1,4 +1,5 @@
 // Digital Search Tree (DST) impl
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -15,7 +16,7 @@ node_t *dst_init() {
 }
 
 int bit(char *key, int w) {
-  int n = strlen(key) % w;
+  int n = w % strlen(key);
   char c = key[n];
   return c & w;
 }
@@ -41,6 +42,8 @@ node_t *dst_insert(node_t *root, char *key) {
 }
 
 node_t *dst_search_recurse(node_t *root, char *key, int w) {
+  if (!root)
+    return NULL;
   if (strcmp(root->key, key) == 0)
     return root;
   int b = bit(root->key, w);
@@ -51,14 +54,14 @@ node_t *dst_search_recurse(node_t *root, char *key, int w) {
   }
 }
 
-node_t *dst_search(node_t *root, char *key) {
-  if (!root)
-    return NULL;
-  return dst_search_recurse(root, key, 0);
-}
+node_t *dst_search(node_t *root, char *key) { return dst_search_recurse(root, key, 0); }
 
 int main(void) {
   node_t *root = dst_init();
-
+  root = dst_insert(root, "hello");
+  root = dst_insert(root, "hey");
+  root = dst_insert(root, "love");
+  node_t *node = dst_search(root, "hey");
+  printf("%s\n", node->key);
   return 0;
 }
