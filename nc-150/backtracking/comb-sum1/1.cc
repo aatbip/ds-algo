@@ -5,6 +5,12 @@
  * of each of the chosen numbers is the same, otherwise they are different.
  * You may return the combinations in any order and the order of the numbers in each combination can be in any order.
  *
+ * Solution -
+ * Solved using sorting and recursive backtracking.
+ *
+ * Time complexity- O(2*(t/m))
+ * Space complexity- O(t/m)
+ * where t->target m->min value in nums
  *
  * */
 
