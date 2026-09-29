@@ -15,10 +15,10 @@ node_t *dst_init() {
   return node;
 }
 
-int bit(char *key, int w) {
-  int n = w % strlen(key);
-  char c = key[n];
-  return c & w;
+int bit(const char *key, int w) {
+  unsigned char c = (unsigned char)key[w / 8];
+  int shift = 7 - (w % 8);
+  return (c >> shift) & 1;
 }
 
 node_t *dst_insert_recurs(node_t *root, node_t *node, int w) {
@@ -35,18 +35,17 @@ node_t *dst_insert_recurs(node_t *root, node_t *node, int w) {
 
 node_t *dst_insert(node_t *root, char *key) {
   node_t *node = malloc(sizeof(*node));
-  node->key = malloc(strlen(key));
-  strcpy(node->key, key);
+  node->key = strdup(key);
   node->l = node->r = NULL;
   return dst_insert_recurs(root, node, 0);
 }
 
-node_t *dst_search_recurse(node_t *root, char *key, int w) {
+node_t *dst_search_recurse(node_t *root, const char *key, int w) {
   if (!root)
     return NULL;
   if (strcmp(root->key, key) == 0)
     return root;
-  int b = bit(root->key, w);
+  int b = bit(key, w);
   if (b > 0) {
     return dst_search_recurse(root->r, key, w + 1);
   } else {
@@ -60,8 +59,23 @@ int main(void) {
   node_t *root = dst_init();
   root = dst_insert(root, "hello");
   root = dst_insert(root, "hey");
-  root = dst_insert(root, "love");
-  node_t *node = dst_search(root, "hey");
+  root = dst_insert(root, "apple");
+  root = dst_insert(root, "ball");
+  root = dst_insert(root, "cat");
+  root = dst_insert(root, "dog");
+  root = dst_insert(root, "milo");
+  root = dst_insert(root, "tiger");
+  root = dst_insert(root, "ktm");
+  root = dst_insert(root, "city");
+  node_t *node = dst_search(root, "ktm");
+  printf("%s\n", node->key);
+  node = dst_search(root, "apple");
+  printf("%s\n", node->key);
+  node = dst_search(root, "tiger");
+  printf("%s\n", node->key);
+  node = dst_search(root, "milo");
+  printf("%s\n", node->key);
+  node = dst_search(root, "city");
   printf("%s\n", node->key);
   return 0;
 }
