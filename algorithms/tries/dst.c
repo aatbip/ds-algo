@@ -14,7 +14,23 @@ node_t *dst_init() {
   return node;
 }
 
-node_t *dst_insert_recurs(node_t *root, node_t *node, int w) {}
+int bit(char *key, int w) {
+  int n = strlen(key) % w;
+  char c = key[n];
+  return c & w;
+}
+
+node_t *dst_insert_recurs(node_t *root, node_t *node, int w) {
+  if (!root)
+    return node;
+  int b = bit(node->key, w);
+  if (b > 0) {
+    root->r = dst_insert_recurs(root->r, node, w + 1);
+  } else {
+    root->l = dst_insert_recurs(root->l, node, w + 1);
+  }
+  return root;
+}
 
 node_t *dst_insert(node_t *root, char *key) {
   node_t *node = malloc(sizeof(*node));
