@@ -1,4 +1,5 @@
 // Digital Search Tree (DST) impl
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
