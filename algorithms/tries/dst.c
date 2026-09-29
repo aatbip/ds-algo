@@ -1,18 +1,31 @@
 // Digital Search Tree (DST) impl
-#include "stdlib.h"
 #include <stdlib.h>
 #include <string.h>
 
 typedef struct _node {
-  char key[3];
-  struct __node *l;
-  struct __node *r;
+  char *key;
+  struct _node *l;
+  struct _node *r;
 } node_t;
 
 // returns root node
 node_t *dst_init() {
-  node_t *root = malloc(sizeof(*root));
-  root->l = root->r = NULL;
-  strcpy(root->key, NULL);
-  return root;
+  node_t *node = NULL;
+  return node;
+}
+
+node_t *dst_insert_recurs(node_t *root, node_t *node, int w) {}
+
+node_t *dst_insert(node_t *root, char *key) {
+  node_t *node = malloc(sizeof(*node));
+  node->key = malloc(strlen(key));
+  strcpy(node->key, key);
+  node->l = node->r = NULL;
+  return dst_insert_recurs(root, node, 0);
+}
+
+int main(void) {
+  node_t *root = dst_init();
+
+  return 0;
 }
