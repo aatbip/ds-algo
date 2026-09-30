@@ -14,7 +14,7 @@ node_t *tries_init() {
   return root;
 }
 
-int bit(char *key, int w) {
+int bit(const char *key, int w) {
   unsigned char c = (unsigned char)key[w / 8];
   int shift = 7 - (w % 8);
   return (c >> shift) & 1;
@@ -63,4 +63,30 @@ node_t *tries_insert(node_t *root, char *key) {
   node->key = strdup(key);
   node->l = node->r = NULL;
   return tries_insert_recurs(root, node, 0);
+}
+
+node_t *tries_search_recurs(node_t *root, const char *key, int w) {
+  int b = bit(key, w);
+
+  if (!root)
+    return NULL;
+
+  if (root->l == NULL && root->r == NULL) {
+    if (strcmp(root->key, key) == 0)
+      return root;
+    return NULL;
+  }
+
+  if (b > 0)
+    return tries_search_recurs(root->r, key, w + 1);
+  return tries_search_recurs(root->l, key, w + 1);
+}
+
+node_t *tries_search(node_t *root, char *key) { return tries_search_recurs(root, key, 0); }
+
+int main(void) {
+  node_t *root = tries_init();
+  root = tries_insert(root, "hey");
+
+  return 0;
 }
