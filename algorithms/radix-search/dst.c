@@ -56,8 +56,41 @@ node_t *dst_search_recurse(node_t *root, const char *key, int w) {
 
 node_t *dst_search(node_t *root, char *key) { return dst_search_recurse(root, key, 0); }
 
+#define QUEUE_SIZE 256
+typedef struct {
+  node_t *queue[QUEUE_SIZE];
+  int dq_idx;
+  int eq_idx;
+} queue;
+
+void enque(queue *q, node_t *node) {
+  q->queue[q->eq_idx] = node;
+  q->eq_idx = (q->eq_idx + 1) % QUEUE_SIZE;
+}
+
+node_t *deque(queue *q) {
+  node_t *node = q->queue[q->dq_idx];
+  q->dq_idx = (q->dq_idx + 1) % QUEUE_SIZE;
+  return node;
+}
+// level traversal (BFS)
+void level_traverse(node_t *node) {
+  queue q;
+  memset(&q, 0, sizeof(queue));
+  enque(&q, node);
+  while (q.dq_idx != q.eq_idx) {
+    node_t *curr = deque(&q);
+    printf("%s\n", curr->key);
+    if (curr->l)
+      enque(&q, curr->l);
+    if (curr->r)
+      enque(&q, curr->r);
+  }
+}
+
 int main(void) {
   node_t *root = dst_init();
+  root = dst_insert(root, "aaaaaaaaaaaaaaaaaaaaaaaaaaaa");
   root = dst_insert(root, "hello");
   root = dst_insert(root, "hey");
   root = dst_insert(root, "apple");
@@ -68,15 +101,23 @@ int main(void) {
   root = dst_insert(root, "tiger");
   root = dst_insert(root, "ktm");
   root = dst_insert(root, "city");
-  node_t *node = dst_search(root, "ktm");
-  printf("%s\n", node->key);
-  node = dst_search(root, "apple");
-  printf("%s\n", node->key);
-  node = dst_search(root, "tiger");
-  printf("%s\n", node->key);
-  node = dst_search(root, "milo");
-  printf("%s\n", node->key);
-  node = dst_search(root, "city");
-  printf("%s\n", node->key);
+  root = dst_insert(root, "aaaaacccaaabbbaaaaaaaaaaaaaaaaaa");
+  root = dst_insert(root, "aaaaaaaabbbaaaaaaaaaaaaaaaaaa");
+  root = dst_insert(root, "w");
+  // node_t *node = dst_search(root, "ktm");
+  // printf("%s\n", node->key);
+  // node = dst_search(root, "apple");
+  // printf("%s\n", node->key);
+  // node = dst_search(root, "tiger");
+  // printf("%s\n", node->key);
+  // node = dst_search(root, "milo");
+  // printf("%s\n", node->key);
+  // node = dst_search(root, "city");
+  // printf("%s\n", node->key);
+  // node = dst_search(root, "w");
+  // printf("%s\n", node->key);
+
+  level_traverse(root);
+
   return 0;
 }
