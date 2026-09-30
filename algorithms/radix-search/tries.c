@@ -9,11 +9,13 @@ typedef struct _node {
   struct _node *r;
 } node_t;
 
+node_t *z;
+
 node_t *tries_init() {
-  node_t *root = malloc(sizeof(node_t));
-  root->l = root->r = NULL;
-  root->key = NULL;
-  return root;
+  z = malloc(sizeof(node_t));
+  z->l = z->r = z;
+  z->key = NULL;
+  return z;
 }
 
 int bit(const char *key, int w) {
@@ -23,7 +25,9 @@ int bit(const char *key, int w) {
 }
 
 node_t *split(node_t *p, node_t *node, int w) {
-  node_t *null_node = tries_init();
+  node_t *null_node = malloc(sizeof(node_t));
+  null_node->key = NULL;
+  null_node->l = null_node->r = z;
   switch (bit(p->key, w) * 2 + bit(node->key, w)) {
   case 0:
     null_node->l = split(p, node, w + 1);
@@ -48,10 +52,10 @@ node_t *split(node_t *p, node_t *node, int w) {
 
 node_t *tries_insert_recurs(node_t *root, node_t *node, int w) {
   int b = bit(node->key, w);
-  if (!root || (root->key == NULL && root->l == NULL && root->r == NULL))
+  if (root == z)
     return node;
 
-  if (root->l == NULL && root->r == NULL) {
+  if (root->l == z && root->r == z) {
     return split(root, node, w);
   }
 
@@ -66,17 +70,17 @@ node_t *tries_insert_recurs(node_t *root, node_t *node, int w) {
 node_t *tries_insert(node_t *root, char *key) {
   node_t *node = malloc(sizeof(node_t));
   node->key = strdup(key);
-  node->l = node->r = NULL;
+  node->l = node->r = z;
   return tries_insert_recurs(root, node, 0);
 }
 
 node_t *tries_search_recurs(node_t *root, const char *key, int w) {
   int b = bit(key, w);
 
-  if (!root)
+  if (root == z)
     return NULL;
 
-  if (root->l == NULL && root->r == NULL) {
+  if (root->l == z && root->r == z) {
     if (root->key != NULL && strcmp(root->key, key) == 0)
       return root;
 
