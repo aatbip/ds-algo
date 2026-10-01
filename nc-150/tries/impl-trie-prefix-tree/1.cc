@@ -43,6 +43,6 @@ public:
         return false;
       cur = cur->map[c];
     }
-    return cur->end;
+    return true;
   }
 };
