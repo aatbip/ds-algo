@@ -1,3 +1,17 @@
+/*Implement Trie Prefix Tree-
+ *
+ * Solution:
+ * Solved using hashmap to store TrieNode pointers.
+ *
+ * Time complexity:
+ * insert - O(n)
+ * search - O(n)
+ * startsWith - O(n)
+ * where n -> length of word string
+ *
+ * Space complexity: O(t), where t->total number of TrieNode created in the Trie
+ * */
+
 #include <string>
 #include <unordered_map>
 
