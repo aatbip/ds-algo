@@ -27,13 +27,11 @@ public:
   bool search(std::string word) {
     TrieNode *cur = root;
     for (char c : word) {
-      if (cur->map.find(c) != cur->map.end()) {
-        cur = cur->map[c];
-        if (cur->end)
-          return true;
-      }
+      if (cur->map.find(c) == cur->map.end())
+        return false;
+      cur = cur->map[c];
     }
-    return false;
+    return cur->end;
   }
 
   bool startsWith(std::string prefix) {
