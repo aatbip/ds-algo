@@ -1,6 +1,15 @@
+/*Number of Islands-
+ *
+ * Solution: Solved using DFS (preorder).
+ *
+ * Time complexity- O(m*n), where m->row size and n->col size
+ * Space complexity- O(m*n) due to recusion stack
+ * */
+
 #include <cstring>
 #include <iostream>
 #include <vector>
+
 class Solution {
   void dfs(std::vector<std::vector<char>> &grid, int ROWS, int COLS, int r, int c) {
     if (r < 0 || c < 0 || r > grid.size() - 1 || c > grid[0].size() - 1 || grid[r][c] == '0')
