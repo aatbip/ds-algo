@@ -2,14 +2,14 @@
 #include <iostream>
 #include <vector>
 class Solution {
-  void dfs(std::vector<std::vector<char>> &grid, int ROWS, int COLS) {
-    if (ROWS > grid.size() || COLS > grid[0].size() || grid[ROWS][COLS] == '0')
+  void dfs(std::vector<std::vector<char>> &grid, int ROWS, int COLS, int r, int c) {
+    if (r < 0 || c < 0 || r > grid.size() - 1 || c > grid[0].size() - 1 || grid[r][c] == '0')
       return;
-    grid[ROWS][COLS] = '0';
-    dfs(grid, ROWS + 1, COLS);
-    dfs(grid, ROWS - 1, COLS);
-    dfs(grid, ROWS, COLS + 1);
-    dfs(grid, ROWS, COLS - 1);
+    grid[r][c] = '0';
+    dfs(grid, ROWS, COLS, r + 1, c);
+    dfs(grid, ROWS, COLS, r - 1, c);
+    dfs(grid, ROWS, COLS, r, c + 1);
+    dfs(grid, ROWS, COLS, r, c - 1);
   }
 
 public:
@@ -18,10 +18,10 @@ public:
     int ROWS = grid.size();
     int COLS = grid[0].size();
     for (int i = 0; i < ROWS; i++) {
-      for (int i = 0; i < COLS; i++) {
-        if (grid[ROWS][COLS] == '1') {
+      for (int j = 0; j < COLS; j++) {
+        if (grid[i][j] == '1') {
           count++;
-          dfs(grid, ROWS, COLS);
+          dfs(grid, ROWS, COLS, i, j);
         }
       }
     }
@@ -34,6 +34,6 @@ int main(void) {
   std::vector<std::vector<char>> grid = {
       {'0', '1', '1', '1', '0'}, {'0', '1', '0', '1', '0'}, {'1', '1', '0', '0', '0'}, {'0', '0', '0', '0', '0'}};
 
-  std::cout << s.no_of_islands(grid);
+  std::cout << s.no_of_islands(grid) << "\n";
   return 0;
 }
