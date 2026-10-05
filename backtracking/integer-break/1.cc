@@ -6,7 +6,8 @@
  * Solved using backtracking. This is a brute force solution since backtracking is not optimal for more or less n > 70
  * depending on the memory available.
  *
- *
+ * Time complexity- O(p(n)*n)
+ * Space complexity- O(n)
  * */
 
 #include <climits>
