@@ -6,7 +6,9 @@
  * Solved using backtracking. This is a brute force solution since backtracking is not optimal for more or less n > 70
  * depending on the memory available.
  *
- * Time complexity- O(p(n)*n)
+ * Time complexity: O(p(n) * n), where n is the input integer and p(n) is the number of integer partitions of n. The
+ * complexity is determined primarily by the number of partitions explored.
+ *
  * Space complexity- O(n)
  * */
 
