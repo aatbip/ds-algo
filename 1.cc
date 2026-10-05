@@ -9,16 +9,16 @@ class Solution {
   void bt(int n, int start, int add, int mul) {
     for (int j = start; j < n; j++) {
       vec.push_back(j);
-      add += j;
-      mul *= j;
-      if (add > n) {
+      int nadd = add + j;
+      int nmul = mul * j;
+      if (nadd > n) {
         vec.pop_back();
         return;
       }
-      if (add == n && mul > res) {
-        res = mul;
+      if (nadd == n && nmul > res) {
+        res = nmul;
       }
-      bt(n, j + 1, add, mul);
+      bt(n, j, nadd, nmul);
     }
   }
 
