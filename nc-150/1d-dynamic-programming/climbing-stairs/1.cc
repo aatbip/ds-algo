@@ -14,5 +14,5 @@ public:
 
 int main(void) {
   Solution s;
-  std::cout << s.climb_stairs(5) << "\n";
+  std::cout << s.climb_stairs(44) << "\n";
 }
