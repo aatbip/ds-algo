@@ -4,7 +4,7 @@
  *
  * Solution- Solved using dynamic programming bottom up approach.
  * Time complexity- O(n)
- * Space complexity- O(n)
+ * Space complexity- O(n) with vector, O(1) for space optimized way
  * */
 
 #include <iostream>
