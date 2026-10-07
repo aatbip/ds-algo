@@ -12,32 +12,31 @@
 
 class Solution {
 public:
-  /*int climbing_stairs(int n) {
-     if (n <= 2)
-       return n;
-     std::vector<int> dp(n + 1, 0);
-     dp[1] = 1;
-     dp[2] = 2;
-     for (int i = 3; i <= n; i++) {
-       dp[i] = dp[i - 1] + dp[i - 2];
-     }
-     return dp[n];
-   }*/
   int climbing_stairs(int n) {
     if (n <= 2)
       return n;
-    int first = 1, second = 2;
-    int res = 0;
+    std::vector<int> dp(n + 1, 0);
+    dp[1] = 1;
+    dp[2] = 2;
     for (int i = 3; i <= n; i++) {
-      res = first + second;
-      first = second;
-      second = res;
+      dp[i] = dp[i - 1] + dp[i - 2];
     }
-    return res;
+    return dp[n];
   }
+  /*  int climbing_stairs(int n) {
+      if (n <= 2)
+        return n;
+      int first = 1, second = 2;
+      for (int i = 3; i <= n; i++) {
+        int res = first + second;
+        first = second;
+        second = res;
+      }
+      return second;
+    }*/
 };
 
 int main(void) {
   Solution s;
-  std::cout << s.climbing_stairs(5) << "\n";
+  std::cout << s.climbing_stairs(44) << "\n";
 }
