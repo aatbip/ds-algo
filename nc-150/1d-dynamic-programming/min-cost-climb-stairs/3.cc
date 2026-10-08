@@ -22,4 +22,15 @@ class Solution {
     }
     return dp[n];
   }
+
+  int min_cost_space_optimized(std::vector<int> &cost) {
+    int first = 0;
+    int second = 0;
+    for (int i = 2; i <= cost.size(); i++) {
+      int temp = std::min(second + cost[i - 1], first + cost[i - 2]);
+      first = second;
+      second = temp;
+    }
+    return second;
+  }
 };
