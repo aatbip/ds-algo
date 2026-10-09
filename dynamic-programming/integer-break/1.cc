@@ -3,7 +3,10 @@
  * product of those integers. Return the maximum product you can get.
  *
  * Solution-
- * This problem can be solved better optimized by using dynamic programming. We will try it soon.
+ * Solved using recursion and memoization on recursion.
+ *
+ * Time complexity- O(n^2) for memoization and O(2^n) for recursion.
+ * Space complexity- O(n)
  */
 
 #include <algorithm>
