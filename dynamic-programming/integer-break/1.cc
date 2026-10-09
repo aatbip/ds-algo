@@ -3,7 +3,7 @@
  * product of those integers. Return the maximum product you can get.
  *
  * Solution-
- * Solved using recursion and memoization on recursion.
+ * Solved using recursion and memoization (top down dynamic programming) on recursion.
  *
  * Time complexity- O(n^2) for memoization and O(2^n) for recursion.
  * Space complexity- O(n)
