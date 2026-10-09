@@ -2,10 +2,10 @@
  * Given an integer n, break it into the sum of k positive integers, where k >= 2, and maximize the
  * product of those integers. Return the maximum product you can get.
  *
- * Solution-
+ * Solution- Solved using DP bottom up approach.
  *
- * Time complexity-
- * Space complexity-
+ * Time complexity- O(n^2)
+ * Space complexity- O(n)
  */
 
 #include <algorithm>
