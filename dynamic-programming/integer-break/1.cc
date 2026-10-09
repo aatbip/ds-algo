@@ -9,8 +9,11 @@
 #include <algorithm>
 #include <climits>
 #include <iostream>
+#include <vector>
 
 class Solution {
+  std::vector<int> cache;
+
   int recurs(int n) {
     int res = 0;
 
@@ -21,8 +24,23 @@ class Solution {
     return res;
   }
 
+  int recurs_memoization(int n) {
+    int res = 0;
+    if (cache[n] != -1)
+      return cache[n];
+
+    for (int i = 1; i < n; i++) {
+      cache[n] = std::max(cache[n], i * std::max(n - i, recurs(n - i))); // break n by i
+    }
+
+    return cache[n];
+  }
+
 public:
-  int integer_break(int n) { return recurs(n); }
+  int integer_break(int n) {
+    cache.resize(n + 1, -1);
+    return recurs_memoization(n);
+  }
 };
 
 int main(void) {
