@@ -5,3 +5,27 @@
  * Solution-
  * This problem can be solved better optimized by using dynamic programming. We will try it soon.
  */
+
+#include <algorithm>
+#include <climits>
+#include <iostream>
+
+class Solution {
+  int recurs(int n) {
+    int res = 0;
+
+    for (int i = 1; i < n; i++) {
+      res = std::max(res, i * std::max(n - i, recurs(n - i))); // break n by i
+    }
+
+    return res;
+  }
+
+public:
+  int integer_break(int n) { return recurs(n); }
+};
+
+int main(void) {
+  Solution s;
+  std::cout << s.integer_break(5) << "\n";
+}
