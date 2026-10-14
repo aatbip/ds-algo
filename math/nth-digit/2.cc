@@ -14,7 +14,7 @@ class Solution {
 public:
   int find_nth_digit(int n) {
     int a = 1;
-    int b = 9;
+    long long b = 9;
     int len = 1;
 
     while (n > len * b) {
