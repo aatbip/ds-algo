@@ -5,9 +5,10 @@
 class Solution {
 public:
   int find_nth_digit(int n) {
-    std::stack<int> s;
+    int ans;
     int i = 1;
-    while (s.size() != n) {
+    int c = 0;
+    while (c != n) {
       std::stack<int> s_tmp;
       int x = i;
       while (x > 0) {
@@ -16,21 +17,22 @@ public:
         s_tmp.push(d);
       }
       while (!s_tmp.empty()) {
-        s.push(s_tmp.top());
-        if (s.size() >= n)
+        ans = s_tmp.top();
+        c++;
+        if (c >= n)
           break;
         s_tmp.pop();
       }
       i++;
     }
-    return s.top();
+    return ans;
   }
 };
 
 int main(void) {
   Solution s;
 
-  std::cout << s.find_nth_digit(10) << "\n";
+  std::cout << s.find_nth_digit(100000000) << "\n";
 
   return 0;
 }
