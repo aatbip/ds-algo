@@ -1,3 +1,13 @@
+/*400. Nth Digit-
+ *Given an integer n, return the nth digit of the infinite integer sequence [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ...].
+ *
+ * Solution-
+ * Solved using math (group skipping).
+ *
+ * Time complexity- O(log n)
+ * Space complexity- O(1)
+ * */
+
 #include <iostream>
 #include <string>
 class Solution {
