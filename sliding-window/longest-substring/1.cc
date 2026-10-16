@@ -1,3 +1,15 @@
+/* 395. Longest Substring with At Least K Repeating Characters
+ *
+ * Given a string s and an integer k, return the length of the longest substring of s such that the frequency of each
+ * character in this substring is greater than or equal to k. if no such substring exists, return 0.
+ *
+ * Solution- Solved using sliding window.
+ *
+ * Time complexity- O(n * 26) = O(n)
+ * Space complexity- O(26) = O(1)
+ * where n->size of string
+ * */
+
 #include <algorithm>
 #include <iostream>
 #include <string>
