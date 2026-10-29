@@ -1,31 +1,19 @@
 #include <iostream>
 #include <stack>
+#include <utility>
 #include <vector>
 
 class Solution {
 public:
   std::vector<int> daily_temp(std::vector<int> &temperatures) {
-    std::stack<int> s;
-    std::vector<int> ans;
+    std::stack<std::pair<int, int>> s;
+    std::vector<int> ans(temperatures.size());
     for (int i = 0; i < temperatures.size(); i++) {
-      int k = i + 1;
-      if (s.empty()) {
-        s.push(temperatures[i]);
-      }
-      int t = 0;
-      if (t + k < temperatures.size() - 1 && s.top() > temperatures[t + k]) {
-        int target = s.top();
-        while (target > temperatures[t + k]) {
-          s.pop();
-          s.push(temperatures[t + k]);
-          t++;
-        }
-        ans.push_back(t + 1);
-      } else {
+      while (!s.empty() && temperatures[i] > s.top().second) {
+        ans[s.top().first] = i - s.top().first;
         s.pop();
-        ans.push_back(k - i);
-        k++;
       }
+      s.push({i, temperatures[i]});
     }
     return ans;
   }
