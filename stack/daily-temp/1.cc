@@ -1,3 +1,13 @@
+/*739. Daily Temperatures -
+ * [REPEATED PROBLEM from nc-150/stack/daily-temp]
+ *
+ * Solution - Solved using monotonic stack.
+ *
+ * Time complexity- O(n)
+ * Space complexity- O(n)
+ * where n->size of the `temperatures` array
+ * */
+
 #include <iostream>
 #include <stack>
 #include <utility>
