@@ -12,6 +12,7 @@ public:
     for (int i = 0; i < hours.size(); i++) {
       if (s.empty()) {
         s.push(hours[i]);
+        continue;
       }
 
       if (hours[i] > 8)
@@ -24,7 +25,7 @@ public:
         }
       }
     }
-    return ans;
+    return ans == INT_MIN ? 0 : ans;
   }
 };
 
