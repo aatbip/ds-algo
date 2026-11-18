@@ -3,6 +3,7 @@
 #include <iostream>
 #include <stack>
 #include <vector>
+
 class ListNode {
 public:
   int val;
@@ -16,24 +17,22 @@ class Solution {
 public:
   ListNode *remove_nodes(ListNode *head) {
     std::stack<ListNode *> s;
-    s.push(head);
-    ListNode *cur = head->next;
+    ListNode *cur = head;
     while (cur) {
       while (!s.empty() && s.top()->val < cur->val) {
+        delete s.top();
         s.pop();
       }
       s.push(cur);
       cur = cur->next;
     }
-    head = new ListNode(s.top()->val);
+    ListNode *prev = nullptr;
     while (!s.empty()) {
+      s.top()->next = prev;
+      prev = s.top();
       s.pop();
-      if (!s.empty()) {
-        ListNode *n = new ListNode(s.top()->val, head);
-        head = n;
-      }
     }
-    return head;
+    return prev;
   }
 };
 
