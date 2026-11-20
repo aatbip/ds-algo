@@ -1,3 +1,14 @@
+/*Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given
+ * target value. If target is not found in the array, return [-1, -1]. You must write an algorithm with O(log n) runtime
+ * complexity.
+ *
+ * Solution- Solved using binary search. Find the first occurence using `find_first` then last occurence using
+ * `find_last` if any.
+ *
+ * Time complexity- O(log n) + O(log n) = O(2 log n) = O(log n)
+ * Space complexity- O(1)
+ * */
+
 #include <iostream>
 #include <vector>
 
