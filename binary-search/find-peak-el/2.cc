@@ -6,6 +6,8 @@
  * that runs in O(log n) time.
  *
  * Solution-
+ * Solved using binary search.
+ *
  * Time complexity: O(log n), because each iteration discards about half of the total array range
  * Space complexity: O(n)
  * */
