@@ -1,3 +1,24 @@
+/*222. Count Complete Tree Nodes-
+ *  Given the root of a complete binary tree, return the number of the nodes in the tree.
+ *According to Wikipedia, every level, except possibly the last, is completely filled in a complete binary tree, and all
+ *nodes in the last level are as far left as possible. It can have between 1 and 2h nodes inclusive at the last level h.
+ *Design an algorithm that runs in less than O(n) time complexity.
+ *
+ * Solution-
+ * Solved using recursive approach.
+ *
+ * Time complexity-
+ * For count_left = O(log n) and for count_right = O(log n)
+ * = O(log n) + O(log n) = O(2 logn) = O(log n)
+ * No. of calls for recursive path: O(log n)
+ * So, O(log n) * O(log n) = O(log^2 n)
+ *
+ *
+ * Space complexity- The height of a complete tree (balanced tree) is O(log n). So there will be at most O(log n)
+ * recursion stack. Therefore, O(log n)
+ *
+ */
+
 class TreeNode {
 public:
   int val;
