@@ -9,21 +9,31 @@ public:
 };
 
 class Solution {
-public:
-  int count_nodes(TreeNode *root) {
-    int lh = 0, rh = 0;
+private:
+  int count_left(TreeNode *root) {
+    int height = 0;
     TreeNode *cur = root;
     while (cur) {
       cur = cur->left;
-      lh += 1;
+      height += 1;
     }
-    cur = root;
+    return height;
+  }
+  int count_right(TreeNode *root) {
+    int height = 0;
+    TreeNode *cur = root;
     while (cur) {
       cur = cur->right;
-      rh += 1;
+      height += 1;
     }
-    if (lh == rh) { // perfect binary tree
-      return (1 << lh) - 1;
+    return height;
+  }
+
+public:
+  int count_nodes(TreeNode *root) {
+    int height = count_left(root);
+    if (height == count_right(root)) {
+      return (1 << height) - 1;
     }
     return 1 + count_nodes(root->left) + count_nodes(root->right);
   }
