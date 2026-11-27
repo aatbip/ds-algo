@@ -1,3 +1,15 @@
+/* 46. Permutations-
+ *Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any
+ *order.
+ *
+ * Solution- Solved using recursive BT. The `used` boolean array is used to track the used integers.
+ *
+ * Time complexity-
+ * O(n*n!), 'n' time recursive calls and 'n!' for permutation
+ * Space complexity-
+ * O(n), for recursion depth
+ * */
+
 #include <vector>
 using namespace std;
 
